@@ -1,0 +1,36 @@
+# Setting Up the Email System - PHP Implementation
+
+We've implemented a PHP-based email sending system that should work on most web hosting platforms. This system is simpler to configure than the Node.js version since it doesn't require a separate server.
+
+## Implementation Details:
+
+1. The system uses PHP's built-in `mail()` function, which is supported by most web hosts.
+2. Two emails are sent when a form is submitted:
+   - One to the website owner (cesarjames@giganteprintmedia.com)
+   - A confirmation email to the customer
+
+## Setup Instructions:
+
+1. Make sure your web hosting supports PHP (most do).
+2. Upload all files to your web server, maintaining the same directory structure.
+3. Confirm that the `send-email.php` file is in the root directory of your website.
+4. Test the form by submitting a reservation.
+
+## Troubleshooting:
+
+If emails are not being sent:
+
+1. Check if your web hosting allows PHP's mail() function. Some hosting providers restrict it.
+2. Verify that the server's PHP mail configuration is properly set up.
+3. Contact your hosting provider to ensure email functionality is enabled.
+4. Check your form submission in the browser console (F12) for any JavaScript errors.
+5. Check server logs for PHP errors related to the mail() function.
+
+## Alternative Solutions:
+
+If the PHP mail() function doesn't work on your hosting:
+
+1. Consider using a third-party email service like SendGrid, Mailgun, or PHPMailer.
+2. Ask your hosting provider about recommended email sending methods.
+
+For any persistent issues, please provide the specific error message you're seeing for more targeted assistance.

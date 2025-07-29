@@ -1,0 +1,66 @@
+/* Streamlined Marketing Solution styles */
+.streamlined-marketing-container {
+  margin: 80px 0;
+  position: relative;
+  padding: 30px 0;
+}
+
+.streamlined-graphic-wrapper {
+  max-width: 900px;
+  margin: 30px auto;
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  transition: all 0.4s ease;
+}
+
+.streamlined-graphic-wrapper:hover {
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.15), 0 0 30px rgba(212, 175, 55, 0.2);
+  transform: translateY(-10px);
+}
+
+.streamlined-graphic {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: all 0.3s ease;
+}
+
+.streamlined-graphic-wrapper::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 5px;
+  background: linear-gradient(90deg, #d4af37, #f4d03f, #1976D2, #42A5F5, #d4af37);
+  background-size: 300% 100%;
+  animation: gradientMove 8s infinite linear;
+  z-index: 1;
+}
+
+.streamlined-graphic-wrapper::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 5px;
+  background: linear-gradient(90deg, #d4af37, #f4d03f, #1976D2, #42A5F5, #d4af37);
+  background-size: 300% 100%;
+  animation: gradientMove 8s infinite linear reverse;
+  z-index: 1;
+}
+
+@media (max-width: 767px) {
+  .streamlined-marketing-container {
+    margin: 50px 0;
+    padding: 20px;
+  }
+  
+  .streamlined-graphic-wrapper {
+    max-width: 100%;
+    margin: 20px auto;
+  }
+}
