@@ -234,7 +234,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Add section ID attributes for smooth scrolling
     const sectionElements = {
         'Why Direct-Mail Still Wins': 'why-direct-mail',
-        'How It Works': 'how-it-works',
+        'How It Works': 'how-works',
         'Real-Time Availability': 'availability',
         'Sizes & Investment': 'pricing',
         'Mailing Map & Drop Dates': 'mailing-map',
