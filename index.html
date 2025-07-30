@@ -3939,6 +3939,7 @@ Es comprobado, asequible, exclusivo, y diseñado para máxima exposición. Asegu
 
             
             <div class="accordion">
+                <!-- First 2 questions - always visible -->
                 <div class="accordion-item" data-aos="fade-up" data-aos-delay="100">
                     <div class="accordion-header">
                         <h3 class="en">Can I use my own artwork?</h3>
@@ -3953,8 +3954,6 @@ Es comprobado, asequible, exclusivo, y diseñado para máxima exposición. Asegu
                     </div>
                 </div>
                 
-
-                
                 <div class="accordion-item" data-aos="fade-up" data-aos-delay="250">
                     <div class="accordion-header">
                         <h3 class="en">Are there any special benefits for joining the initial campaign?</h3>
@@ -3968,6 +3967,31 @@ Es comprobado, asequible, exclusivo, y diseñado para máxima exposición. Asegu
                         <p class="es" style="display: none;">¡Por supuesto! Todos los negocios que se unan a nuestra campaña inicial asegurarán el precio promocional actual ($485) para todos los envíos futuros. Como miembro fundador, nunca pagará la tarifa estándar ($530), incluso cuando nuestros precios aumenten con el tiempo. Esta es nuestra forma de recompensar a los primeros participantes.</p>
                     </div>
                 </div>
+
+                <!-- Show More Button -->
+                <div class="show-more-container" style="text-align: center; margin: 30px 0;">
+                    <button id="show-more-faq" class="show-more-btn" style="
+                        background: linear-gradient(135deg, #1976D2, #42A5F5);
+                        color: white;
+                        border: none;
+                        padding: 15px 30px;
+                        border-radius: 30px;
+                        font-size: 1.1rem;
+                        font-weight: 600;
+                        cursor: pointer;
+                        transition: all 0.3s ease;
+                        box-shadow: 0 8px 20px rgba(25,118,210,0.2);
+                        text-transform: uppercase;
+                        letter-spacing: 1px;
+                    " onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 12px 25px rgba(25,118,210,0.3)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 8px 20px rgba(25,118,210,0.2)'">
+                        <span class="en">Show More Questions</span>
+                        <span class="es" style="display: none;">Mostrar Más Preguntas</span>
+                        <i class="fas fa-chevron-down" style="margin-left: 8px; transition: transform 0.3s ease;"></i>
+                    </button>
+                </div>
+
+                <!-- Hidden questions container -->
+                <div id="hidden-faq-questions" style="display: none;">
 
                 <!-- New FAQ Questions Start -->
                 <div class="accordion-item" data-aos="fade-up" data-aos-delay="400">
@@ -4165,6 +4189,7 @@ Es comprobado, asequible, exclusivo, y diseñado para máxima exposición. Asegu
                     </div>
                 </div>
                 <!-- New FAQ Questions End -->
+                </div> <!-- Close hidden-faq-questions container -->
 
             </div>
             
@@ -6845,6 +6870,46 @@ Es comprobado, asequible, exclusivo, y diseñado para máxima exposición. Asegu
             if (event.key === 'Escape') {
                 closeImageModal();
             }
+        });
+
+        // FAQ Show More functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const showMoreBtn = document.getElementById('show-more-faq');
+            const hiddenQuestions = document.getElementById('hidden-faq-questions');
+            const btnText = showMoreBtn.querySelector('.en');
+            const btnTextEs = showMoreBtn.querySelector('.es');
+            const btnIcon = showMoreBtn.querySelector('i');
+            
+            let isExpanded = false;
+            
+            showMoreBtn.addEventListener('click', function() {
+                if (!isExpanded) {
+                    // Show hidden questions
+                    hiddenQuestions.style.display = 'block';
+                    hiddenQuestions.style.opacity = '0';
+                    
+                    // Animate the appearance
+                    setTimeout(() => {
+                        hiddenQuestions.style.transition = 'opacity 0.5s ease';
+                        hiddenQuestions.style.opacity = '1';
+                    }, 10);
+                    
+                    // Update button text
+                    btnText.textContent = 'Show Less';
+                    btnTextEs.textContent = 'Mostrar Menos';
+                    btnIcon.style.transform = 'rotate(180deg)';
+                    
+                    // Hide the button after a delay
+                    setTimeout(() => {
+                        showMoreBtn.style.opacity = '0';
+                        setTimeout(() => {
+                            showMoreBtn.style.display = 'none';
+                        }, 300);
+                    }, 1000);
+                    
+                    isExpanded = true;
+                }
+            });
         });
     </script>
 </body>
