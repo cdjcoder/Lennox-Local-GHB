@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mobile Pricing Test</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+        }
+        .test-info {
+            background: #f8f9fa;
+            padding: 20px;
+            text-align: center;
+            border-bottom: 2px solid #e9ecef;
+        }
+        .test-info h1 {
+            color: #2c3e50;
+            margin: 0 0 10px 0;
+        }
+        .test-info p {
+            color: #6c757d;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="test-info">
+        <h1>Mobile Pricing Section Test</h1>
+        <p>Resize your browser to mobile width (768px or less) to see the clean, non-flashing mobile design.</p>
+        <p>Desktop view should remain unchanged with all original animations.</p>
+    </div>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="pricing">
+        <!-- Top Section Divider -->
+        <div class="section-divider top wave-animation">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".25" fill="#ffffff"></path>
+                <path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" opacity=".5" fill="#ffffff"></path>
+                <path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z" fill="#ffffff"></path>
+            </svg>
+        </div>
+        
+        <!-- Floating Elements -->
+        <div class="floating-element floating-circle pricing-floating-1"></div>
+        <div class="floating-element floating-square pricing-floating-2"></div>
+        
+        <!-- Animated floating particles -->
+        <div class="particles-container">
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+        </div>
+        
+        <div class="container">
+            <h2 class="section-title text-center">Sizes & Investment</h2>
+            
+            <div class="pricing-container">
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <div class="pricing-name">3″×4½″ Standard</div>
+                        <div class="pricing-price-container">
+                            <!-- Limited Time Offer Label -->
+                            <div class="offer-label" style="background: linear-gradient(45deg, #ff6b6b, #ee5a24); color: white; font-size: 0.8rem; font-weight: 700; padding: 4px 12px; border-radius: 20px; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 1px; box-shadow: 0 3px 10px rgba(255, 107, 107, 0.3); animation: pulse 2s infinite;">
+                                Limited-Time Offer
+                            </div>
+                            
+                            <!-- Old Price with Strikethrough -->
+                            <div class="old-price" style="position: relative; font-size: 1.4rem; color: #999; margin-bottom: 5px;">
+                                <span style="text-decoration: line-through; text-decoration-color: #e74c3c; text-decoration-thickness: 3px;">$530</span>
+                                <!-- Additional diagonal line for emphasis -->
+                                <div style="position: absolute; top: 50%; left: 0; right: 0; height: 3px; background: linear-gradient(45deg, transparent 45%, #e74c3c 45%, #e74c3c 55%, transparent 55%); transform: translateY(-50%); opacity: 0.8;"></div>
+                            </div>
+                            
+                            <!-- New Promotional Price -->
+                            <div class="promotional-price" style="font-size: 3.5rem; font-weight: 900; background: linear-gradient(135deg, #f1c40f, #f39c12); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; text-shadow: 0 0 30px rgba(241, 196, 15, 0.5); margin-bottom: 5px; position: relative;">
+                                $485
+                                <!-- Glow effect -->
+                                <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(135deg, #f1c40f, #f39c12); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; filter: blur(8px); opacity: 0.4; z-index: -1;">$485</div>
+                            </div>
+                            
+                            <!-- Savings Amount -->
+                            <div class="savings" style="background: linear-gradient(135deg, #ff6b35, #f7931e); color: white; font-size: 0.9rem; font-weight: 600; padding: 6px 15px; border-radius: 25px; margin-top: 8px; box-shadow: 0 4px 15px rgba(255, 107, 53, 0.4); animation: bounce 3s infinite;">
+                                Save $45!
+                            </div>
+                            
+                            <!-- Price per Postcard -->
+                            <div style="color: #ffffff; font-size: 0.9rem; font-weight: 600; margin-top: 8px; background: #e74c3c; border-radius: 8px; padding: 5px 10px; border: 1px solid #c0392b; box-shadow: 0 2px 4px rgba(0,0,0,0.2);">
+                                Less than 5¢ per postcard
+                            </div>
+                            
+                            <!-- Bestseller Tag -->
+                            <div style="background: linear-gradient(135deg, #27ae60, #229954); color: white; font-size: 0.75rem; font-weight: 700; padding: 5px 10px; border-radius: 15px; margin-top: 8px; box-shadow: 0 2px 10px rgba(39, 174, 96, 0.4); letter-spacing: 0.5px; text-transform: uppercase; display: inline-block; animation: pulse 1.5s infinite;">
+                                Bestseller – Most Booked
+                            </div>
+                            
+                            <!-- Rate Lock Message -->
+                            <div style="color: #d4af37; font-size: 0.85rem; font-weight: 600; margin-top: 10px; padding: 8px 12px; background: rgba(212, 175, 55, 0.1); border-radius: 8px; border: 1px solid rgba(212, 175, 55, 0.3);">
+                                🔒 Buy this round—lock in this rate for future mailings!
+                            </div>
+                        </div>
+                        
+                        <div class="pricing-description">Most popular size</div>
+                    </div>
+                    <ul class="pricing-features">
+                        <li>Design included</li>
+                        <li>Print & postage included</li>
+                        <li>UV-gloss finish</li>
+                        <li>Room for multiple offers</li>
+                        <li>Premium positioning</li>
+                    </ul>
+                    <div class="pricing-action">
+                        <a href="javascript:void(0);" class="btn btn-primary pricing-gold lock-shaped-btn shimmer-button">
+                            Reserve Your Spot
+                        </a>
+                    </div>
+                    <div style="text-align: center; margin-top: 12px; font-size: 1rem; color: rgba(255, 255, 255, 0.95); font-weight: 500; line-height: 1.4; text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);">
+                        Secure Your Spot for current<br>or next mailing
+                    </div>
+                </div>
+                
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <div class="pricing-name">4½″×6″ Prime</div>
+                        <div class="pricing-price-container">
+                            <!-- Limited Time Offer Label -->
+                            <div class="offer-label" style="background: linear-gradient(45deg, #ff6b6b, #ee5a24); color: white; font-size: 0.8rem; font-weight: 700; padding: 4px 12px; border-radius: 20px; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 1px; box-shadow: 0 3px 10px rgba(255, 107, 107, 0.3); animation: pulse 2s infinite;">
+                                Limited-Time Offer
+                            </div>
+                            
+                            <!-- Old Price with Strikethrough -->
+                            <div class="old-price" style="position: relative; font-size: 1.4rem; color: #999; margin-bottom: 5px;">
+                                <span style="text-decoration: line-through; text-decoration-color: #e74c3c; text-decoration-thickness: 3px;">$935</span>
+                                <!-- Additional diagonal line for emphasis -->
+                                <div style="position: absolute; top: 50%; left: 0; right: 0; height: 3px; background: linear-gradient(45deg, transparent 45%, #e74c3c 45%, #e74c3c 55%, transparent 55%); transform: translateY(-50%); opacity: 0.8;"></div>
+                            </div>
+                            
+                            <!-- New Promotional Price -->
+                            <div class="promotional-price" style="font-size: 3.5rem; font-weight: 900; background: linear-gradient(135deg, #f1c40f, #f39c12); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; text-shadow: 0 0 30px rgba(241, 196, 15, 0.5); margin-bottom: 5px; position: relative;">
+                                $863
+                                <!-- Glow effect -->
+                                <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(135deg, #f1c40f, #f39c12); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; filter: blur(8px); opacity: 0.4; z-index: -1;">$863</div>
+                            </div>
+                            
+                            <!-- Savings Amount -->
+                            <div class="savings" style="background: linear-gradient(135deg, #27ae60, #2ecc71); color: white; font-size: 0.9rem; font-weight: 600; padding: 6px 15px; border-radius: 25px; margin-top: 8px; box-shadow: 0 4px 15px rgba(46, 204, 113, 0.3); animation: bounce 3s infinite;">
+                                Save $72!
+                            </div>
+                        </div>
+                        <div class="pricing-description">Premium Option</div>
+                    </div>
+                    <ul class="pricing-features">
+                        <li>Design included</li>
+                        <li>Print & postage included</li>
+                        <li>UV-gloss finish</li>
+                        <li>Largest visual impact</li>
+                        <li>Space for detailed messaging</li>
+                        <li>Premium positioning</li>
+                        <li>Free QR code</li>
+                        <li>Free business cards or printed promotional flyers</li>
+                    </ul>
+                    <div class="pricing-action">
+                        <div class="btn sold-out-btn" style="background-color: #6c757d; color: white; cursor: not-allowed; opacity: 0.9; border: none; pointer-events: none; position: relative; overflow: hidden;">
+                            <span style="position: relative; z-index: 2;">
+                                Sold Out
+                            </span>
+                            <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: repeating-linear-gradient(45deg, rgba(0,0,0,0.1), rgba(0,0,0,0.1) 10px, rgba(0,0,0,0.2) 10px, rgba(0,0,0,0.2) 20px); z-index: 1;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Bottom Section Divider -->
+        <div class="section-divider bottom">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" fill="#fffbeb"></path>
+            </svg>
+        </div>
+    </section>
+
+    <div class="test-info" style="background: #e9ecef;">
+        <h2 style="color: #2c3e50; margin: 0 0 10px 0;">Testing Instructions</h2>
+        <p style="color: #6c757d; margin: 5px 0;"><strong>Desktop (>768px):</strong> Should show animated background, glowing effects, floating particles, and all original animations.</p>
+        <p style="color: #6c757d; margin: 5px 0;"><strong>Mobile (≤768px):</strong> Should show clean, static design with no flashing or animations, proper contrast, and easy readability.</p>
+        <p style="color: #6c757d; margin: 5px 0;"><strong>Colors used:</strong> Blue headers (#3498db), white cards, green checkmarks (#27ae60), red buttons (#e74c3c) - all following color wheel theory for proper contrast.</p>
+    </div>
+</body>
+</html>
