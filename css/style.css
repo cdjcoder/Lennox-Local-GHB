@@ -7695,32 +7695,50 @@ footer::after {
         text-align: center !important;
     }
     
-    /* Change ENTIRE $485 pricing card action section to GOLD background */
+    /* COMPLETE GOLD COVERAGE for $485 pricing card action section */
     .pricing-card:first-child .pricing-action {
         background: linear-gradient(135deg, #f1c40f 0%, #f39c12 100%) !important; /* Gold background */
-        color: #ffffff !important; /* Ensure white text shows on gold */
-        padding: 20px !important; /* Ensure full padding */
-    }
-    
-    /* Extend gold background to ALL divs in the $485 pricing action area */
-    .pricing-card:first-child .pricing-action > div,
-    .pricing-card:first-child .pricing-action div[style*="text-align: center"],
-    .pricing-card:first-child .pricing-action div[style*="margin-top"] {
-        background: linear-gradient(135deg, #f1c40f 0%, #f39c12 100%) !important; /* Gold background on all divs */
         color: #ffffff !important; /* White text */
-        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3) !important; /* Text shadow for readability */
-        padding: 12px 16px !important; /* Adequate padding */
-        margin: 0 !important; /* Remove margins that might cause gaps */
-        border-radius: 0 !important; /* No border radius to avoid gaps */
+        padding: 20px !important; /* Full padding */
+        margin: 0 !important; /* No margins */
+        border-radius: 0 0 15px 15px !important; /* Match card radius */
     }
     
-    /* Force gold background and white text on ALL elements in $485 pricing action */
-    .pricing-card:first-child .pricing-action *,
+    /* Override the Reserve Your Spot button to have RED background for contrast */
+    .pricing-card:first-child .pricing-action .btn,
+    .pricing-card:first-child .pricing-action a.btn {
+        background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%) !important; /* Red button */
+        color: #ffffff !important; /* White text */
+        border: none !important;
+        padding: 15px 25px !important;
+        margin-bottom: 15px !important; /* Space before text */
+        display: inline-block !important;
+        border-radius: 8px !important;
+        font-weight: 600 !important;
+        box-shadow: 0 3px 8px rgba(231, 76, 60, 0.3) !important;
+    }
+    
+    /* FORCE gold background on the text div specifically */
+    .pricing-card:first-child .pricing-action > div:last-child,
+    .pricing-card:first-child .pricing-action div[style*="text-align: center"][style*="margin-top"],
+    .pricing-card:first-child .pricing-action div[style*="color: rgba(255, 255, 255"] {
+        background: linear-gradient(135deg, #f1c40f 0%, #f39c12 100%) !important; /* Gold background */
+        color: #ffffff !important; /* White text */
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5) !important; /* Strong text shadow */
+        padding: 15px 20px !important; /* Good padding */
+        margin: 0 !important; /* No margins */
+        border-radius: 0 !important; /* No gaps */
+        width: 100% !important; /* Full width */
+        box-sizing: border-box !important; /* Include padding in width */
+    }
+    
+    /* Ensure all text elements get white color on gold */
     .pricing-card:first-child .pricing-action span,
-    .pricing-card:first-child .pricing-action div * {
-        background: linear-gradient(135deg, #f1c40f 0%, #f39c12 100%) !important; /* Gold background everywhere */
-        color: #ffffff !important; /* White text on gold background */
-        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3) !important; /* Better readability */
+    .pricing-card:first-child .pricing-action span.en {
+        background: transparent !important; /* Don't override parent background */
+        color: #ffffff !important; /* White text */
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5) !important; /* Strong shadow */
+        font-weight: 600 !important; /* Bold text */
     }
     
     /* Gold background approach - much simpler and more effective */
