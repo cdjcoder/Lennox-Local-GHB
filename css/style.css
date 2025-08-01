@@ -6797,19 +6797,23 @@ footer::after {
         opacity: 0 !important;
     }
     
-    /* Remove any background patterns, gradients, or effects that could flash */
-    footer *::before,
-    footer *::after {
+    /* Remove specific animated pseudo-elements that could flash - but preserve essential ones */
+    footer .sunburst-container::before,
+    footer .sunburst-container::after,
+    footer .pulse-bg::before,
+    footer .pulse-bg::after,
+    footer [class*="ray"]::before,
+    footer [class*="ray"]::after {
         display: none !important;
         content: none !important;
     }
     
-    /* Ensure no pseudo-elements create flashing effects */
-    footer div[style*="background"],
-    footer div[style*="gradient"] {
+    /* Ensure animated background elements don't flash - but preserve static ones */
+    footer div[style*="animation"],
+    footer div[class*="animate"] {
         background: none !important;
         background-image: none !important;
-        background-color: transparent !important;
+        animation: none !important;
     }
     
     /* Clean footer main content */
@@ -6993,6 +6997,49 @@ footer::after {
         animation: none !important;
         transform: none !important;
         opacity: 1 !important;
+    }
+    
+    /* Ensure CTA section and privacy links are visible */
+    .footer-cta,
+    .footer-cta > div,
+    .footer-cta h4,
+    .footer-cta p,
+    .footer-cta .btn,
+    .footer-bottom,
+    .footer-bottom p,
+    .footer-bottom a,
+    .footer-links-bottom,
+    .footer-links-bottom a {
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+    }
+    
+    /* Specific fix for CTA inner div */
+    .footer-cta > div {
+        position: relative !important;
+        z-index: 2 !important;
+        background: transparent !important;
+    }
+    
+    /* Specific styling for footer links */
+    .footer-links-bottom {
+        display: flex !important;
+        gap: 25px !important;
+        align-items: center !important;
+    }
+    
+    .footer-links-bottom a {
+        color: #ecf0f1 !important;
+        text-decoration: none !important;
+        font-size: 0.9rem !important;
+        transition: color 0.3s ease !important;
+        cursor: pointer !important;
+    }
+    
+    .footer-links-bottom a:hover {
+        color: #3498db !important;
+        text-decoration: underline !important;
     }
     
     .parallax-object {
