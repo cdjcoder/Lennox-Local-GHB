@@ -7107,6 +7107,52 @@ footer::after {
         gap: 15px !important;
     }
     
+    /* Mobile popup modal header - ensure "Secure Your Advertising Spot" stays on one line */
+    .jotform-modal-header h2 {
+        font-size: 1.3rem !important; /* Smaller font to fit on one line */
+        white-space: nowrap !important; /* Prevent text wrapping */
+        overflow: hidden !important; /* Hide overflow if needed */
+        text-overflow: ellipsis !important; /* Add ellipsis if text is too long */
+        line-height: 1.2 !important; /* Tighter line height */
+        margin: 0 !important; /* Remove default margins */
+        padding: 10px 40px 10px 10px !important; /* Add padding with space for close button */
+        text-align: center !important; /* Center the text */
+        max-width: calc(100% - 60px) !important; /* Ensure space for close button */
+        flex: 1 !important; /* Take available space */
+    }
+    
+    /* For very small screens, reduce font size further */
+    @media (max-width: 400px) {
+        .jotform-modal-header h2 {
+            font-size: 1.1rem !important; /* Even smaller font for very small screens */
+            padding: 10px 35px 10px 5px !important; /* Adjust padding for smaller screens */
+        }
+    }
+    
+    /* Ensure modal header has proper layout */
+    .jotform-modal-header {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        padding: 15px 20px !important;
+        border-bottom: 1px solid #eee !important;
+        position: relative !important;
+    }
+    
+    /* Adjust close button positioning */
+    .jotform-close-btn {
+        position: absolute !important;
+        right: 15px !important;
+        top: 50% !important;
+        transform: translateY(-50%) !important;
+        background: none !important;
+        border: none !important;
+        font-size: 1.8rem !important;
+        cursor: pointer !important;
+        color: #999 !important;
+        z-index: 10 !important;
+    }
+    
     .parallax-object {
         width: 50px;
         height: 50px;
