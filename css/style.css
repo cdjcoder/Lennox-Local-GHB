@@ -7379,3 +7379,320 @@ footer::after {
     @keyframes pulse { to { transform: scale(1); opacity: 1; } }
     @keyframes bounce { to { transform: translateY(0); } }
 }
+
+/* Mobile "How It Works" Section Redesign - Remove Flashing Effects */
+@media (max-width: 768px) {
+    /* Clean "How it works" section background - remove all animations */
+    .how-works {
+        /* Remove animated background and use clean, static design */
+        background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%) !important;
+        background-image: none !important;
+        animation: none !important;
+        padding: 80px 0 !important;
+        position: relative !important;
+        overflow: visible !important;
+    }
+    
+    /* Remove skewed animated background */
+    .how-works .skew-bg {
+        display: none !important;
+    }
+    
+    /* Hide floating elements on mobile */
+    .how-works .floating-element {
+        display: none !important;
+    }
+    
+    /* Hide animated connecting paths and dots */
+    .how-works .connecting-paths {
+        display: none !important;
+    }
+    
+    /* Clean steps container for mobile */
+    .how-works .steps-container {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 30px !important;
+        margin-top: 40px !important;
+        padding: 0 15px !important;
+        position: relative !important;
+        z-index: 1 !important;
+    }
+    
+    /* Mobile step cards - clean design */
+    .how-works .step {
+        flex: none !important;
+        min-width: auto !important;
+        max-width: 100% !important;
+        width: 100% !important;
+        text-align: left !important;
+        position: relative !important;
+        transition: none !important;
+        margin: 0 auto !important;
+        max-width: 400px !important;
+    }
+    
+    /* Clean step numbers - remove all glowing animations */
+    .how-works .step-number {
+        position: static !important;
+        display: inline-flex !important;
+        width: 50px !important;
+        height: 50px !important;
+        font-size: 1.5rem !important;
+        font-weight: 700 !important;
+        color: #ffffff !important;
+        border-radius: 50% !important;
+        margin: 0 15px 0 0 !important;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2) !important;
+        border: 3px solid #ffffff !important;
+        animation: none !important;
+        transition: none !important;
+        flex-shrink: 0 !important;
+    }
+    
+    /* Clean step number colors - following color wheel theory */
+    .how-works .step:nth-child(1) .step-number {
+        background: #e74c3c !important; /* Red */
+        animation: none !important;
+    }
+    
+    .how-works .step:nth-child(2) .step-number {
+        background: #f39c12 !important; /* Orange */
+        animation: none !important;
+    }
+    
+    .how-works .step:nth-child(3) .step-number {
+        background: #3498db !important; /* Blue */
+        animation: none !important;
+    }
+    
+    .how-works .step:nth-child(4) .step-number {
+        background: #27ae60 !important; /* Green */
+        animation: none !important;
+    }
+    
+    .how-works .step:nth-child(5) .step-number {
+        background: #9b59b6 !important; /* Purple */
+        animation: none !important;
+    }
+    
+    /* Remove hover effects on mobile */
+    .how-works .step:hover .step-number {
+        transform: none !important;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2) !important;
+    }
+    
+    /* Clean step content cards */
+    .how-works .step-content {
+        background: #ffffff !important;
+        padding: 20px !important;
+        border-radius: 12px !important;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important;
+        border: 2px solid #e9ecef !important;
+        border-top: 4px solid #3498db !important;
+        border-left: none !important;
+        border-right: none !important;
+        border-bottom: 2px solid #e9ecef !important;
+        backdrop-filter: none !important;
+        transition: none !important;
+        transform: none !important;
+        position: relative !important;
+        z-index: 1 !important;
+        overflow: visible !important;
+        display: flex !important;
+        align-items: flex-start !important;
+        gap: 15px !important;
+        background-image: none !important;
+    }
+    
+    /* Remove all pseudo-element effects from step content */
+    .how-works .step-content::before,
+    .how-works .step-content::after {
+        display: none !important;
+    }
+    
+    /* Color-coded top borders for each step */
+    .how-works .step:nth-child(1) .step-content {
+        border-top-color: #e74c3c !important;
+        background-image: none !important;
+    }
+    
+    .how-works .step:nth-child(2) .step-content {
+        border-top-color: #f39c12 !important;
+        background-image: none !important;
+    }
+    
+    .how-works .step:nth-child(3) .step-content {
+        border-top-color: #3498db !important;
+        background-image: none !important;
+    }
+    
+    .how-works .step:nth-child(4) .step-content {
+        border-top-color: #27ae60 !important;
+        background-image: none !important;
+    }
+    
+    .how-works .step:nth-child(5) .step-content {
+        border-top-color: #9b59b6 !important;
+        background-image: none !important;
+    }
+    
+    /* Remove hover effects from step content */
+    .how-works .step:hover .step-content {
+        transform: none !important;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important;
+    }
+    
+    /* Clean step text content */
+    .how-works .step h3 {
+        color: #2c3e50 !important;
+        font-size: 1.3rem !important;
+        font-weight: 700 !important;
+        margin-bottom: 10px !important;
+        text-shadow: none !important;
+        position: relative !important;
+        display: block !important;
+        flex: 1 !important;
+    }
+    
+    /* Remove decorative underlines from headings */
+    .how-works .step h3::after {
+        display: none !important;
+    }
+    
+    .how-works .step p {
+        color: #6c757d !important;
+        font-size: 0.95rem !important;
+        line-height: 1.5 !important;
+        margin: 0 !important;
+        font-weight: 400 !important;
+    }
+    
+    /* Clean section title */
+    .how-works .section-title {
+        color: #2c3e50 !important;
+        font-size: 2rem !important;
+        font-weight: 700 !important;
+        text-shadow: none !important;
+        margin-bottom: 40px !important;
+        padding: 0 20px !important;
+    }
+    
+    /* Clean section dividers */
+    .how-works .section-divider {
+        opacity: 0.3 !important;
+    }
+    
+    .how-works .section-divider svg {
+        height: 60px !important;
+    }
+    
+    /* Hide bubble animations in bottom divider */
+    .how-works .section-divider.bubble-animation circle {
+        display: none !important;
+    }
+    
+    /* Clean production showcase section */
+    .how-works .production-showcase-enhanced {
+        background: #ffffff !important;
+        padding: 40px 20px !important;
+        border-radius: 15px !important;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important;
+        margin: 40px auto !important;
+        max-width: 400px !important;
+        border: 2px solid #e9ecef !important;
+        position: relative !important;
+        overflow: visible !important;
+    }
+    
+    /* Hide decorative elements */
+    .how-works .showcase-decoration {
+        display: none !important;
+    }
+    
+    /* Clean showcase inner content */
+    .how-works .showcase-inner {
+        position: relative !important;
+        z-index: 1 !important;
+    }
+    
+    /* Clean showcase badge */
+    .how-works .showcase-badge {
+        background: linear-gradient(135deg, #f39c12 0%, #e67e22 100%) !important;
+        color: #ffffff !important;
+        padding: 8px 15px !important;
+        border-radius: 20px !important;
+        font-size: 0.8rem !important;
+        font-weight: 600 !important;
+        text-align: center !important;
+        margin-bottom: 20px !important;
+        box-shadow: 0 2px 6px rgba(243, 156, 18, 0.3) !important;
+        display: inline-block !important;
+    }
+    
+    /* Clean showcase image container */
+    .how-works .showcase-image-container {
+        margin: 20px 0 !important;
+        position: relative !important;
+        border-radius: 10px !important;
+        overflow: hidden !important;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important;
+    }
+    
+    /* Remove glow and reflection effects */
+    .how-works .showcase-glow,
+    .how-works .showcase-reflection {
+        display: none !important;
+    }
+    
+    /* Clean showcase frame */
+    .how-works .showcase-frame {
+        position: relative !important;
+        background: #ffffff !important;
+        padding: 10px !important;
+        border-radius: 10px !important;
+    }
+    
+    /* Clean showcase image */
+    .how-works .showcase-image {
+        width: 100% !important;
+        height: auto !important;
+        border-radius: 8px !important;
+        display: block !important;
+    }
+    
+    /* Clean showcase title */
+    .how-works .showcase-title {
+        color: #e74c3c !important;
+        font-weight: 700 !important;
+        font-size: 1.5rem !important;
+        text-shadow: none !important;
+        line-height: 1.3 !important;
+        margin: 20px 0 0 0 !important;
+        text-align: center !important;
+        padding: 0 !important;
+    }
+    
+    /* Remove any remaining animations in how-works section */
+    .how-works * {
+        animation-duration: 0s !important;
+        animation-delay: 0s !important;
+        animation-iteration-count: 0 !important;
+    }
+    
+    /* Specific overrides for inline animations */
+    .how-works [style*="animation"],
+    .how-works [data-aos] {
+        animation: none !important;
+    }
+    
+    /* Force disable keyframe animations in how-works section */
+    @keyframes backgroundShift { to { background-position: 0 0, 0 0, 0 0; } }
+    @keyframes pulseBackground { to { background-size: 100% 100%; opacity: 0.25; box-shadow: 0 0 30px rgba(0, 69, 181, 0.2); } }
+    @keyframes glowing { to { box-shadow: 0 0 10px rgba(255, 0, 0, 0.5), 0 0 20px rgba(255, 0, 0, 0.2); } }
+    @keyframes glowingYellow { to { box-shadow: 0 0 10px rgba(255, 215, 0, 0.5), 0 0 20px rgba(255, 215, 0, 0.2); } }
+    @keyframes glowingBlue { to { box-shadow: 0 0 10px rgba(0, 69, 181, 0.5), 0 0 20px rgba(0, 69, 181, 0.2); } }
+    @keyframes glowingGreen { to { box-shadow: 0 0 10px rgba(0, 168, 107, 0.5), 0 0 20px rgba(0, 168, 107, 0.2); } }
+    @keyframes pulseDot { to { transform: scale(1); opacity: 0.6; box-shadow: 0 0 10px rgba(0, 69, 181, 0.4); } }
+    @keyframes pulseLine { to { opacity: 0.3; height: 3px; box-shadow: 0 0 5px rgba(0, 69, 181, 0.2); } }
+}
