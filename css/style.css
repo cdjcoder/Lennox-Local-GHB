@@ -8008,6 +8008,150 @@ footer::after {
     @keyframes bounce { to { transform: translateY(0); } }
 }
 
+/* Mobile "Why Direct Mail Marketing" Section - Move Infographic Tables to Expandable Content */
+@media (max-width: 768px) {
+    /* Hide the infographic tables in their original position on mobile */
+    .marketing-comparison-container,
+    .strategy-container {
+        display: none !important;
+    }
+    
+    /* Create mobile-specific infographic tables inside expandable content */
+    #expandableContent .mobile-marketing-comparison {
+        display: block !important;
+        margin: 30px 0 !important;
+        padding: 20px !important;
+        background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%) !important;
+        border-radius: 15px !important;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1) !important;
+    }
+    
+    /* Mobile comparison table styling */
+    #expandableContent .mobile-comparison-table {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 20px !important;
+        margin: 20px 0 !important;
+    }
+    
+    /* Mobile comparison columns */
+    #expandableContent .mobile-comparison-column {
+        padding: 25px !important;
+        border-radius: 12px !important;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1) !important;
+    }
+    
+    #expandableContent .mobile-direct-column {
+        background: linear-gradient(135deg, #000f24 0%, #002b59 100%) !important;
+        color: white !important;
+        border: 2px solid #d4af37 !important;
+    }
+    
+    #expandableContent .mobile-indirect-column {
+        background: linear-gradient(135deg, #1a1a1a 0%, #2c2c2c 100%) !important;
+        color: white !important;
+        border: 2px solid #e74c3c !important;
+    }
+    
+    /* Mobile comparison titles */
+    #expandableContent .mobile-comparison-title {
+        font-size: 1.4rem !important;
+        font-weight: 700 !important;
+        text-align: center !important;
+        margin-bottom: 20px !important;
+        padding-bottom: 10px !important;
+        border-bottom: 2px solid rgba(255,255,255,0.3) !important;
+    }
+    
+    #expandableContent .mobile-comparison-title.direct {
+        color: #d4af37 !important;
+    }
+    
+    #expandableContent .mobile-comparison-title.indirect {
+        color: #e74c3c !important;
+    }
+    
+    /* Mobile comparison lists */
+    #expandableContent .mobile-comparison-list {
+        list-style: none !important;
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+    
+    #expandableContent .mobile-comparison-list li {
+        display: flex !important;
+        align-items: center !important;
+        margin-bottom: 15px !important;
+        padding: 10px !important;
+        background: rgba(255,255,255,0.1) !important;
+        border-radius: 8px !important;
+        font-size: 0.95rem !important;
+    }
+    
+    #expandableContent .mobile-comparison-list .icon {
+        margin-right: 12px !important;
+        font-size: 1.2rem !important;
+        width: 20px !important;
+        text-align: center !important;
+    }
+    
+    #expandableContent .mobile-comparison-list .direct .icon {
+        color: #d4af37 !important;
+    }
+    
+    #expandableContent .mobile-comparison-list .indirect .icon {
+        color: #e74c3c !important;
+    }
+    
+    /* Mobile strategy summary */
+    #expandableContent .mobile-strategy-summary {
+        margin-top: 30px !important;
+        padding: 25px !important;
+        background: linear-gradient(135deg, #0a0f1e 0%, #1a1a2e 100%) !important;
+        border-radius: 12px !important;
+        color: white !important;
+        text-align: center !important;
+    }
+    
+    #expandableContent .mobile-strategy-title {
+        color: #d4af37 !important;
+        font-size: 1.6rem !important;
+        font-weight: 700 !important;
+        margin-bottom: 20px !important;
+        text-transform: uppercase !important;
+        letter-spacing: 1px !important;
+    }
+    
+    #expandableContent .mobile-strategy-cards {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 15px !important;
+        margin-top: 20px !important;
+    }
+    
+    #expandableContent .mobile-strategy-card {
+        padding: 20px !important;
+        background: rgba(0,15,36,0.7) !important;
+        border: 1px solid rgba(212, 175, 55, 0.3) !important;
+        border-radius: 8px !important;
+        text-align: left !important;
+    }
+    
+    #expandableContent .mobile-strategy-card h4 {
+        color: #d4af37 !important;
+        font-size: 1.2rem !important;
+        font-weight: 600 !important;
+        margin: 0 0 10px 0 !important;
+    }
+    
+    #expandableContent .mobile-strategy-card p {
+        color: #ecf0f1 !important;
+        font-size: 0.9rem !important;
+        line-height: 1.5 !important;
+        margin: 0 !important;
+    }
+}
+
 /* Mobile "How It Works" Section Redesign - Remove Flashing Effects */
 @media (max-width: 768px) {
     /* Clean "How it works" section background - remove all animations */
