@@ -6767,20 +6767,37 @@ footer::after {
         text-align: center !important; /* Ensure centered text alignment */
     }
     
-    /* Mobile Footer Redesign - Remove Flashy Effects and Improve Readability */
+    /* Mobile Footer Redesign - Remove ALL Flashing Effects and Improve Readability */
     footer#contact {
-        background: linear-gradient(135deg, #2c3e50 0%, #34495e 50%, #2c3e50 100%) !important;
-        overflow: visible !important;
+        background: #2c3e50 !important; /* Solid background - no gradients that could cause flashing */
+        overflow: hidden !important;
+        position: relative !important;
     }
     
-    /* Hide animated floating elements on mobile */
-    footer .floating-elements {
+    /* Completely hide all animated and potentially flashing elements */
+    footer .floating-elements,
+    footer svg,
+    footer [style*="animation"],
+    footer [class*="animate"],
+    footer [data-aos] {
         display: none !important;
+        visibility: hidden !important;
+        opacity: 0 !important;
     }
     
-    /* Simplify geometric background pattern */
-    footer svg {
-        opacity: 0.05 !important;
+    /* Remove any background patterns, gradients, or effects that could flash */
+    footer *::before,
+    footer *::after {
+        display: none !important;
+        content: none !important;
+    }
+    
+    /* Ensure no pseudo-elements create flashing effects */
+    footer div[style*="background"],
+    footer div[style*="gradient"] {
+        background: none !important;
+        background-image: none !important;
+        background-color: transparent !important;
     }
     
     /* Clean footer main content */
@@ -6792,9 +6809,9 @@ footer::after {
         align-items: stretch !important;
     }
     
-    /* Enhanced footer brand section */
+    /* Enhanced footer brand section - improved readability */
     .footer-brand {
-        background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%) !important;
+        background: #ecf0f1 !important; /* Solid light background for better readability */
         color: #2c3e50 !important;
         padding: 25px 20px !important;
         border-radius: 15px !important;
@@ -6812,12 +6829,12 @@ footer::after {
     
     .footer-brand .brand-header p {
         color: #34495e !important;
-        font-weight: 500 !important;
+        font-weight: 600 !important; /* Increased weight for better readability */
     }
     
-    /* Clean footer sections */
+    /* Clean footer sections - improved contrast */
     .footer-section {
-        background: linear-gradient(135deg, #ecf0f1 0%, #bdc3c7 100%) !important;
+        background: #bdc3c7 !important; /* Solid medium background for better text contrast */
         color: #2c3e50 !important;
         padding: 20px !important;
         border-radius: 12px !important;
@@ -6828,7 +6845,7 @@ footer::after {
     
     .footer-section h4 {
         color: #2c3e50 !important;
-        font-weight: 700 !important;
+        font-weight: 800 !important; /* Increased weight for better visibility */
         margin-bottom: 15px !important;
         text-shadow: none !important;
     }
@@ -6836,13 +6853,15 @@ footer::after {
     .footer-section p,
     .footer-section a,
     .footer-section li {
-        color: #34495e !important;
+        color: #2c3e50 !important; /* Darker text for better contrast */
+        font-weight: 500 !important; /* Added weight for readability */
         text-shadow: none !important;
     }
     
     .footer-section a:hover {
         color: #e74c3c !important;
         text-decoration: underline !important;
+        font-weight: 600 !important;
     }
     
     /* Enhanced footer CTA section */
