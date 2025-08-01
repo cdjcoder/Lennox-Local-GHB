@@ -7056,13 +7056,32 @@ footer::after {
         display: inline-flex !important;
     }
     
+    /* Hide Spanish CTA button specifically - only show English button */
+    .footer-cta .btn.es,
+    .footer-cta a.es {
+        display: none !important;
+        visibility: hidden !important;
+        opacity: 0 !important;
+    }
+    
+    /* Ensure only English CTA button is visible */
+    .footer-cta .btn.en,
+    .footer-cta a.en {
+        display: inline-flex !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+    }
+    
 
     
-    /* Specific styling for footer links */
+    /* Specific styling for footer links - centered on mobile */
     .footer-links-bottom {
         display: flex !important;
         gap: 25px !important;
         align-items: center !important;
+        justify-content: center !important; /* Center the privacy/terms links */
+        text-align: center !important;
+        width: 100% !important;
     }
     
     .footer-links-bottom a {
@@ -7076,6 +7095,16 @@ footer::after {
     .footer-links-bottom a:hover {
         color: #3498db !important;
         text-decoration: underline !important;
+    }
+    
+    /* Update existing footer-bottom to center content on mobile */
+    .footer-bottom {
+        text-align: center !important; /* Center all content in footer bottom */
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: center !important;
+        gap: 15px !important;
     }
     
     .parallax-object {
