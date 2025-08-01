@@ -6786,15 +6786,28 @@ footer::after {
         z-index: 1 !important;
     }
     
-    /* Completely hide all animated and potentially flashing elements */
+    /* Completely hide all animated and potentially flashing elements - but preserve CTA */
     footer .floating-elements,
     footer svg,
     footer [style*="animation"],
-    footer [class*="animate"],
-    footer [data-aos] {
+    footer [class*="animate"] {
         display: none !important;
         visibility: hidden !important;
         opacity: 0 !important;
+    }
+    
+    /* Hide specific data-aos elements but preserve footer-cta */
+    footer [data-aos]:not(.footer-cta) {
+        display: none !important;
+        visibility: hidden !important;
+        opacity: 0 !important;
+    }
+    
+    /* Ensure footer-cta is always visible despite data-aos */
+    footer .footer-cta[data-aos] {
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
     }
     
     /* Remove specific animated pseudo-elements that could flash - but preserve essential ones */
@@ -6909,65 +6922,23 @@ footer::after {
         font-weight: 600 !important;
     }
     
-    /* Enhanced footer CTA section with visual impact */
+    /* Enhanced footer CTA section - ensure full visibility */
     .footer-cta {
-        background: transparent !important;
-        color: #ffffff !important;
-        padding: 0 !important;
-        border-radius: 0 !important;
-        box-shadow: none !important;
-        text-align: center !important;
-        margin-bottom: 25px !important;
-        position: relative !important;
-        overflow: visible !important;
-        border: none !important;
         display: block !important;
         visibility: visible !important;
         opacity: 1 !important;
+        margin-bottom: 25px !important;
+        position: relative !important;
+        overflow: visible !important;
+        background: none !important;
+        padding: 0 !important;
+        border: none !important;
     }
     
+    /* Remove any pseudo-elements that might interfere */
     .footer-cta::before {
-        content: '' !important;
-        position: absolute !important;
-        top: -2px !important;
-        left: -2px !important;
-        right: -2px !important;
-        bottom: -2px !important;
-        background: linear-gradient(45deg, #3498db, #e74c3c, #f39c12, #27ae60, #9b59b6) !important;
-        border-radius: 22px !important;
-        z-index: -1 !important;
-    }
-    
-    .footer-cta h4 {
-        color: #ffffff !important;
-        font-weight: 700 !important;
-        margin-bottom: 10px !important;
-        text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3) !important;
-    }
-    
-    .footer-cta p {
-        color: #ffffff !important;
-        opacity: 0.9 !important;
-        margin-bottom: 20px !important;
-    }
-    
-    .footer-cta .btn {
-        background: linear-gradient(135deg, #f39c12 0%, #e67e22 100%) !important;
-        color: #ffffff !important;
-        padding: 12px 25px !important;
-        border-radius: 25px !important;
-        font-weight: 600 !important;
-        text-decoration: none !important;
-        display: inline-block !important;
-        box-shadow: 0 3px 10px rgba(243, 156, 18, 0.4) !important;
-        transition: all 0.3s ease !important;
-        animation: none !important;
-    }
-    
-    .footer-cta .btn:hover {
-        background: linear-gradient(135deg, #e67e22 0%, #d35400 100%) !important;
-        transform: translateY(-2px) !important;
-        box-shadow: 0 5px 15px rgba(243, 156, 18, 0.5) !important;
+        display: none !important;
+        content: none !important;
     }
     
     /* Clean footer bottom */
@@ -7029,79 +7000,66 @@ footer::after {
         box-shadow: 0 15px 35px rgba(212,175,55,0.3) !important;
     }
     
-    /* Ensure all CTA text elements are visible and properly styled */
-    .footer-cta h4.en,
-    .footer-cta h4.es {
+    /* Ensure all CTA content and styling is preserved from inline styles */
+    .footer-cta > div {
         display: block !important;
-        font-size: 1.4rem !important;
-        font-weight: 800 !important;
-        margin-bottom: 15px !important;
-        color: #e74c3c !important;
-        text-shadow: none !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        /* Preserve original inline styles */
+        background: linear-gradient(135deg, #d4af37, #ffd700) !important;
+        padding: 30px !important;
+        border-radius: 20px !important;
+        text-align: center !important;
+        position: relative !important;
+        overflow: hidden !important;
+        box-shadow: 0 15px 35px rgba(212,175,55,0.3) !important;
     }
     
-    .footer-cta p.en,
-    .footer-cta p.es {
+    .footer-cta > div > div {
         display: block !important;
-        color: #2c2c54 !important;
-        margin-bottom: 15px !important;
-        font-size: 0.95rem !important;
-        line-height: 1.5 !important;
-        font-weight: 500 !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        position: relative !important;
+        z-index: 1 !important;
     }
     
-    /* Special styling for "Limited spots" text */
-    .footer-cta p.en:last-of-type,
-    .footer-cta p.es:last-of-type {
-        color: #e74c3c !important;
-        margin-bottom: 25px !important;
-        font-size: 1rem !important;
-        font-weight: 700 !important;
-        text-transform: uppercase !important;
-        letter-spacing: 0.5px !important;
+    /* Ensure all CTA text elements are visible and preserve original styling */
+    .footer-cta h4,
+    .footer-cta p,
+    .footer-cta a {
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
     }
     
-    /* Ensure Reserve buttons are visible */
-    .footer-cta .btn.en,
-    .footer-cta .btn.es {
+    .footer-cta a.btn {
         display: inline-flex !important;
-        background: linear-gradient(135deg, #8e44ad, #9b59b6) !important;
-        color: white !important;
-        padding: 15px 30px !important;
-        border-radius: 50px !important;
-        text-decoration: none !important;
-        font-weight: 700 !important;
-        align-items: center !important;
-        transition: all 0.3s ease !important;
-        box-shadow: 0 8px 20px rgba(142,68,173,0.4) !important;
-        border: 2px solid rgba(155,89,182,0.3) !important;
-        font-size: 1rem !important;
-        margin-top: 10px !important;
     }
     
-    /* Language-specific visibility rules for CTA */
+    /* Ensure Spanish elements follow language toggle rules */
     .footer-cta h4.es,
     .footer-cta p.es,
-    .footer-cta .btn.es {
+    .footer-cta a.es {
         display: none !important;
     }
     
     /* When Spanish is active */
     body.spanish .footer-cta h4.en,
     body.spanish .footer-cta p.en,
-    body.spanish .footer-cta .btn.en {
+    body.spanish .footer-cta a.en {
         display: none !important;
     }
     
     body.spanish .footer-cta h4.es,
-    body.spanish .footer-cta p.es,
-    body.spanish .footer-cta .btn.es {
+    body.spanish .footer-cta p.es {
         display: block !important;
     }
     
-    body.spanish .footer-cta .btn.es {
+    body.spanish .footer-cta a.es {
         display: inline-flex !important;
     }
+    
+
     
     /* Specific styling for footer links */
     .footer-links-bottom {
