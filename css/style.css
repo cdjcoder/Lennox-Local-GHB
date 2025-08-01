@@ -7695,35 +7695,60 @@ footer::after {
         text-align: center !important;
     }
     
-    /* Fix contrast for "Secure Your Spot" text using color wheel theory */
-    .pricing-action div[style*="color: rgba(255, 255, 255"],
-    .pricing-action div[style*="text-align: center"] {
-        /* Use complementary color to white background for maximum contrast */
-        color: #2c3e50 !important; /* Dark blue-gray for excellent readability */
-        font-weight: 600 !important; /* Increase weight for better visibility */
-        text-shadow: none !important; /* Remove text shadow that was for white text */
-        opacity: 1 !important; /* Full opacity for maximum contrast */
-        background: linear-gradient(135deg, #ecf0f1 0%, #d5dbdb 100%) !important; /* Subtle light background */
-        padding: 8px 12px !important; /* Add padding for better visual separation */
-        border-radius: 6px !important; /* Rounded corners for modern look */
-        margin-top: 12px !important; /* Maintain spacing */
-        border: 1px solid #bdc3c7 !important; /* Subtle border for definition */
-        font-size: 0.9rem !important; /* Slightly smaller but still readable */
-        line-height: 1.3 !important; /* Better line spacing */
+    /* MAXIMUM CONTRAST fix for "Secure Your Spot for current or next mailing" text */
+    .pricing-action div[style*="text-align: center"][style*="margin-top: 12px"] {
+        /* Maximum contrast: White text on dark background */
+        color: #ffffff !important; /* Pure white text */
+        background: #2c3e50 !important; /* Dark blue-gray background */
+        font-weight: 700 !important; /* Bold weight for maximum visibility */
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5) !important; /* Strong text shadow */
+        opacity: 1 !important; /* Full opacity */
+        padding: 12px 16px !important; /* More padding for better visibility */
+        border-radius: 8px !important; /* Rounded corners */
+        margin: 15px auto 5px auto !important; /* Center and add spacing */
+        border: 2px solid #34495e !important; /* Darker border for definition */
+        font-size: 1rem !important; /* Larger font size */
+        line-height: 1.4 !important; /* Better line spacing */
+        display: block !important; /* Ensure proper display */
+        max-width: 90% !important; /* Constrain width */
+        box-shadow: 0 3px 8px rgba(44, 62, 80, 0.3) !important; /* Subtle shadow */
     }
     
-    /* More specific selector for the exact text element */
+    /* Alternative high-contrast approach - yellow on dark blue */
     .pricing-card .pricing-action > div:last-child {
-        color: #2c3e50 !important;
-        font-weight: 600 !important;
-        text-shadow: none !important;
-        background: linear-gradient(135deg, #ecf0f1 0%, #d5dbdb 100%) !important;
-        padding: 8px 12px !important;
-        border-radius: 6px !important;
-        margin-top: 12px !important;
-        border: 1px solid #bdc3c7 !important;
-        font-size: 0.9rem !important;
-        line-height: 1.3 !important;
+        color: #f1c40f !important; /* Bright golden yellow - excellent contrast */
+        background: #2c3e50 !important; /* Dark blue-gray background */
+        font-weight: 800 !important; /* Extra bold */
+        text-shadow: 0 1px 3px rgba(0, 0, 0, 0.7) !important; /* Strong shadow */
+        padding: 12px 16px !important;
+        border-radius: 8px !important;
+        margin: 15px auto 5px auto !important;
+        border: 2px solid #f39c12 !important; /* Matching golden border */
+        font-size: 1rem !important;
+        line-height: 1.4 !important;
+        display: block !important;
+        max-width: 90% !important;
+        box-shadow: 0 3px 10px rgba(241, 196, 15, 0.4) !important; /* Golden glow */
+        text-align: center !important; /* Ensure centered */
+    }
+    
+    /* Fallback selector for maximum coverage */
+    .pricing-action div:contains("Secure Your Spot"),
+    .pricing-action div[style*="rgba(255, 255, 255"] {
+        color: #f1c40f !important;
+        background: #2c3e50 !important;
+        font-weight: 800 !important;
+        text-shadow: 0 1px 3px rgba(0, 0, 0, 0.7) !important;
+        padding: 12px 16px !important;
+        border-radius: 8px !important;
+        margin: 15px auto 5px auto !important;
+        border: 2px solid #f39c12 !important;
+        font-size: 1rem !important;
+        line-height: 1.4 !important;
+        display: block !important;
+        max-width: 90% !important;
+        box-shadow: 0 3px 10px rgba(241, 196, 15, 0.4) !important;
+        text-align: center !important;
     }
     
     /* Clean button styling - remove all animations */
