@@ -8243,38 +8243,82 @@ footer::after {
         opacity: 0.8;
     }
     
-    /* Purple Wave Bars */
+    /* Sparkling Gold Wave Bars - Thicker for Visual Impact */
     .wave-bar {
-        width: 6px;
-        height: 8px;
+        width: 12px;
+        height: 15px;
         background: linear-gradient(to top, 
-            #6a1b9a 0%, 
-            #8e24aa 30%,
-            #ab47bc 60%, 
-            #ba68c8 100%);
-        border-radius: 3px;
+            #b8860b 0%, 
+            #daa520 25%,
+            #ffd700 50%, 
+            #ffef94 75%,
+            #fffacd 100%);
+        border-radius: 6px;
         animation: oceanWave 2s ease-in-out infinite;
         box-shadow: 
-            0 0 15px rgba(186, 104, 200, 0.6),
-            0 0 30px rgba(156, 39, 176, 0.4),
-            inset 0 1px 0 rgba(255, 255, 255, 0.3);
-        border: 1px solid rgba(171, 71, 188, 0.5);
+            0 0 20px rgba(255, 215, 0, 0.8),
+            0 0 40px rgba(218, 165, 32, 0.6),
+            0 0 60px rgba(255, 215, 0, 0.4),
+            inset 0 2px 0 rgba(255, 255, 255, 0.6),
+            inset 0 -1px 0 rgba(184, 134, 11, 0.8);
+        border: 2px solid rgba(255, 215, 0, 0.7);
+        position: relative;
+    }
+    
+    /* Sparkling effect on wave bars */
+    .wave-bar::before {
+        content: '';
+        position: absolute;
+        top: 2px;
+        left: 2px;
+        right: 2px;
+        height: 40%;
+        background: linear-gradient(to bottom,
+            rgba(255, 255, 255, 0.8) 0%,
+            rgba(255, 255, 255, 0.4) 50%,
+            transparent 100%);
+        border-radius: 3px;
+        animation: sparkle 3s ease-in-out infinite;
+    }
+    
+    @keyframes sparkle {
+        0%, 100% { 
+            opacity: 0.6;
+            transform: scaleY(1);
+        }
+        50% { 
+            opacity: 1;
+            transform: scaleY(1.2);
+        }
     }
     
     .podcast-section.playing .wave-bar {
-        animation-duration: 1s;
+        animation-duration: 0.8s;
         box-shadow: 
-            0 0 25px rgba(186, 104, 200, 0.8),
-            0 0 50px rgba(156, 39, 176, 0.6),
-            0 0 75px rgba(106, 27, 154, 0.4),
-            inset 0 1px 0 rgba(255, 255, 255, 0.6);
+            0 0 30px rgba(255, 215, 0, 1),
+            0 0 60px rgba(218, 165, 32, 0.8),
+            0 0 90px rgba(255, 215, 0, 0.6),
+            0 0 120px rgba(255, 239, 148, 0.4),
+            inset 0 3px 0 rgba(255, 255, 255, 0.9),
+            inset 0 -2px 0 rgba(184, 134, 11, 1);
         background: linear-gradient(to top, 
-            #4a148c 0%, 
-            #6a1b9a 20%,
-            #8e24aa 40%,
-            #ab47bc 60%,
-            #ce93d8 80%,
-            #e1bee7 100%);
+            #b8860b 0%, 
+            #daa520 15%,
+            #ffd700 30%,
+            #ffef94 50%,
+            #fffacd 70%,
+            #ffffff 85%,
+            #fffacd 100%);
+        border: 2px solid rgba(255, 215, 0, 1);
+    }
+    
+    .podcast-section.playing .wave-bar::before {
+        animation-duration: 1.5s;
+        background: linear-gradient(to bottom,
+            rgba(255, 255, 255, 1) 0%,
+            rgba(255, 255, 255, 0.8) 30%,
+            rgba(255, 215, 0, 0.6) 60%,
+            transparent 100%);
     }
     
     /* Ocean Wave Animation */
@@ -8344,15 +8388,17 @@ footer::after {
         }
     }
     
-    /* Enhanced particles during playback */
+    /* Enhanced particles with gold sparkles during playback */
     .podcast-section.playing .podcast-card-container::before {
         animation-duration: 15s;
         background-image: 
-            radial-gradient(circle at 10% 20%, rgba(255, 255, 255, 0.6) 2px, transparent 2px),
-            radial-gradient(circle at 80% 80%, rgba(186, 104, 200, 0.5) 2px, transparent 2px),
-            radial-gradient(circle at 40% 40%, rgba(255, 255, 255, 0.4) 1.5px, transparent 1.5px),
-            radial-gradient(circle at 90% 10%, rgba(171, 71, 188, 0.4) 2px, transparent 2px),
-            radial-gradient(circle at 20% 90%, rgba(255, 255, 255, 0.5) 1.5px, transparent 1.5px);
+            radial-gradient(circle at 10% 20%, rgba(255, 255, 255, 0.8) 2px, transparent 2px),
+            radial-gradient(circle at 80% 80%, rgba(255, 215, 0, 0.7) 2px, transparent 2px),
+            radial-gradient(circle at 40% 40%, rgba(255, 255, 255, 0.6) 1.5px, transparent 1.5px),
+            radial-gradient(circle at 90% 10%, rgba(218, 165, 32, 0.6) 2px, transparent 2px),
+            radial-gradient(circle at 20% 90%, rgba(255, 215, 0, 0.5) 1.5px, transparent 1.5px),
+            radial-gradient(circle at 60% 30%, rgba(255, 239, 148, 0.4) 1px, transparent 1px),
+            radial-gradient(circle at 30% 70%, rgba(255, 215, 0, 0.6) 1px, transparent 1px);
     }
     
     /* 3D Tilting Card */
@@ -8508,7 +8554,7 @@ footer::after {
         position: relative;
     }
     
-    /* Play/Pause Button Overlay with Ripple Effect */
+    /* Play/Pause Button Overlay with Gold Ripple Effect */
     .audio-player-container::before {
         content: '';
         position: absolute;
@@ -8518,16 +8564,16 @@ footer::after {
         height: 80px;
         transform: translate(-50%, -50%);
         background: radial-gradient(circle, 
-            rgba(171, 71, 188, 0.1) 0%, 
-            rgba(156, 39, 176, 0.2) 50%, 
+            rgba(255, 215, 0, 0.1) 0%, 
+            rgba(218, 165, 32, 0.2) 50%, 
             transparent 70%);
         border-radius: 50%;
-        animation: rippleEffect 3s ease-in-out infinite;
+        animation: goldRippleEffect 3s ease-in-out infinite;
         z-index: 0;
         pointer-events: none;
     }
     
-    @keyframes rippleEffect {
+    @keyframes goldRippleEffect {
         0% { 
             transform: translate(-50%, -50%) scale(0.8);
             opacity: 0.8;
@@ -8542,23 +8588,24 @@ footer::after {
         }
     }
     
-    /* Enhanced ripple during playback */
+    /* Enhanced gold ripple during playback */
     .podcast-section.playing .audio-player-container::before {
-        animation: rippleEffect 1.5s ease-in-out infinite,
-                   playingRipple 2s ease-in-out infinite;
+        animation: goldRippleEffect 1.5s ease-in-out infinite,
+                   playingGoldRipple 2s ease-in-out infinite;
         background: radial-gradient(circle, 
-            rgba(186, 104, 200, 0.2) 0%, 
-            rgba(171, 71, 188, 0.3) 50%, 
-            rgba(156, 39, 176, 0.1) 70%,
+            rgba(255, 215, 0, 0.3) 0%, 
+            rgba(218, 165, 32, 0.4) 30%, 
+            rgba(255, 215, 0, 0.2) 60%,
+            rgba(255, 239, 148, 0.1) 80%,
             transparent 100%);
     }
     
-    @keyframes playingRipple {
+    @keyframes playingGoldRipple {
         0%, 100% { 
-            box-shadow: 0 0 0 0 rgba(186, 104, 200, 0.4);
+            box-shadow: 0 0 0 0 rgba(255, 215, 0, 0.6);
         }
         50% { 
-            box-shadow: 0 0 0 20px rgba(186, 104, 200, 0);
+            box-shadow: 0 0 0 25px rgba(255, 215, 0, 0);
         }
     }
     
