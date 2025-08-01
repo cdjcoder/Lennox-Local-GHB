@@ -7695,6 +7695,37 @@ footer::after {
         text-align: center !important;
     }
     
+    /* Fix contrast for "Secure Your Spot" text using color wheel theory */
+    .pricing-action div[style*="color: rgba(255, 255, 255"],
+    .pricing-action div[style*="text-align: center"] {
+        /* Use complementary color to white background for maximum contrast */
+        color: #2c3e50 !important; /* Dark blue-gray for excellent readability */
+        font-weight: 600 !important; /* Increase weight for better visibility */
+        text-shadow: none !important; /* Remove text shadow that was for white text */
+        opacity: 1 !important; /* Full opacity for maximum contrast */
+        background: linear-gradient(135deg, #ecf0f1 0%, #d5dbdb 100%) !important; /* Subtle light background */
+        padding: 8px 12px !important; /* Add padding for better visual separation */
+        border-radius: 6px !important; /* Rounded corners for modern look */
+        margin-top: 12px !important; /* Maintain spacing */
+        border: 1px solid #bdc3c7 !important; /* Subtle border for definition */
+        font-size: 0.9rem !important; /* Slightly smaller but still readable */
+        line-height: 1.3 !important; /* Better line spacing */
+    }
+    
+    /* More specific selector for the exact text element */
+    .pricing-card .pricing-action > div:last-child {
+        color: #2c3e50 !important;
+        font-weight: 600 !important;
+        text-shadow: none !important;
+        background: linear-gradient(135deg, #ecf0f1 0%, #d5dbdb 100%) !important;
+        padding: 8px 12px !important;
+        border-radius: 6px !important;
+        margin-top: 12px !important;
+        border: 1px solid #bdc3c7 !important;
+        font-size: 0.9rem !important;
+        line-height: 1.3 !important;
+    }
+    
     /* Clean button styling - remove all animations */
     .pricing-action .btn {
         background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%) !important;
