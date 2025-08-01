@@ -6721,9 +6721,9 @@ footer::after {
         display: none !important;
     }
     
-    /* Reposition postal badge higher for better headline visibility */
+    /* Reposition postal badge much higher for complete headline visibility */
     .badge-price-callout {
-        top: -15px !important; /* Move badge higher to clear "Local Mailbox Domination" text */
+        top: -35px !important; /* Move badge much higher to completely clear "Local Mailbox Domination" text and envelope icon */
         left: -15px !important; /* Maintain horizontal position */
     }
     
