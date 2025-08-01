@@ -7036,14 +7036,14 @@ footer::after {
         display: inline-flex !important;
     }
     
-    /* Hide ALL Spanish text in footer on mobile - language toggle handles translation */
+    /* Hide Spanish content by default in footer on mobile */
     footer .es {
         display: none !important;
         visibility: hidden !important;
         opacity: 0 !important;
     }
     
-    /* Ensure English content is always visible in mobile footer */
+    /* Show English content by default in mobile footer */
     footer .en {
         display: block !important;
         visibility: visible !important;
@@ -7056,20 +7056,75 @@ footer::after {
         display: inline-flex !important;
     }
     
-    /* Hide Spanish CTA button specifically - only show English button */
-    .footer-cta .btn.es,
-    .footer-cta a.es {
+    /* When Spanish is active, show Spanish content and hide English */
+    body.spanish footer .en {
         display: none !important;
         visibility: hidden !important;
         opacity: 0 !important;
     }
     
-    /* Ensure only English CTA button is visible */
-    .footer-cta .btn.en,
-    .footer-cta a.en {
+    body.spanish footer .es {
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+    }
+    
+    /* Special case for Spanish buttons and inline elements when Spanish is active */
+    body.spanish footer .es.btn,
+    body.spanish footer a.es {
         display: inline-flex !important;
         visibility: visible !important;
         opacity: 1 !important;
+    }
+    
+    /* Hide English buttons when Spanish is active */
+    body.spanish footer .en.btn,
+    body.spanish footer a.en {
+        display: none !important;
+        visibility: hidden !important;
+        opacity: 0 !important;
+    }
+    
+    /* Ensure footer CTA yellow container works properly in both languages */
+    .footer-cta h4.en,
+    .footer-cta p.en,
+    .footer-cta .btn.en {
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+    }
+    
+    .footer-cta .btn.en {
+        display: inline-flex !important;
+    }
+    
+    .footer-cta h4.es,
+    .footer-cta p.es,
+    .footer-cta .btn.es {
+        display: none !important;
+        visibility: hidden !important;
+        opacity: 0 !important;
+    }
+    
+    /* When Spanish is active, show Spanish CTA content */
+    body.spanish .footer-cta h4.en,
+    body.spanish .footer-cta p.en,
+    body.spanish .footer-cta .btn.en {
+        display: none !important;
+        visibility: hidden !important;
+        opacity: 0 !important;
+    }
+    
+    body.spanish .footer-cta h4.es,
+    body.spanish .footer-cta p.es,
+    body.spanish .footer-cta .btn.es {
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+    }
+    
+    body.spanish .footer-cta .btn.es {
+        display: inline-flex !important;
     }
     
 
