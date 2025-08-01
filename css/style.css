@@ -7036,26 +7036,23 @@ footer::after {
         display: inline-flex !important;
     }
     
-    /* Ensure Spanish elements follow language toggle rules */
-    .footer-cta h4.es,
-    .footer-cta p.es,
-    .footer-cta a.es {
+    /* Hide ALL Spanish text in footer on mobile - language toggle handles translation */
+    footer .es {
         display: none !important;
+        visibility: hidden !important;
+        opacity: 0 !important;
     }
     
-    /* When Spanish is active */
-    body.spanish .footer-cta h4.en,
-    body.spanish .footer-cta p.en,
-    body.spanish .footer-cta a.en {
-        display: none !important;
-    }
-    
-    body.spanish .footer-cta h4.es,
-    body.spanish .footer-cta p.es {
+    /* Ensure English content is always visible in mobile footer */
+    footer .en {
         display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
     }
     
-    body.spanish .footer-cta a.es {
+    /* Special case for buttons and inline elements */
+    footer .en.btn,
+    footer a.en {
         display: inline-flex !important;
     }
     
