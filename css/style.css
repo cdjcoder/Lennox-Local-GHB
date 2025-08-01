@@ -6721,9 +6721,9 @@ footer::after {
         display: none !important;
     }
     
-    /* Reposition postal badge to perfect position for complete headline visibility */
+    /* Reposition postal badge with clearance from envelope icon */
     .badge-price-callout {
-        top: -42px !important; /* Fine-tuned positioning for perfect clearance of "Local Mailbox Domination" text and envelope icon */
+        top: -48px !important; /* Additional clearance to prevent touching envelope icon in "Local Mailbox Domination" headline */
         left: -15px !important; /* Maintain horizontal position */
     }
     
