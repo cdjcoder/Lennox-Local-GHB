@@ -8030,44 +8030,69 @@ footer::after {
         position: relative;
         padding: 120px 0;
         background: linear-gradient(135deg, 
-            #87CEEB 0%, 
-            #4FC3F7 25%, 
-            #29B6F6 50%, 
-            #03A9F4 75%, 
-            #0288D1 100%);
+            #003d5c 0%, 
+            #0056b3 25%, 
+            #1976d2 50%, 
+            #2196f3 75%, 
+            #64b5f6 100%);
         overflow: hidden;
         min-height: 100vh;
-        animation: backgroundFlow 15s ease-in-out infinite;
+        animation: oceanBackgroundFlow 20s ease-in-out infinite;
     }
     
-    @keyframes backgroundFlow {
+    @keyframes oceanBackgroundFlow {
         0%, 100% { 
             background: linear-gradient(135deg, 
-                #87CEEB 0%, 
-                #4FC3F7 25%, 
-                #29B6F6 50%, 
-                #03A9F4 75%, 
-                #0288D1 100%);
+                #003d5c 0%, 
+                #0056b3 25%, 
+                #1976d2 50%, 
+                #2196f3 75%, 
+                #64b5f6 100%);
         }
-        33% { 
+        25% { 
             background: linear-gradient(135deg, 
-                #B3E5FC 0%, 
-                #81D4FA 25%, 
-                #4FC3F7 50%, 
-                #29B6F6 75%, 
-                #03A9F4 100%);
+                #1a237e 0%, 
+                #303f9f 25%, 
+                #3f51b5 50%, 
+                #5c6bc0 75%, 
+                #9fa8da 100%);
         }
-        66% { 
+        50% { 
             background: linear-gradient(135deg, 
-                #E1F5FE 0%, 
-                #B3E5FC 25%, 
-                #81D4FA 50%, 
-                #4FC3F7 75%, 
-                #29B6F6 100%);
+                #0d47a1 0%, 
+                #1565c0 25%, 
+                #1976d2 50%, 
+                #42a5f5 75%, 
+                #90caf9 100%);
+        }
+        75% { 
+            background: linear-gradient(135deg, 
+                #01579b 0%, 
+                #0277bd 25%, 
+                #0288d1 50%, 
+                #29b6f6 75%, 
+                #81d4fa 100%);
         }
     }
     
-    /* Enhanced 3D Ocean Wave Background */
+    /* Synchronized color pulses with audio playback */
+    .podcast-section.playing {
+        animation: oceanBackgroundFlow 8s ease-in-out infinite, 
+                   audioPulse 2s ease-in-out infinite;
+    }
+    
+    @keyframes audioPulse {
+        0%, 100% { 
+            filter: brightness(1) saturate(1);
+            box-shadow: inset 0 0 100px rgba(255, 255, 255, 0.1);
+        }
+        50% { 
+            filter: brightness(1.2) saturate(1.3);
+            box-shadow: inset 0 0 150px rgba(255, 255, 255, 0.2);
+        }
+    }
+    
+    /* Realistic Ocean Wave Background */
     .ocean-wave-background {
         position: absolute;
         top: 0;
@@ -8075,16 +8100,39 @@ footer::after {
         width: 100%;
         height: 100%;
         background: 
-            radial-gradient(ellipse at 20% 50%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
-            radial-gradient(ellipse at 80% 20%, rgba(255, 255, 255, 0.15) 0%, transparent 50%),
-            radial-gradient(ellipse at 40% 80%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+            /* Ocean wave layers */
+            radial-gradient(ellipse 800px 300px at 50% 100%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+            radial-gradient(ellipse 600px 200px at 20% 80%, rgba(255, 255, 255, 0.08) 0%, transparent 60%),
+            radial-gradient(ellipse 700px 250px at 80% 90%, rgba(255, 255, 255, 0.06) 0%, transparent 55%),
+            /* Wave crests */
+            linear-gradient(180deg, transparent 0%, rgba(255, 255, 255, 0.05) 70%, rgba(255, 255, 255, 0.1) 85%, transparent 100%),
+            /* Ocean depth gradient */
             linear-gradient(135deg, 
-                rgba(135, 206, 235, 0.2) 0%, 
-                rgba(79, 195, 247, 0.3) 30%, 
-                rgba(41, 182, 246, 0.2) 60%, 
-                rgba(3, 169, 244, 0.1) 100%);
+                rgba(0, 61, 92, 0.3) 0%, 
+                rgba(0, 86, 179, 0.2) 30%, 
+                rgba(25, 118, 210, 0.15) 60%, 
+                rgba(33, 150, 243, 0.1) 100%);
         z-index: 1;
-        animation: oceanFlow 20s ease-in-out infinite;
+        animation: realisticOceanFlow 25s ease-in-out infinite;
+    }
+    
+    @keyframes realisticOceanFlow {
+        0%, 100% { 
+            transform: translateY(0) scale(1);
+            opacity: 0.7;
+        }
+        25% { 
+            transform: translateY(-15px) scale(1.02);
+            opacity: 0.9;
+        }
+        50% { 
+            transform: translateY(-25px) scale(1.05);
+            opacity: 0.8;
+        }
+        75% { 
+            transform: translateY(-10px) scale(1.03);
+            opacity: 0.85;
+        }
     }
     
     @keyframes oceanFlow {
@@ -8195,38 +8243,38 @@ footer::after {
         opacity: 0.8;
     }
     
-    /* Enhanced Wave Bars */
+    /* Purple Wave Bars */
     .wave-bar {
         width: 6px;
         height: 8px;
         background: linear-gradient(to top, 
-            #ffffff 0%, 
-            #e3f2fd 30%,
-            #bbdefb 60%, 
-            #90caf9 100%);
+            #6a1b9a 0%, 
+            #8e24aa 30%,
+            #ab47bc 60%, 
+            #ba68c8 100%);
         border-radius: 3px;
         animation: oceanWave 2s ease-in-out infinite;
         box-shadow: 
-            0 0 15px rgba(255, 255, 255, 0.6),
-            0 0 30px rgba(144, 202, 249, 0.4),
-            inset 0 1px 0 rgba(255, 255, 255, 0.8);
-        border: 1px solid rgba(255, 255, 255, 0.3);
+            0 0 15px rgba(186, 104, 200, 0.6),
+            0 0 30px rgba(156, 39, 176, 0.4),
+            inset 0 1px 0 rgba(255, 255, 255, 0.3);
+        border: 1px solid rgba(171, 71, 188, 0.5);
     }
     
     .podcast-section.playing .wave-bar {
-        animation-duration: 1.2s;
+        animation-duration: 1s;
         box-shadow: 
-            0 0 20px rgba(255, 255, 255, 0.8),
-            0 0 40px rgba(144, 202, 249, 0.6),
-            0 0 60px rgba(79, 195, 247, 0.4),
-            inset 0 1px 0 rgba(255, 255, 255, 1);
+            0 0 25px rgba(186, 104, 200, 0.8),
+            0 0 50px rgba(156, 39, 176, 0.6),
+            0 0 75px rgba(106, 27, 154, 0.4),
+            inset 0 1px 0 rgba(255, 255, 255, 0.6);
         background: linear-gradient(to top, 
-            #ffffff 0%, 
-            #f3e5f5 20%,
-            #e1bee7 40%,
-            #ce93d8 60%,
-            #ba68c8 80%,
-            #ab47bc 100%);
+            #4a148c 0%, 
+            #6a1b9a 20%,
+            #8e24aa 40%,
+            #ab47bc 60%,
+            #ce93d8 80%,
+            #e1bee7 100%);
     }
     
     /* Ocean Wave Animation */
@@ -8249,7 +8297,7 @@ footer::after {
         }
     }
     
-    /* Podcast Card Container with 3D Perspective */
+    /* Podcast Card Container with 3D Perspective and Ambient Particles */
     .podcast-card-container {
         position: relative;
         z-index: 10;
@@ -8259,6 +8307,52 @@ footer::after {
         justify-content: center;
         align-items: center;
         min-height: 60vh;
+    }
+    
+    /* Ambient Particle Effects Around Card */
+    .podcast-card-container::before {
+        content: '';
+        position: absolute;
+        top: -50px;
+        left: -50px;
+        right: -50px;
+        bottom: -50px;
+        background-image: 
+            radial-gradient(circle at 10% 20%, rgba(255, 255, 255, 0.4) 1px, transparent 1px),
+            radial-gradient(circle at 80% 80%, rgba(186, 104, 200, 0.3) 1px, transparent 1px),
+            radial-gradient(circle at 40% 40%, rgba(255, 255, 255, 0.2) 1px, transparent 1px),
+            radial-gradient(circle at 90% 10%, rgba(171, 71, 188, 0.25) 1px, transparent 1px),
+            radial-gradient(circle at 20% 90%, rgba(255, 255, 255, 0.3) 1px, transparent 1px);
+        background-size: 100px 100px, 150px 150px, 80px 80px, 120px 120px, 200px 200px;
+        animation: ambientParticles 30s linear infinite;
+        z-index: -1;
+        pointer-events: none;
+    }
+    
+    @keyframes ambientParticles {
+        0% { 
+            transform: rotate(0deg) translateY(0);
+            opacity: 0.6;
+        }
+        50% { 
+            transform: rotate(180deg) translateY(-20px);
+            opacity: 1;
+        }
+        100% { 
+            transform: rotate(360deg) translateY(0);
+            opacity: 0.6;
+        }
+    }
+    
+    /* Enhanced particles during playback */
+    .podcast-section.playing .podcast-card-container::before {
+        animation-duration: 15s;
+        background-image: 
+            radial-gradient(circle at 10% 20%, rgba(255, 255, 255, 0.6) 2px, transparent 2px),
+            radial-gradient(circle at 80% 80%, rgba(186, 104, 200, 0.5) 2px, transparent 2px),
+            radial-gradient(circle at 40% 40%, rgba(255, 255, 255, 0.4) 1.5px, transparent 1.5px),
+            radial-gradient(circle at 90% 10%, rgba(171, 71, 188, 0.4) 2px, transparent 2px),
+            radial-gradient(circle at 20% 90%, rgba(255, 255, 255, 0.5) 1.5px, transparent 1.5px);
     }
     
     /* 3D Tilting Card */
@@ -8404,13 +8498,68 @@ footer::after {
         line-height: 1.4;
     }
     
-    /* Audio Player Container */
+    /* Audio Player Container with Overlay Button */
     .audio-player-container {
         margin: 30px 0;
         padding: 25px;
         background: rgba(0, 0, 0, 0.3);
         border-radius: 15px;
         backdrop-filter: blur(10px);
+        position: relative;
+    }
+    
+    /* Play/Pause Button Overlay with Ripple Effect */
+    .audio-player-container::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 80px;
+        height: 80px;
+        transform: translate(-50%, -50%);
+        background: radial-gradient(circle, 
+            rgba(171, 71, 188, 0.1) 0%, 
+            rgba(156, 39, 176, 0.2) 50%, 
+            transparent 70%);
+        border-radius: 50%;
+        animation: rippleEffect 3s ease-in-out infinite;
+        z-index: 0;
+        pointer-events: none;
+    }
+    
+    @keyframes rippleEffect {
+        0% { 
+            transform: translate(-50%, -50%) scale(0.8);
+            opacity: 0.8;
+        }
+        50% { 
+            transform: translate(-50%, -50%) scale(1.2);
+            opacity: 0.4;
+        }
+        100% { 
+            transform: translate(-50%, -50%) scale(1.5);
+            opacity: 0;
+        }
+    }
+    
+    /* Enhanced ripple during playback */
+    .podcast-section.playing .audio-player-container::before {
+        animation: rippleEffect 1.5s ease-in-out infinite,
+                   playingRipple 2s ease-in-out infinite;
+        background: radial-gradient(circle, 
+            rgba(186, 104, 200, 0.2) 0%, 
+            rgba(171, 71, 188, 0.3) 50%, 
+            rgba(156, 39, 176, 0.1) 70%,
+            transparent 100%);
+    }
+    
+    @keyframes playingRipple {
+        0%, 100% { 
+            box-shadow: 0 0 0 0 rgba(186, 104, 200, 0.4);
+        }
+        50% { 
+            box-shadow: 0 0 0 20px rgba(186, 104, 200, 0);
+        }
     }
     
     /* Audio Controls */
@@ -8419,6 +8568,8 @@ footer::after {
         align-items: center;
         gap: 20px;
         flex-wrap: wrap;
+        position: relative;
+        z-index: 2;
     }
     
     .play-btn {
