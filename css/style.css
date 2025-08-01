@@ -8029,24 +8029,151 @@ footer::after {
         display: block !important;
         position: relative;
         padding: 120px 0;
-        background: linear-gradient(135deg, #0a0f1e 0%, #1a1a2e 50%, #16213e 100%);
+        background: linear-gradient(135deg, 
+            #87CEEB 0%, 
+            #4FC3F7 25%, 
+            #29B6F6 50%, 
+            #03A9F4 75%, 
+            #0288D1 100%);
         overflow: hidden;
         min-height: 100vh;
+        animation: backgroundFlow 15s ease-in-out infinite;
     }
     
-    /* Ocean Wave Background */
+    @keyframes backgroundFlow {
+        0%, 100% { 
+            background: linear-gradient(135deg, 
+                #87CEEB 0%, 
+                #4FC3F7 25%, 
+                #29B6F6 50%, 
+                #03A9F4 75%, 
+                #0288D1 100%);
+        }
+        33% { 
+            background: linear-gradient(135deg, 
+                #B3E5FC 0%, 
+                #81D4FA 25%, 
+                #4FC3F7 50%, 
+                #29B6F6 75%, 
+                #03A9F4 100%);
+        }
+        66% { 
+            background: linear-gradient(135deg, 
+                #E1F5FE 0%, 
+                #B3E5FC 25%, 
+                #81D4FA 50%, 
+                #4FC3F7 75%, 
+                #29B6F6 100%);
+        }
+    }
+    
+    /* Enhanced 3D Ocean Wave Background */
     .ocean-wave-background {
         position: absolute;
         top: 0;
         left: 0;
         width: 100%;
         height: 100%;
-        background: linear-gradient(135deg, 
-            rgba(0, 123, 191, 0.1) 0%, 
-            rgba(0, 150, 255, 0.1) 30%, 
-            rgba(0, 191, 255, 0.1) 60%, 
-            rgba(135, 206, 235, 0.1) 100%);
+        background: 
+            radial-gradient(ellipse at 20% 50%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+            radial-gradient(ellipse at 80% 20%, rgba(255, 255, 255, 0.15) 0%, transparent 50%),
+            radial-gradient(ellipse at 40% 80%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+            linear-gradient(135deg, 
+                rgba(135, 206, 235, 0.2) 0%, 
+                rgba(79, 195, 247, 0.3) 30%, 
+                rgba(41, 182, 246, 0.2) 60%, 
+                rgba(3, 169, 244, 0.1) 100%);
         z-index: 1;
+        animation: oceanFlow 20s ease-in-out infinite;
+    }
+    
+    @keyframes oceanFlow {
+        0%, 100% { 
+            transform: translateX(0) translateY(0) scale(1);
+            opacity: 0.6;
+        }
+        25% { 
+            transform: translateX(-20px) translateY(-10px) scale(1.05);
+            opacity: 0.8;
+        }
+        50% { 
+            transform: translateX(10px) translateY(-20px) scale(1.02);
+            opacity: 0.7;
+        }
+        75% { 
+            transform: translateX(-10px) translateY(10px) scale(1.03);
+            opacity: 0.9;
+        }
+    }
+    
+    /* 3D Floating Ocean Particles */
+    .ocean-wave-background::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: 
+            radial-gradient(circle at 15% 25%, rgba(255, 255, 255, 0.3) 2px, transparent 2px),
+            radial-gradient(circle at 85% 75%, rgba(255, 255, 255, 0.2) 1px, transparent 1px),
+            radial-gradient(circle at 45% 15%, rgba(255, 255, 255, 0.25) 1.5px, transparent 1.5px),
+            radial-gradient(circle at 75% 45%, rgba(255, 255, 255, 0.2) 1px, transparent 1px),
+            radial-gradient(circle at 25% 85%, rgba(255, 255, 255, 0.3) 2px, transparent 2px);
+        background-size: 200px 200px, 150px 150px, 180px 180px, 120px 120px, 250px 250px;
+        animation: floatingParticles 25s linear infinite;
+        z-index: 2;
+    }
+    
+    @keyframes floatingParticles {
+        0% { 
+            transform: translateY(0) rotate(0deg);
+            opacity: 0.4;
+        }
+        50% { 
+            transform: translateY(-30px) rotate(180deg);
+            opacity: 0.8;
+        }
+        100% { 
+            transform: translateY(0) rotate(360deg);
+            opacity: 0.4;
+        }
+    }
+    
+    /* 3D Wave Layers */
+    .ocean-wave-background::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 120%;
+        height: 120%;
+        background: 
+            repeating-linear-gradient(
+                45deg,
+                transparent,
+                transparent 20px,
+                rgba(255, 255, 255, 0.03) 20px,
+                rgba(255, 255, 255, 0.03) 40px
+            ),
+            repeating-linear-gradient(
+                -45deg,
+                transparent,
+                transparent 25px,
+                rgba(255, 255, 255, 0.02) 25px,
+                rgba(255, 255, 255, 0.02) 50px
+            );
+        animation: wavePattern 30s linear infinite;
+        z-index: 1;
+    }
+    
+    @keyframes wavePattern {
+        0% { 
+            transform: translateX(-50px) translateY(-50px) rotate(0deg);
+        }
+        100% { 
+            transform: translateX(50px) translateY(50px) rotate(360deg);
+        }
     }
     
     /* Sound Wave Container */
@@ -8068,22 +8195,38 @@ footer::after {
         opacity: 0.8;
     }
     
-    /* Wave Bars */
+    /* Enhanced Wave Bars */
     .wave-bar {
-        width: 4px;
-        height: 5px;
+        width: 6px;
+        height: 8px;
         background: linear-gradient(to top, 
-            #00bfff 0%, 
-            #1e90ff 50%, 
-            #87ceeb 100%);
-        border-radius: 2px;
+            #ffffff 0%, 
+            #e3f2fd 30%,
+            #bbdefb 60%, 
+            #90caf9 100%);
+        border-radius: 3px;
         animation: oceanWave 2s ease-in-out infinite;
-        box-shadow: 0 0 10px rgba(0, 191, 255, 0.5);
+        box-shadow: 
+            0 0 15px rgba(255, 255, 255, 0.6),
+            0 0 30px rgba(144, 202, 249, 0.4),
+            inset 0 1px 0 rgba(255, 255, 255, 0.8);
+        border: 1px solid rgba(255, 255, 255, 0.3);
     }
     
     .podcast-section.playing .wave-bar {
-        animation-duration: 1.5s;
-        box-shadow: 0 0 15px rgba(0, 191, 255, 0.8);
+        animation-duration: 1.2s;
+        box-shadow: 
+            0 0 20px rgba(255, 255, 255, 0.8),
+            0 0 40px rgba(144, 202, 249, 0.6),
+            0 0 60px rgba(79, 195, 247, 0.4),
+            inset 0 1px 0 rgba(255, 255, 255, 1);
+        background: linear-gradient(to top, 
+            #ffffff 0%, 
+            #f3e5f5 20%,
+            #e1bee7 40%,
+            #ce93d8 60%,
+            #ba68c8 80%,
+            #ab47bc 100%);
     }
     
     /* Ocean Wave Animation */
@@ -8398,6 +8541,48 @@ footer::after {
     .podcast-section {
         display: none !important;
     }
+}
+
+/* Podcast Navigation Link Styling - Desktop & Mobile */
+.podcast-nav-item a {
+    position: relative;
+    background: linear-gradient(135deg, #4FC3F7, #29B6F6) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    font-weight: 600 !important;
+}
+
+.podcast-nav-item a::before {
+    content: '🎧';
+    margin-right: 8px;
+    -webkit-text-fill-color: #4FC3F7 !important;
+    font-size: 0.9em;
+}
+
+.podcast-nav-item a:hover {
+    background: linear-gradient(135deg, #29B6F6, #03A9F4) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    transform: translateY(-1px);
+    transition: all 0.3s ease;
+}
+
+/* Side menu podcast link styling */
+.side-menu-content a[href="#podcast"] {
+    background: linear-gradient(135deg, #4FC3F7, #29B6F6) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    font-weight: 600 !important;
+    position: relative;
+}
+
+.side-menu-content a[href="#podcast"]::before {
+    content: '🎧';
+    margin-right: 10px;
+    -webkit-text-fill-color: #4FC3F7 !important;
 }
 
 /* Mobile "Why Direct Mail Marketing" Section - Move Infographic Tables to Expandable Content */
