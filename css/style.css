@@ -6911,16 +6911,19 @@ footer::after {
     
     /* Enhanced footer CTA section with visual impact */
     .footer-cta {
-        background: linear-gradient(135deg, #27ae60 0%, #2ecc71 100%) !important;
+        background: transparent !important;
         color: #ffffff !important;
-        padding: 30px 20px !important;
-        border-radius: 20px !important;
-        box-shadow: 0 10px 30px rgba(39, 174, 96, 0.4) !important;
+        padding: 0 !important;
+        border-radius: 0 !important;
+        box-shadow: none !important;
         text-align: center !important;
         margin-bottom: 25px !important;
         position: relative !important;
-        overflow: hidden !important;
-        border: 2px solid rgba(255, 255, 255, 0.2) !important;
+        overflow: visible !important;
+        border: none !important;
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
     }
     
     .footer-cta::before {
@@ -7019,7 +7022,85 @@ footer::after {
     .footer-cta > div {
         position: relative !important;
         z-index: 2 !important;
-        background: transparent !important;
+        background: linear-gradient(135deg, #d4af37, #ffd700) !important;
+        padding: 30px 20px !important;
+        border-radius: 20px !important;
+        text-align: center !important;
+        box-shadow: 0 15px 35px rgba(212,175,55,0.3) !important;
+    }
+    
+    /* Ensure all CTA text elements are visible and properly styled */
+    .footer-cta h4.en,
+    .footer-cta h4.es {
+        display: block !important;
+        font-size: 1.4rem !important;
+        font-weight: 800 !important;
+        margin-bottom: 15px !important;
+        color: #e74c3c !important;
+        text-shadow: none !important;
+    }
+    
+    .footer-cta p.en,
+    .footer-cta p.es {
+        display: block !important;
+        color: #2c2c54 !important;
+        margin-bottom: 15px !important;
+        font-size: 0.95rem !important;
+        line-height: 1.5 !important;
+        font-weight: 500 !important;
+    }
+    
+    /* Special styling for "Limited spots" text */
+    .footer-cta p.en:last-of-type,
+    .footer-cta p.es:last-of-type {
+        color: #e74c3c !important;
+        margin-bottom: 25px !important;
+        font-size: 1rem !important;
+        font-weight: 700 !important;
+        text-transform: uppercase !important;
+        letter-spacing: 0.5px !important;
+    }
+    
+    /* Ensure Reserve buttons are visible */
+    .footer-cta .btn.en,
+    .footer-cta .btn.es {
+        display: inline-flex !important;
+        background: linear-gradient(135deg, #8e44ad, #9b59b6) !important;
+        color: white !important;
+        padding: 15px 30px !important;
+        border-radius: 50px !important;
+        text-decoration: none !important;
+        font-weight: 700 !important;
+        align-items: center !important;
+        transition: all 0.3s ease !important;
+        box-shadow: 0 8px 20px rgba(142,68,173,0.4) !important;
+        border: 2px solid rgba(155,89,182,0.3) !important;
+        font-size: 1rem !important;
+        margin-top: 10px !important;
+    }
+    
+    /* Language-specific visibility rules for CTA */
+    .footer-cta h4.es,
+    .footer-cta p.es,
+    .footer-cta .btn.es {
+        display: none !important;
+    }
+    
+    /* When Spanish is active */
+    body.spanish .footer-cta h4.en,
+    body.spanish .footer-cta p.en,
+    body.spanish .footer-cta .btn.en {
+        display: none !important;
+    }
+    
+    body.spanish .footer-cta h4.es,
+    body.spanish .footer-cta p.es,
+    body.spanish .footer-cta .btn.es {
+        display: block !important;
+    }
+    
+    body.spanish .footer-cta .btn.es {
+        display: inline-flex !important;
     }
     
     /* Specific styling for footer links */
