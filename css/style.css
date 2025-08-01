@@ -7695,8 +7695,8 @@ footer::after {
         text-align: center !important;
     }
     
-    /* Green color fix for "Secure Your Spot for current or next mailing" text */
-    .pricing-action div[style*="text-align: center"][style*="margin-top: 12px"] {
+    /* SPECIFIC override for "Secure Your Spot for current or next mailing" text - GREEN */
+    .pricing-card:first-child .pricing-action div[style*="color: rgba(255, 255, 255, 0.95)"] {
         color: #27ae60 !important; /* Green text for better visibility */
         background: transparent !important; /* Keep white background */
         font-weight: 700 !important; /* Bold weight for visibility */
@@ -7712,8 +7712,9 @@ footer::after {
         max-width: 90% !important; /* Constrain width */
     }
     
-    /* Primary selector for the exact text element */
-    .pricing-card .pricing-action > div:last-child {
+    /* More specific selector targeting the $485 pricing card text */
+    .pricing-card:first-child .pricing-action > div:last-child,
+    .pricing-card:first-child .pricing-action div[style*="text-align: center"] {
         color: #27ae60 !important; /* Green text */
         background: transparent !important; /* Keep white background */
         font-weight: 700 !important; /* Bold */
@@ -7729,22 +7730,17 @@ footer::after {
         text-align: center !important; /* Ensure centered */
     }
     
-    /* Fallback selector for maximum coverage */
-    .pricing-action div:contains("Secure Your Spot"),
-    .pricing-action div[style*="rgba(255, 255, 255"] {
-        color: #27ae60 !important; /* Green text */
-        background: transparent !important; /* Keep white background */
-        font-weight: 700 !important;
-        text-shadow: none !important;
-        padding: 8px 12px !important;
-        border-radius: 6px !important;
-        margin: 12px auto !important;
-        border: none !important;
-        font-size: 1rem !important;
-        line-height: 1.4 !important;
+    /* Ensure sold out button in $863 pricing card remains visible */
+    .pricing-card:nth-child(2) .pricing-action,
+    .pricing-card:nth-child(2) .pricing-action .btn,
+    .pricing-card:nth-child(2) .pricing-action .sold-out-btn {
         display: block !important;
-        max-width: 90% !important;
-        text-align: center !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        background-color: #6c757d !important;
+        color: white !important;
+        cursor: not-allowed !important;
+        pointer-events: none !important;
     }
     
     /* Clean button styling - remove all animations */
