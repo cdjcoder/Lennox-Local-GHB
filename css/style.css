@@ -6732,6 +6732,22 @@ footer::after {
         font-size: 3.5rem !important; /* Match Spanish version size for equal prominence */
     }
     
+    /* Ensure Spanish title maintains proper size and effects on mobile */
+    #typewriter-es {
+        font-size: 3.5rem !important; /* Ensure consistent size on mobile */
+    }
+    
+    /* Adjust typewriter elements for larger mobile font size */
+    #typewriter-en, #typewriter-es {
+        min-height: 4.2rem !important; /* Adjust min-height for 3.5rem font size */
+        line-height: 1.2 !important; /* Ensure proper line spacing */
+    }
+    
+    /* Ensure typewriter cursor scales properly with larger text */
+    .typewriter-cursor::after {
+        font-size: 3.5rem !important; /* Match cursor size to text size */
+    }
+    
     .parallax-object {
         width: 50px;
         height: 50px;
