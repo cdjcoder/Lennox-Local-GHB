@@ -6767,6 +6767,159 @@ footer::after {
         text-align: center !important; /* Ensure centered text alignment */
     }
     
+    /* Mobile Footer Redesign - Remove Flashy Effects and Improve Readability */
+    footer#contact {
+        background: linear-gradient(135deg, #2c3e50 0%, #34495e 50%, #2c3e50 100%) !important;
+        overflow: visible !important;
+    }
+    
+    /* Hide animated floating elements on mobile */
+    footer .floating-elements {
+        display: none !important;
+    }
+    
+    /* Simplify geometric background pattern */
+    footer svg {
+        opacity: 0.05 !important;
+    }
+    
+    /* Clean footer main content */
+    .footer-main {
+        padding: 40px 0 30px !important;
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 30px !important;
+        align-items: stretch !important;
+    }
+    
+    /* Enhanced footer brand section */
+    .footer-brand {
+        background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%) !important;
+        color: #2c3e50 !important;
+        padding: 25px 20px !important;
+        border-radius: 15px !important;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1) !important;
+        border-left: 4px solid #3498db !important;
+        margin-bottom: 20px !important;
+    }
+    
+    .footer-brand h2,
+    .footer-brand h3,
+    .footer-brand p {
+        color: #2c3e50 !important;
+        text-shadow: none !important;
+    }
+    
+    .footer-brand .brand-header p {
+        color: #34495e !important;
+        font-weight: 500 !important;
+    }
+    
+    /* Clean footer sections */
+    .footer-section {
+        background: linear-gradient(135deg, #ecf0f1 0%, #bdc3c7 100%) !important;
+        color: #2c3e50 !important;
+        padding: 20px !important;
+        border-radius: 12px !important;
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08) !important;
+        border-left: 4px solid #e74c3c !important;
+        margin-bottom: 15px !important;
+    }
+    
+    .footer-section h4 {
+        color: #2c3e50 !important;
+        font-weight: 700 !important;
+        margin-bottom: 15px !important;
+        text-shadow: none !important;
+    }
+    
+    .footer-section p,
+    .footer-section a,
+    .footer-section li {
+        color: #34495e !important;
+        text-shadow: none !important;
+    }
+    
+    .footer-section a:hover {
+        color: #e74c3c !important;
+        text-decoration: underline !important;
+    }
+    
+    /* Enhanced footer CTA section */
+    .footer-cta {
+        background: linear-gradient(135deg, #27ae60 0%, #2ecc71 100%) !important;
+        color: #ffffff !important;
+        padding: 25px 20px !important;
+        border-radius: 15px !important;
+        box-shadow: 0 4px 15px rgba(39, 174, 96, 0.3) !important;
+        text-align: center !important;
+        margin-bottom: 20px !important;
+    }
+    
+    .footer-cta h4 {
+        color: #ffffff !important;
+        font-weight: 700 !important;
+        margin-bottom: 10px !important;
+        text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3) !important;
+    }
+    
+    .footer-cta p {
+        color: #ffffff !important;
+        opacity: 0.9 !important;
+        margin-bottom: 20px !important;
+    }
+    
+    .footer-cta .btn {
+        background: linear-gradient(135deg, #f39c12 0%, #e67e22 100%) !important;
+        color: #ffffff !important;
+        padding: 12px 25px !important;
+        border-radius: 25px !important;
+        font-weight: 600 !important;
+        text-decoration: none !important;
+        display: inline-block !important;
+        box-shadow: 0 3px 10px rgba(243, 156, 18, 0.4) !important;
+        transition: all 0.3s ease !important;
+        animation: none !important;
+    }
+    
+    .footer-cta .btn:hover {
+        background: linear-gradient(135deg, #e67e22 0%, #d35400 100%) !important;
+        transform: translateY(-2px) !important;
+        box-shadow: 0 5px 15px rgba(243, 156, 18, 0.5) !important;
+    }
+    
+    /* Clean footer bottom */
+    .footer-bottom {
+        background: linear-gradient(135deg, #34495e 0%, #2c3e50 100%) !important;
+        border-top: 2px solid #3498db !important;
+        padding: 20px 0 !important;
+        margin-top: 20px !important;
+        border-radius: 10px 10px 0 0 !important;
+    }
+    
+    .footer-bottom p,
+    .footer-bottom a {
+        color: #ecf0f1 !important;
+        text-shadow: none !important;
+    }
+    
+    .footer-bottom a:hover {
+        color: #3498db !important;
+    }
+    
+    /* Remove all footer animations on mobile */
+    footer * {
+        animation: none !important;
+        transform: none !important;
+    }
+    
+    /* Disable AOS animations in footer on mobile */
+    footer [data-aos] {
+        animation: none !important;
+        transform: none !important;
+        opacity: 1 !important;
+    }
+    
     .parallax-object {
         width: 50px;
         height: 50px;
