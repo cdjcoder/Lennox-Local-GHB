@@ -8182,13 +8182,7 @@ footer::after {
         margin-right: auto !important;
     }
     
-    /* Hide Spanish text in step boxes specifically */
-    .how-works .step h3.es,
-    .how-works .step p.es {
-        display: none !important;
-    }
-    
-    /* Clean section title */
+    /* Clean section title - show both English and Spanish properly */
     .how-works .section-title {
         color: #2c3e50 !important;
         font-size: 2rem !important;
@@ -8198,9 +8192,85 @@ footer::after {
         padding: 0 20px !important;
     }
     
-    /* Hide Spanish text elements in mobile How It Works section */
-    .how-works .es {
+    /* Ensure Spanish title is visible when Spanish is active */
+    .how-works .section-title.es {
+        display: none !important; /* Hidden by default */
+    }
+    
+    /* When Spanish is active, show Spanish title and hide English */
+    body.spanish .how-works .section-title.en {
         display: none !important;
+    }
+    
+    body.spanish .how-works .section-title.es {
+        display: block !important;
+        color: #2c3e50 !important;
+        font-size: 2rem !important;
+        font-weight: 700 !important;
+        text-shadow: none !important;
+        margin-bottom: 40px !important;
+        padding: 0 20px !important;
+    }
+    
+    /* Step content - show both languages properly with same styling */
+    .how-works .step h3.en,
+    .how-works .step h3.es {
+        font-size: 1.5rem !important;
+        font-weight: 800 !important;
+        margin-bottom: 18px !important;
+        text-align: center !important;
+        line-height: 1.3 !important;
+        color: #2c3e50 !important;
+    }
+    
+    .how-works .step p.en,
+    .how-works .step p.es {
+        color: #495057 !important;
+        font-size: 1.05rem !important;
+        line-height: 1.6 !important;
+        font-weight: 500 !important;
+        text-align: center !important;
+        max-width: 90% !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+    }
+    
+    /* Hide Spanish content by default */
+    .how-works .step h3.es,
+    .how-works .step p.es,
+    .how-works .showcase-badge .es,
+    .how-works .showcase-title.es,
+    .how-works .showcase-description.es {
+        display: none !important;
+    }
+    
+    /* When Spanish is active, show Spanish content and hide English */
+    body.spanish .how-works .step h3.en,
+    body.spanish .how-works .step p.en,
+    body.spanish .how-works .showcase-badge .en,
+    body.spanish .how-works .showcase-title.en,
+    body.spanish .how-works .showcase-description.en {
+        display: none !important;
+    }
+    
+    body.spanish .how-works .step h3.es,
+    body.spanish .how-works .step p.es,
+    body.spanish .how-works .showcase-badge .es,
+    body.spanish .how-works .showcase-title.es,
+    body.spanish .how-works .showcase-description.es {
+        display: block !important;
+        font-size: 1.5rem !important;
+        font-weight: 800 !important;
+        margin-bottom: 18px !important;
+        text-align: center !important;
+        line-height: 1.3 !important;
+        color: #2c3e50 !important;
+    }
+    
+    body.spanish .how-works .step p.es {
+        font-size: 1.05rem !important;
+        font-weight: 500 !important;
+        line-height: 1.6 !important;
     }
     
     /* Clean section dividers */
