@@ -1458,6 +1458,19 @@ header.scrolled .language-toggle span {
   .mobile-email-float {
     display: none !important;
   }
+  
+  /* Fix Spanish call button size to match English version */
+  .phone-contact-float {
+    max-width: 300px; /* Constrain width on mobile */
+  }
+  
+  .phone-text.es p:first-child {
+    font-size: 0.9rem !important; /* Adjust Spanish text size */
+  }
+  
+  .phone-text.es .phone-number {
+    font-size: 0.95rem !important; /* Adjust Spanish phone number */
+  }
 }
 
 @media (min-width: 769px) {
@@ -1472,6 +1485,7 @@ header.scrolled .language-toggle span {
     bottom: 80px;
     right: 10px;
     z-index: 995;
+    max-width: 280px; /* Constrain maximum width */
   }
   
   .phone-contact-inner {
@@ -1483,10 +1497,28 @@ header.scrolled .language-toggle span {
     height: 30px;
     font-size: 1rem;
     margin-right: 10px;
+    flex-shrink: 0; /* Prevent icon from shrinking */
+  }
+  
+  .phone-text {
+    flex: 1;
+    min-width: 0; /* Allow text to shrink if needed */
   }
   
   .phone-text p {
     font-size: 0.85rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+  /* Spanish version specific adjustments */
+  .phone-text.es p:first-child {
+    font-size: 0.8rem !important; /* Slightly smaller for longer Spanish text */
+  }
+  
+  .phone-text.es .phone-number {
+    font-size: 0.85rem !important; /* Smaller Spanish phone number text */
   }
   
   .phone-number {
