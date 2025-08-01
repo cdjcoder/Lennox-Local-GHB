@@ -4078,6 +4078,21 @@ footer::after {
   }
 }
 
+/* Mobile-only side menu button - only show when triggered by "How it works" section */
+@media (max-width: 767px) {
+  .side-menu-button {
+    /* Ensure it's only visible on mobile and when .show class is added */
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+  }
+  
+  .side-menu-button.show {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
 /* Side Menu */
 .side-menu {
   position: fixed;

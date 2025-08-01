@@ -995,8 +995,9 @@ document.addEventListener('DOMContentLoaded', function() {
             if (backToTopButton) backToTopButton.classList.remove('show');
         }
         
-        // Show side menu button when user scrolls past the "Service Area Overview" section
-        if (serviceAreaSection && window.pageYOffset >= serviceAreaSection.offsetTop) {
+        // Show side menu button when user scrolls to the "How it works" section (mobile only)
+        const howWorksSection = document.getElementById('how-works');
+        if (howWorksSection && window.pageYOffset >= howWorksSection.offsetTop) {
             if (sideMenuButton) sideMenuButton.classList.add('show');
         } else {
             if (sideMenuButton) sideMenuButton.classList.remove('show');
