@@ -2278,7 +2278,6 @@ document.addEventListener('DOMContentLoaded', function() {
     if (window.innerWidth >= 768) {
         initializePodcastPlayer();
     }
-});
 
 // Podcast Player Functions - Desktop Only
 function initializePodcastPlayer() {
