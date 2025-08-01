@@ -6767,11 +6767,23 @@ footer::after {
         text-align: center !important; /* Ensure centered text alignment */
     }
     
-    /* Mobile Footer Redesign - Remove ALL Flashing Effects and Improve Readability */
+    /* Mobile Footer Redesign - Safe Visual Design with Impact */
     footer#contact {
-        background: #2c3e50 !important; /* Solid background - no gradients that could cause flashing */
+        background: linear-gradient(180deg, #2c3e50 0%, #34495e 100%) !important; /* Safe static gradient - no animation */
         overflow: hidden !important;
         position: relative !important;
+    }
+    
+    /* Add safe visual elements - no animation or flashing */
+    footer#contact::before {
+        content: '' !important;
+        position: absolute !important;
+        top: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        height: 4px !important;
+        background: linear-gradient(90deg, #3498db 0%, #e74c3c 25%, #f39c12 50%, #27ae60 75%, #9b59b6 100%) !important;
+        z-index: 1 !important;
     }
     
     /* Completely hide all animated and potentially flashing elements */
@@ -6809,15 +6821,28 @@ footer::after {
         align-items: stretch !important;
     }
     
-    /* Enhanced footer brand section - improved readability */
+    /* Enhanced footer brand section - visually impactful */
     .footer-brand {
-        background: #ecf0f1 !important; /* Solid light background for better readability */
+        background: linear-gradient(135deg, #ecf0f1 0%, #d5dbdb 100%) !important;
         color: #2c3e50 !important;
         padding: 25px 20px !important;
         border-radius: 15px !important;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1) !important;
-        border-left: 4px solid #3498db !important;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15) !important;
+        border-left: 6px solid #3498db !important;
         margin-bottom: 20px !important;
+        position: relative !important;
+        overflow: hidden !important;
+    }
+    
+    .footer-brand::before {
+        content: '' !important;
+        position: absolute !important;
+        top: -50% !important;
+        right: -50% !important;
+        width: 100% !important;
+        height: 100% !important;
+        background: radial-gradient(circle, rgba(52, 152, 219, 0.1) 0%, transparent 50%) !important;
+        z-index: 0 !important;
     }
     
     .footer-brand h2,
@@ -6825,22 +6850,38 @@ footer::after {
     .footer-brand p {
         color: #2c3e50 !important;
         text-shadow: none !important;
+        position: relative !important;
+        z-index: 1 !important;
     }
     
     .footer-brand .brand-header p {
         color: #34495e !important;
-        font-weight: 600 !important; /* Increased weight for better readability */
+        font-weight: 600 !important;
+        position: relative !important;
+        z-index: 1 !important;
     }
     
-    /* Clean footer sections - improved contrast */
+    /* Visually enhanced footer sections */
     .footer-section {
-        background: #bdc3c7 !important; /* Solid medium background for better text contrast */
+        background: linear-gradient(135deg, #bdc3c7 0%, #95a5a6 100%) !important;
         color: #2c3e50 !important;
         padding: 20px !important;
         border-radius: 12px !important;
-        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08) !important;
-        border-left: 4px solid #e74c3c !important;
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12) !important;
+        border-left: 5px solid #e74c3c !important;
         margin-bottom: 15px !important;
+        position: relative !important;
+        overflow: hidden !important;
+    }
+    
+    .footer-section::after {
+        content: '' !important;
+        position: absolute !important;
+        bottom: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        height: 2px !important;
+        background: linear-gradient(90deg, transparent 0%, #e74c3c 50%, transparent 100%) !important;
     }
     
     .footer-section h4 {
@@ -6864,15 +6905,30 @@ footer::after {
         font-weight: 600 !important;
     }
     
-    /* Enhanced footer CTA section */
+    /* Enhanced footer CTA section with visual impact */
     .footer-cta {
         background: linear-gradient(135deg, #27ae60 0%, #2ecc71 100%) !important;
         color: #ffffff !important;
-        padding: 25px 20px !important;
-        border-radius: 15px !important;
-        box-shadow: 0 4px 15px rgba(39, 174, 96, 0.3) !important;
+        padding: 30px 20px !important;
+        border-radius: 20px !important;
+        box-shadow: 0 10px 30px rgba(39, 174, 96, 0.4) !important;
         text-align: center !important;
-        margin-bottom: 20px !important;
+        margin-bottom: 25px !important;
+        position: relative !important;
+        overflow: hidden !important;
+        border: 2px solid rgba(255, 255, 255, 0.2) !important;
+    }
+    
+    .footer-cta::before {
+        content: '' !important;
+        position: absolute !important;
+        top: -2px !important;
+        left: -2px !important;
+        right: -2px !important;
+        bottom: -2px !important;
+        background: linear-gradient(45deg, #3498db, #e74c3c, #f39c12, #27ae60, #9b59b6) !important;
+        border-radius: 22px !important;
+        z-index: -1 !important;
     }
     
     .footer-cta h4 {
