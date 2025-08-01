@@ -8243,10 +8243,10 @@ footer::after {
         opacity: 0.8;
     }
     
-    /* Sparkling Gold Wave Bars - Thicker for Visual Impact */
+    /* Sparkling Gold Wave Bars - Thicker and Taller for Maximum Visual Impact */
     .wave-bar {
         width: 12px;
-        height: 15px;
+        height: 20px;
         background: linear-gradient(to top, 
             #b8860b 0%, 
             #daa520 25%,
@@ -8324,19 +8324,19 @@ footer::after {
     /* Ocean Wave Animation */
     @keyframes oceanWave {
         0%, 100% { 
-            height: 5px; 
+            height: 8px; 
             transform: scaleY(1);
         }
         25% { 
-            height: 40px; 
+            height: 50px; 
             transform: scaleY(1.2);
         }
         50% { 
-            height: 80px; 
+            height: 100px; 
             transform: scaleY(1.5);
         }
         75% { 
-            height: 120px; 
+            height: 150px; 
             transform: scaleY(1.8);
         }
     }
@@ -8606,6 +8606,178 @@ footer::after {
         }
         50% { 
             box-shadow: 0 0 0 25px rgba(255, 215, 0, 0);
+        }
+    }
+    
+    /* Colorful Fireworks Background - Only During Audio Playback */
+    .podcast-section.playing::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: 
+            /* Firework burst 1 - Top left */
+            radial-gradient(circle at 15% 20%, 
+                transparent 0%, 
+                transparent 8%, 
+                rgba(255, 0, 150, 0.8) 8.5%, 
+                rgba(255, 0, 150, 0.6) 9%, 
+                transparent 9.5%),
+            radial-gradient(circle at 15% 20%, 
+                transparent 0%, 
+                transparent 6%, 
+                rgba(0, 255, 255, 0.7) 6.5%, 
+                rgba(0, 255, 255, 0.5) 7%, 
+                transparent 7.5%),
+            radial-gradient(circle at 15% 20%, 
+                transparent 0%, 
+                transparent 10%, 
+                rgba(255, 255, 0, 0.6) 10.5%, 
+                rgba(255, 255, 0, 0.4) 11%, 
+                transparent 11.5%),
+            
+            /* Firework burst 2 - Top right */
+            radial-gradient(circle at 85% 25%, 
+                transparent 0%, 
+                transparent 7%, 
+                rgba(255, 100, 0, 0.8) 7.5%, 
+                rgba(255, 100, 0, 0.6) 8%, 
+                transparent 8.5%),
+            radial-gradient(circle at 85% 25%, 
+                transparent 0%, 
+                transparent 9%, 
+                rgba(150, 0, 255, 0.7) 9.5%, 
+                rgba(150, 0, 255, 0.5) 10%, 
+                transparent 10.5%),
+            
+            /* Firework burst 3 - Middle left */
+            radial-gradient(circle at 20% 60%, 
+                transparent 0%, 
+                transparent 6%, 
+                rgba(0, 255, 100, 0.8) 6.5%, 
+                rgba(0, 255, 100, 0.6) 7%, 
+                transparent 7.5%),
+            radial-gradient(circle at 20% 60%, 
+                transparent 0%, 
+                transparent 8%, 
+                rgba(255, 50, 150, 0.6) 8.5%, 
+                rgba(255, 50, 150, 0.4) 9%, 
+                transparent 9.5%),
+            
+            /* Firework burst 4 - Middle right */
+            radial-gradient(circle at 80% 50%, 
+                transparent 0%, 
+                transparent 5%, 
+                rgba(255, 200, 0, 0.8) 5.5%, 
+                rgba(255, 200, 0, 0.6) 6%, 
+                transparent 6.5%),
+            radial-gradient(circle at 80% 50%, 
+                transparent 0%, 
+                transparent 9%, 
+                rgba(0, 150, 255, 0.7) 9.5%, 
+                rgba(0, 150, 255, 0.5) 10%, 
+                transparent 10.5%),
+            
+            /* Firework burst 5 - Bottom center */
+            radial-gradient(circle at 50% 80%, 
+                transparent 0%, 
+                transparent 7%, 
+                rgba(255, 0, 200, 0.8) 7.5%, 
+                rgba(255, 0, 200, 0.6) 8%, 
+                transparent 8.5%),
+            radial-gradient(circle at 50% 80%, 
+                transparent 0%, 
+                transparent 5%, 
+                rgba(100, 255, 0, 0.7) 5.5%, 
+                rgba(100, 255, 0, 0.5) 6%, 
+                transparent 6.5%);
+        
+        background-size: 
+            300px 300px, 300px 300px, 300px 300px,
+            350px 350px, 350px 350px,
+            280px 280px, 280px 280px,
+            320px 320px, 320px 320px,
+            400px 400px, 400px 400px;
+        
+        animation: 
+            fireworksBurst1 4s ease-in-out infinite,
+            fireworksBurst2 5s ease-in-out infinite 1s,
+            fireworksBurst3 3.5s ease-in-out infinite 2s;
+        
+        z-index: 1;
+        pointer-events: none;
+        opacity: 0.7;
+    }
+    
+    /* Fireworks Animation Keyframes */
+    @keyframes fireworksBurst1 {
+        0% { 
+            transform: scale(0) rotate(0deg);
+            opacity: 0;
+        }
+        10% { 
+            transform: scale(0.3) rotate(45deg);
+            opacity: 1;
+        }
+        30% { 
+            transform: scale(1.2) rotate(180deg);
+            opacity: 0.8;
+        }
+        60% { 
+            transform: scale(1.8) rotate(270deg);
+            opacity: 0.4;
+        }
+        100% { 
+            transform: scale(2.5) rotate(360deg);
+            opacity: 0;
+        }
+    }
+    
+    @keyframes fireworksBurst2 {
+        0% { 
+            transform: scale(0) rotate(180deg);
+            opacity: 0;
+        }
+        15% { 
+            transform: scale(0.4) rotate(225deg);
+            opacity: 1;
+        }
+        35% { 
+            transform: scale(1.1) rotate(315deg);
+            opacity: 0.9;
+        }
+        70% { 
+            transform: scale(1.6) rotate(450deg);
+            opacity: 0.3;
+        }
+        100% { 
+            transform: scale(2.2) rotate(540deg);
+            opacity: 0;
+        }
+    }
+    
+    @keyframes fireworksBurst3 {
+        0% { 
+            transform: scale(0) rotate(90deg);
+            opacity: 0;
+        }
+        12% { 
+            transform: scale(0.5) rotate(135deg);
+            opacity: 1;
+        }
+        40% { 
+            transform: scale(1.3) rotate(270deg);
+            opacity: 0.7;
+        }
+        75% { 
+            transform: scale(1.9) rotate(405deg);
+            opacity: 0.2;
+        }
+        100% { 
+            transform: scale(2.8) rotate(450deg);
+            opacity: 0;
         }
     }
     
