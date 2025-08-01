@@ -2274,3 +2274,177 @@ document.addEventListener('DOMContentLoaded', function() {
     // Initialize Fourth Parallax Controller
     const parallaxController4 = new ParallaxController4();
     
+    // Podcast Player Functionality - Desktop Only (Targeted Addition)
+    if (window.innerWidth >= 768) {
+        initializePodcastPlayer();
+    }
+});
+
+// Podcast Player Functions - Desktop Only
+function initializePodcastPlayer() {
+    const audio = document.getElementById('podcast-audio');
+    const playPauseBtn = document.getElementById('play-pause-btn');
+    const progressBar = document.querySelector('.progress-bar');
+    const progressFill = document.querySelector('.progress-fill');
+    const currentTimeSpan = document.querySelector('.current-time');
+    const durationSpan = document.querySelector('.duration');
+    const volumeSlider = document.getElementById('volume-slider');
+    const podcastSection = document.querySelector('.podcast-section');
+    
+    if (!audio || !playPauseBtn) return;
+    
+    // Set initial volume
+    audio.volume = 0.5;
+    
+    // Format time helper function
+    function formatTime(seconds) {
+        const minutes = Math.floor(seconds / 60);
+        const remainingSeconds = Math.floor(seconds % 60);
+        return `${minutes}:${remainingSeconds.toString().padStart(2, '0')}`;
+    }
+    
+    // Update duration when metadata loads
+    audio.addEventListener('loadedmetadata', function() {
+        if (durationSpan) {
+            durationSpan.textContent = formatTime(audio.duration);
+        }
+    });
+    
+    // Play/Pause functionality
+    playPauseBtn.addEventListener('click', function() {
+        if (audio.paused) {
+            audio.play().catch(function(error) {
+                console.error('Error playing audio:', error);
+            });
+        } else {
+            audio.pause();
+        }
+    });
+    
+    // Update play button and add playing class
+    audio.addEventListener('play', function() {
+        playPauseBtn.innerHTML = '<i class="fas fa-pause"></i>';
+        playPauseBtn.classList.add('playing');
+        if (podcastSection) {
+            podcastSection.classList.add('playing');
+        }
+    });
+    
+    audio.addEventListener('pause', function() {
+        playPauseBtn.innerHTML = '<i class="fas fa-play"></i>';
+        playPauseBtn.classList.remove('playing');
+        if (podcastSection) {
+            podcastSection.classList.remove('playing');
+        }
+    });
+    
+    audio.addEventListener('ended', function() {
+        playPauseBtn.innerHTML = '<i class="fas fa-play"></i>';
+        playPauseBtn.classList.remove('playing');
+        if (podcastSection) {
+            podcastSection.classList.remove('playing');
+        }
+        if (progressFill) {
+            progressFill.style.width = '0%';
+        }
+        if (currentTimeSpan) {
+            currentTimeSpan.textContent = '0:00';
+        }
+    });
+    
+    // Update progress bar and time
+    audio.addEventListener('timeupdate', function() {
+        if (audio.duration && progressFill && currentTimeSpan) {
+            const progress = (audio.currentTime / audio.duration) * 100;
+            progressFill.style.width = progress + '%';
+            currentTimeSpan.textContent = formatTime(audio.currentTime);
+        }
+    });
+    
+    // Click on progress bar to seek
+    if (progressBar) {
+        progressBar.addEventListener('click', function(e) {
+            if (audio.duration) {
+                const rect = progressBar.getBoundingClientRect();
+                const clickX = e.clientX - rect.left;
+                const width = rect.width;
+                const clickTime = (clickX / width) * audio.duration;
+                audio.currentTime = clickTime;
+            }
+        });
+    }
+    
+    // Volume control
+    if (volumeSlider) {
+        volumeSlider.addEventListener('input', function() {
+            audio.volume = this.value / 100;
+            
+            // Update volume icon based on level
+            const volumeIcon = document.querySelector('.volume-control i');
+            if (volumeIcon) {
+                if (audio.volume === 0) {
+                    volumeIcon.className = 'fas fa-volume-mute';
+                } else if (audio.volume < 0.5) {
+                    volumeIcon.className = 'fas fa-volume-down';
+                } else {
+                    volumeIcon.className = 'fas fa-volume-up';
+                }
+            }
+        });
+    }
+    
+    // Enhanced 3D tilt effect on mouse move
+    const podcastCard = document.querySelector('.podcast-card');
+    const cardContainer = document.querySelector('.podcast-card-container');
+    
+    if (podcastCard && cardContainer) {
+        cardContainer.addEventListener('mousemove', function(e) {
+            if (window.innerWidth >= 768) { // Desktop only
+                const rect = cardContainer.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                
+                const rotateX = (y - centerY) / 15;
+                const rotateY = (centerX - x) / 15;
+                
+                // Apply enhanced tilt during interaction
+                podcastCard.style.transform = `
+                    perspective(1000px) 
+                    rotateX(${rotateX}deg) 
+                    rotateY(${rotateY}deg) 
+                    scale(1.02)
+                `;
+                podcastCard.style.transition = 'transform 0.1s ease';
+            }
+        });
+        
+        cardContainer.addEventListener('mouseleave', function() {
+            // Reset to default animation
+            podcastCard.style.transform = '';
+            podcastCard.style.transition = 'all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
+        });
+    }
+    
+    // Error handling
+    audio.addEventListener('error', function(e) {
+        console.error('Audio error:', e);
+        playPauseBtn.innerHTML = '<i class="fas fa-exclamation-triangle"></i>';
+        playPauseBtn.disabled = true;
+    });
+    
+    // Loading state
+    audio.addEventListener('loadstart', function() {
+        playPauseBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
+    });
+    
+    audio.addEventListener('canplay', function() {
+        if (audio.paused) {
+            playPauseBtn.innerHTML = '<i class="fas fa-play"></i>';
+        }
+        playPauseBtn.disabled = false;
+    });
+}
+    
