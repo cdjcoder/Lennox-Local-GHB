@@ -6748,6 +6748,16 @@ footer::after {
         font-size: 3.5rem !important; /* Match cursor size to text size */
     }
     
+    /* Center hero section buttons on mobile - override inline styles */
+    .hero-content .btn-group {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: center !important;
+        gap: 20px !important;
+        text-align: center !important;
+    }
+    
     .parallax-object {
         width: 50px;
         height: 50px;
