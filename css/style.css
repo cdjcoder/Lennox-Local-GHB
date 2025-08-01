@@ -7432,22 +7432,23 @@ footer::after {
         max-width: 400px !important;
     }
     
-    /* Clean step numbers - remove all glowing animations */
+    /* Enhanced step numbers - centered and prominent */
     .how-works .step-number {
         position: static !important;
         display: inline-flex !important;
-        width: 50px !important;
-        height: 50px !important;
-        font-size: 1.5rem !important;
-        font-weight: 700 !important;
+        width: 60px !important;
+        height: 60px !important;
+        font-size: 1.8rem !important;
+        font-weight: 800 !important;
         color: #ffffff !important;
         border-radius: 50% !important;
-        margin: 0 15px 0 0 !important;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2) !important;
-        border: 3px solid #ffffff !important;
+        margin: 0 auto 20px auto !important;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2) !important;
+        border: 4px solid #ffffff !important;
         animation: none !important;
         transition: none !important;
-        flex-shrink: 0 !important;
+        align-items: center !important;
+        justify-content: center !important;
     }
     
     /* Clean step number colors - following color wheel theory */
@@ -7482,10 +7483,10 @@ footer::after {
         box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2) !important;
     }
     
-    /* Clean step content cards with enhanced visual design */
+    /* Enhanced step content cards with centered layout */
     .how-works .step-content {
         background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%) !important;
-        padding: 25px 20px !important;
+        padding: 30px 20px !important;
         border-radius: 15px !important;
         box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12), 0 4px 10px rgba(0, 0, 0, 0.08) !important;
         border: none !important;
@@ -7496,9 +7497,8 @@ footer::after {
         position: relative !important;
         z-index: 1 !important;
         overflow: hidden !important;
-        display: flex !important;
-        align-items: flex-start !important;
-        gap: 18px !important;
+        display: block !important;
+        text-align: center !important;
         background-image: none !important;
     }
     
@@ -7579,16 +7579,17 @@ footer::after {
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important;
     }
     
-    /* Clean step text content */
+    /* Enhanced step text content - prominent and centered */
     .how-works .step h3 {
         color: #2c3e50 !important;
-        font-size: 1.3rem !important;
-        font-weight: 700 !important;
-        margin-bottom: 10px !important;
+        font-size: 1.5rem !important;
+        font-weight: 800 !important;
+        margin-bottom: 18px !important;
         text-shadow: none !important;
         position: relative !important;
         display: block !important;
-        flex: 1 !important;
+        text-align: center !important;
+        line-height: 1.3 !important;
     }
     
     /* Remove decorative underlines from headings */
@@ -7597,11 +7598,21 @@ footer::after {
     }
     
     .how-works .step p {
-        color: #6c757d !important;
-        font-size: 0.95rem !important;
-        line-height: 1.5 !important;
+        color: #495057 !important;
+        font-size: 1.05rem !important;
+        line-height: 1.6 !important;
         margin: 0 !important;
-        font-weight: 400 !important;
+        font-weight: 500 !important;
+        text-align: center !important;
+        max-width: 90% !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+    }
+    
+    /* Hide Spanish text in step boxes specifically */
+    .how-works .step h3.es,
+    .how-works .step p.es {
+        display: none !important;
     }
     
     /* Clean section title */
