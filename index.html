@@ -6171,6 +6171,31 @@ Es comprobado, asequible, exclusivo, y diseñado para máxima exposición. Asegu
                         // Enable Step 2 when user opens the form
                         enableCompleteApplicationButton();
                     });
+                    
+                    // Add specific mobile touch event handling for reserve-now-btn
+                    if (buttonId === 'reserve-now-btn') {
+                        // Add touchstart event for better mobile responsiveness
+                        button.addEventListener('touchstart', function(e) {
+                            e.preventDefault();
+                            console.log('Mobile touch detected on reserve-now-btn');
+                            openJotFormModal();
+                            enableCompleteApplicationButton();
+                        }, { passive: false });
+                        
+                        // Add touchend event as backup
+                        button.addEventListener('touchend', function(e) {
+                            e.preventDefault();
+                            console.log('Mobile touchend detected on reserve-now-btn');
+                        }, { passive: false });
+                        
+                        // Force ensure button is clickable
+                        button.style.pointerEvents = 'auto';
+                        button.style.cursor = 'pointer';
+                        button.style.touchAction = 'manipulation';
+                        button.style.zIndex = '1001';
+                        
+                        console.log('Mobile touch handlers added to reserve-now-btn');
+                    }
                 }
             });
             
