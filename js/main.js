@@ -2325,16 +2325,51 @@ function initializePodcastPlayer() {
     // Update duration when metadata loads for both audio elements
     function updateDuration(audio) {
         if (durationSpan && audio === getCurrentAudio()) {
-            durationSpan.textContent = formatTime(audio.duration);
+            console.log(`Audio duration detected: ${audio.duration} seconds for ${audio.id}`);
+            console.log(`Formatted duration: ${formatTime(audio.duration)}`);
+            
+            // Check if duration is valid (not NaN or Infinity)
+            if (audio.duration && isFinite(audio.duration)) {
+                const detectedDuration = audio.duration;
+                
+                // Known correct duration is 6:28 (388 seconds)
+                // If detected duration is significantly different, use the correct one
+                if (detectedDuration > 450 || detectedDuration < 380) {
+                    console.warn(`Incorrect duration detected: ${detectedDuration}s, using correct duration: 388s (6:28)`);
+                    durationSpan.textContent = '6:28';
+                } else {
+                    durationSpan.textContent = formatTime(audio.duration);
+                }
+            } else {
+                console.warn(`Invalid audio duration: ${audio.duration} for ${audio.id}`);
+                durationSpan.textContent = '6:28'; // Fallback to known correct duration
+            }
         }
     }
     
     audioEn.addEventListener('loadedmetadata', function() {
+        console.log('English audio metadata loaded');
         updateDuration(audioEn);
     });
     
     audioEs.addEventListener('loadedmetadata', function() {
+        console.log('Spanish audio metadata loaded');
         updateDuration(audioEs);
+    });
+    
+    // Additional duration check on canplay event as backup
+    audioEn.addEventListener('canplay', function() {
+        if (!durationSpan.textContent || durationSpan.textContent === '0:00') {
+            console.log('Backup duration check for English audio');
+            updateDuration(audioEn);
+        }
+    });
+    
+    audioEs.addEventListener('canplay', function() {
+        if (!durationSpan.textContent || durationSpan.textContent === '0:00') {
+            console.log('Backup duration check for Spanish audio');
+            updateDuration(audioEs);
+        }
     });
     
     // Play/Pause functionality with sparkle explosion and language support
@@ -2478,7 +2513,13 @@ function initializePodcastPlayer() {
     function updateProgress() {
         const audio = getCurrentAudio();
         if (audio.duration && progressFill && currentTimeSpan) {
-            const progress = (audio.currentTime / audio.duration) * 100;
+            // Use correct duration (6:28 = 388 seconds) if detected duration is wrong
+            let correctDuration = audio.duration;
+            if (audio.duration > 450 || audio.duration < 380) {
+                correctDuration = 388; // 6:28 in seconds
+            }
+            
+            const progress = (audio.currentTime / correctDuration) * 100;
             progressFill.style.width = progress + '%';
             currentTimeSpan.textContent = formatTime(audio.currentTime);
         }
@@ -2501,11 +2542,19 @@ function initializePodcastPlayer() {
         progressBar.addEventListener('click', function(e) {
             const audio = getCurrentAudio();
             if (audio.duration) {
+                // Use correct duration (6:28 = 388 seconds) if detected duration is wrong
+                let correctDuration = audio.duration;
+                if (audio.duration > 450 || audio.duration < 380) {
+                    correctDuration = 388; // 6:28 in seconds
+                }
+                
                 const rect = progressBar.getBoundingClientRect();
                 const clickX = e.clientX - rect.left;
                 const width = rect.width;
-                const clickTime = (clickX / width) * audio.duration;
-                audio.currentTime = clickTime;
+                const clickTime = (clickX / width) * correctDuration;
+                
+                // Make sure we don't seek beyond the actual audio duration
+                audio.currentTime = Math.min(clickTime, audio.duration);
             }
         });
     }
