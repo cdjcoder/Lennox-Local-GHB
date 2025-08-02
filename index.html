@@ -4340,11 +4340,18 @@ Es comprobado, asequible, exclusivo, y diseñado para máxima exposición. Asegu
                         </div>
                         
                         <div class="audio-player-container">
-                            <audio id="podcast-audio" preload="metadata" crossorigin="anonymous">
+                            <!-- English Podcast Audio -->
+                            <audio id="podcast-audio-en" class="podcast-audio en" preload="metadata" crossorigin="anonymous">
                                 <source src="podcast-audio.mp3" type="audio/mpeg">
                                 <source src="./podcast-audio.mp3" type="audio/mpeg">
-                                <p class="en">Your browser does not support the audio element.</p>
-                                <p class="es" style="display: none;">Tu navegador no soporta el elemento de audio.</p>
+                                <p>Your browser does not support the audio element.</p>
+                            </audio>
+                            
+                            <!-- Spanish Podcast Audio -->
+                            <audio id="podcast-audio-es" class="podcast-audio es" preload="metadata" crossorigin="anonymous" style="display: none;">
+                                <source src="podcast-audio-spanish.mp3" type="audio/mpeg">
+                                <source src="./podcast-audio-spanish.mp3" type="audio/mpeg">
+                                <p>Tu navegador no soporta el elemento de audio.</p>
                             </audio>
                             
                             <div class="audio-controls">
