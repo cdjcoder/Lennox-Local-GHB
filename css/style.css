@@ -8092,7 +8092,7 @@ footer::after {
         }
     }
     
-    /* Futuristic Laser Grid Background */
+    /* Clean Futuristic Background */
     .ocean-wave-background {
         position: absolute;
         top: 0;
@@ -8100,81 +8100,46 @@ footer::after {
         width: 100%;
         height: 100%;
         background: 
-            /* Laser grid lines - horizontal */
-            repeating-linear-gradient(
-                0deg,
-                transparent,
-                transparent 48px,
-                rgba(0, 255, 255, 0.3) 49px,
-                rgba(0, 255, 255, 0.1) 51px,
-                transparent 52px
-            ),
-            /* Laser grid lines - vertical */
-            repeating-linear-gradient(
-                90deg,
-                transparent,
-                transparent 48px,
-                rgba(0, 255, 255, 0.3) 49px,
-                rgba(0, 255, 255, 0.1) 51px,
-                transparent 52px
-            ),
-            /* Diagonal laser beams */
-            repeating-linear-gradient(
-                45deg,
-                transparent,
-                transparent 98px,
-                rgba(255, 0, 255, 0.2) 99px,
-                rgba(255, 0, 255, 0.1) 101px,
-                transparent 102px
-            ),
-            /* Cyber space depth gradient */
+            /* Smooth cyber space gradient */
             linear-gradient(135deg, 
                 rgba(0, 0, 20, 0.9) 0%, 
                 rgba(0, 20, 40, 0.7) 30%, 
                 rgba(20, 0, 40, 0.6) 60%, 
                 rgba(0, 40, 60, 0.5) 100%);
         z-index: 1;
-        animation: laserGridPulse 4s ease-in-out infinite;
+        animation: cleanCyberBackground 6s ease-in-out infinite;
     }
     
-    /* Laser grid pulsing animation */
-    @keyframes laserGridPulse {
+    /* Clean background pulsing animation */
+    @keyframes cleanCyberBackground {
         0%, 100% { 
-            opacity: 0.6;
-            transform: scale(1);
-        }
-        25% { 
-            opacity: 0.9;
-            transform: scale(1.02);
+            opacity: 0.8;
+            filter: brightness(1);
         }
         50% { 
-            opacity: 0.8;
-            transform: scale(1.05);
-        }
-        75% { 
-            opacity: 0.7;
-            transform: scale(1.03);
+            opacity: 0.9;
+            filter: brightness(1.1);
         }
     }
     
-    /* Audio-reactive laser grid intensification */
+    /* Audio-reactive background enhancement */
     .podcast-section.playing .ocean-wave-background {
-        animation: laserGridPulse 2s ease-in-out infinite,
-                   audioReactiveLasers 1.5s linear infinite;
+        animation: cleanCyberBackground 3s ease-in-out infinite,
+                   audioReactiveBackground 2s linear infinite;
     }
     
-    @keyframes audioReactiveLasers {
+    @keyframes audioReactiveBackground {
         0%, 100% { 
             filter: brightness(1) hue-rotate(0deg);
         }
         25% { 
-            filter: brightness(1.3) hue-rotate(90deg);
+            filter: brightness(1.2) hue-rotate(60deg);
         }
         50% { 
-            filter: brightness(1.5) hue-rotate(180deg);
+            filter: brightness(1.3) hue-rotate(120deg);
         }
         75% { 
-            filter: brightness(1.2) hue-rotate(270deg);
+            filter: brightness(1.1) hue-rotate(180deg);
         }
     }
     
