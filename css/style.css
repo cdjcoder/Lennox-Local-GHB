@@ -10289,3 +10289,11 @@ footer::after {
     @keyframes pulseDot { to { transform: scale(1); opacity: 0.6; box-shadow: 0 0 10px rgba(0, 69, 181, 0.4); } }
     @keyframes pulseLine { to { opacity: 0.3; height: 3px; box-shadow: 0 0 5px rgba(0, 69, 181, 0.2); } }
 }
+
+/* Desktop View Only - Hide duplicate marketing comparison content in expandable section */
+@media (min-width: 769px) {
+    /* Hide the duplicate Direct Marketing VS Indirect Marketing content on desktop */
+    #expandableContent .mobile-marketing-comparison {
+        display: none !important;
+    }
+}
