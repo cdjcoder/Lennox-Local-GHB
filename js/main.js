@@ -2311,10 +2311,14 @@ function initializePodcastPlayer() {
         }
     });
     
-    // Play/Pause functionality
+    // Play/Pause functionality with sparkle explosion
     playPauseBtn.addEventListener('click', function() {
         if (audio.paused) {
             console.log('Attempting to play audio...');
+            
+            // Create sparkle explosion when play button is first clicked
+            createSparkleExplosion(playPauseBtn);
+            
             const playPromise = audio.play();
             
             if (playPromise !== undefined) {
@@ -2437,6 +2441,9 @@ function initializePodcastPlayer() {
                 const mouseXPercent = (x / rect.width) * 100;
                 const mouseYPercent = (y / rect.height) * 100;
                 
+                // Create stardust trail that follows mouse cursor
+                createStardust(e.clientX, e.clientY);
+                
                 // Apply enhanced tilt during interaction
                 podcastCard.style.transform = `
                     perspective(1500px) 
@@ -2516,6 +2523,128 @@ function initializePodcastPlayer() {
     
     // Force load the audio
     audio.load();
+    
+    // Stardust Trail Function
+    function createStardust(x, y) {
+        const stardust = document.createElement('div');
+        stardust.className = 'stardust-particle';
+        stardust.style.cssText = `
+            position: fixed;
+            left: ${x}px;
+            top: ${y}px;
+            width: ${Math.random() * 4 + 2}px;
+            height: ${Math.random() * 4 + 2}px;
+            background: radial-gradient(circle, 
+                rgba(255, 255, 255, 1) 0%, 
+                rgba(255, 215, 0, 0.8) 30%, 
+                rgba(0, 255, 255, 0.6) 60%, 
+                transparent 100%);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9999;
+            animation: stardustFade 2s ease-out forwards;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+        `;
+        
+        document.body.appendChild(stardust);
+        
+        // Remove element after animation
+        setTimeout(() => {
+            if (stardust.parentNode) {
+                stardust.parentNode.removeChild(stardust);
+            }
+        }, 2000);
+    }
+    
+    // Sparkle Explosion Function
+    function createSparkleExplosion(element) {
+        const rect = element.getBoundingClientRect();
+        const centerX = rect.left + rect.width / 2;
+        const centerY = rect.top + rect.height / 2;
+        
+        // Create multiple sparkle particles
+        for (let i = 0; i < 20; i++) {
+            const sparkle = document.createElement('div');
+            sparkle.className = 'sparkle-particle';
+            
+            const angle = (Math.PI * 2 * i) / 20;
+            const distance = Math.random() * 100 + 50;
+            const size = Math.random() * 6 + 3;
+            
+            sparkle.style.cssText = `
+                position: fixed;
+                left: ${centerX}px;
+                top: ${centerY}px;
+                width: ${size}px;
+                height: ${size}px;
+                background: radial-gradient(circle, 
+                    rgba(255, 255, 255, 1) 0%, 
+                    rgba(255, 215, 0, 0.9) 25%, 
+                    rgba(255, 0, 255, 0.7) 50%, 
+                    rgba(0, 255, 255, 0.5) 75%, 
+                    transparent 100%);
+                border-radius: 50%;
+                pointer-events: none;
+                z-index: 9999;
+                animation: sparkleExplosion 1.5s ease-out forwards;
+                transform-origin: center;
+                box-shadow: 0 0 15px rgba(255, 255, 255, 0.9);
+            `;
+            
+            sparkle.style.setProperty('--angle', angle + 'rad');
+            sparkle.style.setProperty('--distance', distance + 'px');
+            
+            document.body.appendChild(sparkle);
+            
+            // Remove element after animation
+            setTimeout(() => {
+                if (sparkle.parentNode) {
+                    sparkle.parentNode.removeChild(sparkle);
+                }
+            }, 1500);
+        }
+    }
+    
+    // Add CSS animations for stardust and sparkles
+    const particleStyles = document.createElement('style');
+    particleStyles.textContent = `
+        @keyframes stardustFade {
+            0% {
+                opacity: 1;
+                transform: scale(1) translateY(0px);
+            }
+            50% {
+                opacity: 0.8;
+                transform: scale(1.2) translateY(-20px);
+            }
+            100% {
+                opacity: 0;
+                transform: scale(0.5) translateY(-40px);
+            }
+        }
+        
+        @keyframes sparkleExplosion {
+            0% {
+                opacity: 1;
+                transform: scale(1) translate(0px, 0px) rotate(0deg);
+            }
+            50% {
+                opacity: 0.8;
+                transform: scale(1.5) translate(
+                    calc(cos(var(--angle)) * var(--distance) * 0.5),
+                    calc(sin(var(--angle)) * var(--distance) * 0.5)
+                ) rotate(180deg);
+            }
+            100% {
+                opacity: 0;
+                transform: scale(0.2) translate(
+                    calc(cos(var(--angle)) * var(--distance)),
+                    calc(sin(var(--angle)) * var(--distance))
+                ) rotate(360deg);
+            }
+        }
+    `;
+    document.head.appendChild(particleStyles);
 }
 
 // Initialize podcast player for desktop only
