@@ -2446,4 +2446,11 @@ function initializePodcastPlayer() {
         playPauseBtn.disabled = false;
     });
 }
+
+// Initialize podcast player for desktop only
+document.addEventListener('DOMContentLoaded', function() {
+    if (window.innerWidth >= 768) {
+        initializePodcastPlayer();
+    }
+});
     
