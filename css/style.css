@@ -8092,7 +8092,7 @@ footer::after {
         }
     }
     
-    /* Clean Futuristic Background */
+    /* Enhanced Ocean Themed Background */
     .ocean-wave-background {
         position: absolute;
         top: 0;
@@ -8100,46 +8100,197 @@ footer::after {
         width: 100%;
         height: 100%;
         background: 
-            /* Smooth cyber space gradient */
+            /* Ocean depth gradient */
             linear-gradient(135deg, 
-                rgba(0, 0, 20, 0.9) 0%, 
-                rgba(0, 20, 40, 0.7) 30%, 
-                rgba(20, 0, 40, 0.6) 60%, 
-                rgba(0, 40, 60, 0.5) 100%);
+                rgba(0, 30, 60, 0.9) 0%, 
+                rgba(0, 60, 120, 0.7) 30%, 
+                rgba(20, 80, 140, 0.6) 60%, 
+                rgba(40, 120, 180, 0.5) 100%);
         z-index: 1;
-        animation: cleanCyberBackground 6s ease-in-out infinite;
+        animation: oceanDepthBackground 8s ease-in-out infinite;
+        overflow: hidden;
     }
     
-    /* Clean background pulsing animation */
-    @keyframes cleanCyberBackground {
+    /* Underwater light rays */
+    .ocean-wave-background::before {
+        content: '';
+        position: absolute;
+        top: -20%;
+        left: -20%;
+        width: 140%;
+        height: 140%;
+        background: 
+            /* Light ray beams */
+            linear-gradient(25deg, 
+                transparent 0%, 
+                transparent 20%, 
+                rgba(100, 200, 255, 0.1) 21%, 
+                rgba(100, 200, 255, 0.3) 22%, 
+                rgba(100, 200, 255, 0.1) 23%, 
+                transparent 24%, 
+                transparent 100%),
+            linear-gradient(35deg, 
+                transparent 0%, 
+                transparent 40%, 
+                rgba(150, 220, 255, 0.15) 41%, 
+                rgba(150, 220, 255, 0.25) 42%, 
+                rgba(150, 220, 255, 0.15) 43%, 
+                transparent 44%, 
+                transparent 100%),
+            linear-gradient(45deg, 
+                transparent 0%, 
+                transparent 60%, 
+                rgba(200, 240, 255, 0.1) 61%, 
+                rgba(200, 240, 255, 0.2) 62%, 
+                rgba(200, 240, 255, 0.1) 63%, 
+                transparent 64%, 
+                transparent 100%);
+        animation: underwaterLightRays 12s linear infinite;
+        z-index: 2;
+    }
+    
+    /* Underwater light rays animation */
+    @keyframes underwaterLightRays {
+        0% { 
+            transform: translateX(-30%) translateY(-30%) rotate(0deg);
+            opacity: 0.6;
+        }
+        50% { 
+            transform: translateX(30%) translateY(30%) rotate(180deg);
+            opacity: 0.9;
+        }
+        100% { 
+            transform: translateX(-30%) translateY(-30%) rotate(360deg);
+            opacity: 0.6;
+        }
+    }
+    
+    /* Sea creatures swimming */
+    .ocean-wave-background::after {
+        content: '🐠 🐟 🦑 🐙';
+        position: absolute;
+        top: 20%;
+        left: -20%;
+        width: 140%;
+        height: 60%;
+        font-size: 24px;
+        color: rgba(100, 200, 255, 0.4);
+        text-shadow: 0 0 10px rgba(100, 200, 255, 0.6);
+        animation: seaCreaturesSwimming 25s linear infinite;
+        z-index: 3;
+        pointer-events: none;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+    }
+    
+    /* Sea creatures swimming animation */
+    @keyframes seaCreaturesSwimming {
+        0% { 
+            transform: translateX(-100%) translateY(0px);
+            opacity: 0;
+        }
+        10% { 
+            opacity: 0.6;
+        }
+        50% { 
+            transform: translateX(50%) translateY(-20px);
+            opacity: 0.8;
+        }
+        90% { 
+            opacity: 0.6;
+        }
+        100% { 
+            transform: translateX(120%) translateY(20px);
+            opacity: 0;
+        }
+    }
+    
+    /* Ocean depth background animation */
+    @keyframes oceanDepthBackground {
         0%, 100% { 
             opacity: 0.8;
-            filter: brightness(1);
-        }
-        50% { 
-            opacity: 0.9;
-            filter: brightness(1.1);
-        }
-    }
-    
-    /* Audio-reactive background enhancement */
-    .podcast-section.playing .ocean-wave-background {
-        animation: cleanCyberBackground 3s ease-in-out infinite,
-                   audioReactiveBackground 2s linear infinite;
-    }
-    
-    @keyframes audioReactiveBackground {
-        0%, 100% { 
-            filter: brightness(1) hue-rotate(0deg);
+            filter: brightness(1) saturate(1);
         }
         25% { 
-            filter: brightness(1.2) hue-rotate(60deg);
+            opacity: 0.9;
+            filter: brightness(1.1) saturate(1.2);
         }
         50% { 
-            filter: brightness(1.3) hue-rotate(120deg);
+            opacity: 0.95;
+            filter: brightness(1.2) saturate(1.3);
         }
         75% { 
-            filter: brightness(1.1) hue-rotate(180deg);
+            opacity: 0.85;
+            filter: brightness(1.05) saturate(1.1);
+        }
+    }
+    
+    /* Tidal wave effect when audio starts */
+    .podcast-section.playing .ocean-wave-background {
+        animation: oceanDepthBackground 4s ease-in-out infinite,
+                   tidalWaveEffect 2s ease-out infinite;
+    }
+    
+    @keyframes tidalWaveEffect {
+        0% { 
+            transform: scale(1) translateY(0);
+            filter: brightness(1) hue-rotate(0deg);
+        }
+        30% { 
+            transform: scale(1.05) translateY(-10px);
+            filter: brightness(1.3) hue-rotate(30deg);
+        }
+        60% { 
+            transform: scale(1.02) translateY(-5px);
+            filter: brightness(1.4) hue-rotate(60deg);
+        }
+        100% { 
+            transform: scale(1) translateY(0);
+            filter: brightness(1.1) hue-rotate(90deg);
+        }
+    }
+    
+    /* Floating bubbles during audio playback */
+    .podcast-section.playing::before {
+        content: '○ ◯ ○ ◯ ○ ◯ ○ ◯ ○ ◯ ○ ◯ ○ ◯ ○ ◯';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        color: rgba(150, 220, 255, 0.6);
+        font-size: 16px;
+        text-shadow: 0 0 10px rgba(150, 220, 255, 0.8);
+        animation: floatingBubbles 8s linear infinite;
+        z-index: 4;
+        pointer-events: none;
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-around;
+        padding-bottom: 20px;
+    }
+    
+    @keyframes floatingBubbles {
+        0% { 
+            transform: translateY(0) scale(1);
+            opacity: 0.8;
+        }
+        25% { 
+            transform: translateY(-25%) scale(1.1);
+            opacity: 0.9;
+        }
+        50% { 
+            transform: translateY(-50%) scale(0.9);
+            opacity: 0.7;
+        }
+        75% { 
+            transform: translateY(-75%) scale(1.2);
+            opacity: 0.5;
+        }
+        100% { 
+            transform: translateY(-100%) scale(0.8);
+            opacity: 0;
         }
     }
     
@@ -8380,7 +8531,7 @@ footer::after {
         min-height: 60vh;
     }
     
-    /* Ambient Particle Effects Around Card */
+    /* Ocean Foam Particles Around Card Edges */
     .podcast-card-container::before {
         content: '';
         position: absolute;
@@ -8389,15 +8540,44 @@ footer::after {
         right: -50px;
         bottom: -50px;
         background-image: 
-            radial-gradient(circle at 10% 20%, rgba(255, 255, 255, 0.4) 1px, transparent 1px),
-            radial-gradient(circle at 80% 80%, rgba(186, 104, 200, 0.3) 1px, transparent 1px),
-            radial-gradient(circle at 40% 40%, rgba(255, 255, 255, 0.2) 1px, transparent 1px),
-            radial-gradient(circle at 90% 10%, rgba(171, 71, 188, 0.25) 1px, transparent 1px),
-            radial-gradient(circle at 20% 90%, rgba(255, 255, 255, 0.3) 1px, transparent 1px);
-        background-size: 100px 100px, 150px 150px, 80px 80px, 120px 120px, 200px 200px;
-        animation: ambientParticles 30s linear infinite;
+            /* Ocean foam bubbles */
+            radial-gradient(circle at 10% 20%, rgba(200, 240, 255, 0.6) 2px, transparent 2px),
+            radial-gradient(circle at 80% 80%, rgba(150, 220, 255, 0.5) 1.5px, transparent 1.5px),
+            radial-gradient(circle at 40% 40%, rgba(180, 230, 255, 0.4) 1px, transparent 1px),
+            radial-gradient(circle at 90% 10%, rgba(220, 245, 255, 0.7) 2.5px, transparent 2.5px),
+            radial-gradient(circle at 20% 90%, rgba(160, 210, 255, 0.5) 1.8px, transparent 1.8px),
+            /* Additional foam texture */
+            radial-gradient(circle at 60% 30%, rgba(190, 235, 255, 0.3) 1px, transparent 1px),
+            radial-gradient(circle at 30% 70%, rgba(170, 225, 255, 0.4) 1.2px, transparent 1.2px),
+            radial-gradient(circle at 70% 60%, rgba(210, 240, 255, 0.6) 1.5px, transparent 1.5px);
+        background-size: 120px 120px, 100px 100px, 80px 80px, 140px 140px, 110px 110px, 90px 90px, 130px 130px, 95px 95px;
+        animation: oceanFoamParticles 20s linear infinite;
         z-index: -1;
         pointer-events: none;
+    }
+    
+    /* Ocean foam particles animation */
+    @keyframes oceanFoamParticles {
+        0% { 
+            transform: rotate(0deg) translateY(0);
+            opacity: 0.7;
+        }
+        25% { 
+            transform: rotate(90deg) translateY(-10px);
+            opacity: 0.9;
+        }
+        50% { 
+            transform: rotate(180deg) translateY(-5px);
+            opacity: 0.8;
+        }
+        75% { 
+            transform: rotate(270deg) translateY(-15px);
+            opacity: 0.6;
+        }
+        100% { 
+            transform: rotate(360deg) translateY(0);
+            opacity: 0.7;
+        }
     }
     
     @keyframes ambientParticles {
@@ -8415,17 +8595,23 @@ footer::after {
         }
     }
     
-    /* Enhanced particles with gold sparkles during playback */
+    /* Enhanced ocean foam during playback */
     .podcast-section.playing .podcast-card-container::before {
-        animation-duration: 15s;
+        animation-duration: 10s;
         background-image: 
-            radial-gradient(circle at 10% 20%, rgba(255, 255, 255, 0.8) 2px, transparent 2px),
-            radial-gradient(circle at 80% 80%, rgba(255, 215, 0, 0.7) 2px, transparent 2px),
-            radial-gradient(circle at 40% 40%, rgba(255, 255, 255, 0.6) 1.5px, transparent 1.5px),
-            radial-gradient(circle at 90% 10%, rgba(218, 165, 32, 0.6) 2px, transparent 2px),
-            radial-gradient(circle at 20% 90%, rgba(255, 215, 0, 0.5) 1.5px, transparent 1.5px),
-            radial-gradient(circle at 60% 30%, rgba(255, 239, 148, 0.4) 1px, transparent 1px),
-            radial-gradient(circle at 30% 70%, rgba(255, 215, 0, 0.6) 1px, transparent 1px);
+            /* Intensified foam bubbles */
+            radial-gradient(circle at 10% 20%, rgba(200, 240, 255, 0.9) 3px, transparent 3px),
+            radial-gradient(circle at 80% 80%, rgba(150, 220, 255, 0.8) 2.5px, transparent 2.5px),
+            radial-gradient(circle at 40% 40%, rgba(180, 230, 255, 0.7) 2px, transparent 2px),
+            radial-gradient(circle at 90% 10%, rgba(220, 245, 255, 0.9) 3.5px, transparent 3.5px),
+            radial-gradient(circle at 20% 90%, rgba(160, 210, 255, 0.8) 2.8px, transparent 2.8px),
+            /* Additional active foam */
+            radial-gradient(circle at 60% 30%, rgba(190, 235, 255, 0.6) 2px, transparent 2px),
+            radial-gradient(circle at 30% 70%, rgba(170, 225, 255, 0.7) 2.2px, transparent 2.2px),
+            radial-gradient(circle at 70% 60%, rgba(210, 240, 255, 0.8) 2.5px, transparent 2.5px),
+            /* Extra bubbling effect */
+            radial-gradient(circle at 50% 20%, rgba(240, 250, 255, 0.5) 1.5px, transparent 1.5px),
+            radial-gradient(circle at 25% 50%, rgba(180, 220, 255, 0.6) 1.8px, transparent 1.8px);
     }
     
     /* 3D Holographic Floating Card */
@@ -8725,7 +8911,7 @@ footer::after {
         }
     }
     
-    /* Play/Pause Button Overlay with Gold Ripple Effect */
+    /* Water Ripples from Play Button */
     .audio-player-container::before {
         content: '';
         position: absolute;
@@ -8735,13 +8921,46 @@ footer::after {
         height: 80px;
         transform: translate(-50%, -50%);
         background: radial-gradient(circle, 
-            rgba(255, 215, 0, 0.1) 0%, 
-            rgba(218, 165, 32, 0.2) 50%, 
-            transparent 70%);
+            rgba(100, 200, 255, 0.2) 0%, 
+            rgba(150, 220, 255, 0.3) 30%, 
+            rgba(200, 240, 255, 0.1) 70%,
+            transparent 100%);
         border-radius: 50%;
-        animation: goldRippleEffect 3s ease-in-out infinite;
+        animation: waterRippleEffect 3s ease-in-out infinite;
         z-index: 0;
         pointer-events: none;
+    }
+    
+    /* Water ripple animation */
+    @keyframes waterRippleEffect {
+        0% { 
+            transform: translate(-50%, -50%) scale(0.8);
+            opacity: 0.8;
+            box-shadow: 
+                0 0 0 0 rgba(100, 200, 255, 0.4),
+                0 0 0 0 rgba(150, 220, 255, 0.3);
+        }
+        30% { 
+            transform: translate(-50%, -50%) scale(1.2);
+            opacity: 0.6;
+            box-shadow: 
+                0 0 0 10px rgba(100, 200, 255, 0.2),
+                0 0 0 20px rgba(150, 220, 255, 0.1);
+        }
+        60% { 
+            transform: translate(-50%, -50%) scale(1.8);
+            opacity: 0.3;
+            box-shadow: 
+                0 0 0 20px rgba(100, 200, 255, 0.1),
+                0 0 0 40px rgba(150, 220, 255, 0.05);
+        }
+        100% { 
+            transform: translate(-50%, -50%) scale(2.5);
+            opacity: 0;
+            box-shadow: 
+                0 0 0 30px rgba(100, 200, 255, 0),
+                0 0 0 60px rgba(150, 220, 255, 0);
+        }
     }
     
     @keyframes goldRippleEffect {
@@ -8759,16 +8978,29 @@ footer::after {
         }
     }
     
-    /* Enhanced gold ripple during playback */
+    /* Enhanced water ripple during playback */
     .podcast-section.playing .audio-player-container::before {
-        animation: goldRippleEffect 1.5s ease-in-out infinite,
-                   playingGoldRipple 2s ease-in-out infinite;
+        animation: waterRippleEffect 1s ease-in-out infinite,
+                   playingWaterRipple 1.5s ease-in-out infinite;
         background: radial-gradient(circle, 
-            rgba(255, 215, 0, 0.3) 0%, 
-            rgba(218, 165, 32, 0.4) 30%, 
-            rgba(255, 215, 0, 0.2) 60%,
-            rgba(255, 239, 148, 0.1) 80%,
+            rgba(100, 200, 255, 0.4) 0%, 
+            rgba(150, 220, 255, 0.5) 30%, 
+            rgba(200, 240, 255, 0.3) 60%,
+            rgba(240, 250, 255, 0.2) 80%,
             transparent 100%);
+    }
+    
+    @keyframes playingWaterRipple {
+        0%, 100% { 
+            box-shadow: 
+                0 0 0 0 rgba(100, 200, 255, 0.6),
+                0 0 0 0 rgba(150, 220, 255, 0.4);
+        }
+        50% { 
+            box-shadow: 
+                0 0 0 30px rgba(100, 200, 255, 0),
+                0 0 0 60px rgba(150, 220, 255, 0);
+        }
     }
     
     @keyframes playingGoldRipple {
