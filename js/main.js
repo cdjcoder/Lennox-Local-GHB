@@ -2430,13 +2430,28 @@ function initializePodcastPlayer() {
     // Error handling
     audio.addEventListener('error', function(e) {
         console.error('Audio error:', e);
+        console.error('Audio error details:', {
+            error: audio.error,
+            networkState: audio.networkState,
+            readyState: audio.readyState,
+            currentSrc: audio.currentSrc
+        });
         playPauseBtn.innerHTML = '<i class="fas fa-exclamation-triangle"></i>';
         playPauseBtn.disabled = true;
     });
     
-    // Loading state
+    // Loading state and debugging
     audio.addEventListener('loadstart', function() {
+        console.log('Audio load started');
         playPauseBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
+    });
+    
+    audio.addEventListener('loadeddata', function() {
+        console.log('Audio data loaded');
+    });
+    
+    audio.addEventListener('canplay', function() {
+        console.log('Audio can start playing');
     });
     
     audio.addEventListener('canplay', function() {
