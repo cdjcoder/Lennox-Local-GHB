@@ -2274,11 +2274,6 @@ document.addEventListener('DOMContentLoaded', function() {
     // Initialize Fourth Parallax Controller
     const parallaxController4 = new ParallaxController4();
     
-    // Podcast Player Functionality - Desktop Only (Targeted Addition)
-    if (window.innerWidth >= 768) {
-        initializePodcastPlayer();
-    }
-
 // Podcast Player Functions - Desktop Only
 function initializePodcastPlayer() {
     const audio = document.getElementById('podcast-audio');
@@ -2290,7 +2285,14 @@ function initializePodcastPlayer() {
     const volumeSlider = document.getElementById('volume-slider');
     const podcastSection = document.querySelector('.podcast-section');
     
-    if (!audio || !playPauseBtn) return;
+    if (!audio || !playPauseBtn) {
+        console.error('Podcast audio elements not found');
+        return;
+    }
+    
+    console.log('Initializing podcast player...');
+    console.log('Audio element:', audio);
+    console.log('Audio source:', audio.src || audio.currentSrc);
     
     // Set initial volume
     audio.volume = 0.5;
@@ -2312,9 +2314,31 @@ function initializePodcastPlayer() {
     // Play/Pause functionality
     playPauseBtn.addEventListener('click', function() {
         if (audio.paused) {
-            audio.play().catch(function(error) {
-                console.error('Error playing audio:', error);
-            });
+            console.log('Attempting to play audio...');
+            const playPromise = audio.play();
+            
+            if (playPromise !== undefined) {
+                playPromise.then(function() {
+                    console.log('Audio started playing successfully');
+                }).catch(function(error) {
+                    console.error('Error playing audio:', error);
+                    console.error('Error details:', {
+                        name: error.name,
+                        message: error.message,
+                        code: error.code
+                    });
+                    
+                    // Show user-friendly error
+                    playPauseBtn.innerHTML = '<i class="fas fa-exclamation-triangle"></i>';
+                    
+                    // Try to reload and play again after a brief delay
+                    setTimeout(function() {
+                        audio.load();
+                        playPauseBtn.innerHTML = '<i class="fas fa-play"></i>';
+                        playPauseBtn.disabled = false;
+                    }, 2000);
+                });
+            }
         } else {
             audio.pause();
         }
@@ -2444,6 +2468,7 @@ function initializePodcastPlayer() {
     audio.addEventListener('loadstart', function() {
         console.log('Audio load started');
         playPauseBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
+        playPauseBtn.disabled = true;
     });
     
     audio.addEventListener('loadeddata', function() {
@@ -2452,14 +2477,14 @@ function initializePodcastPlayer() {
     
     audio.addEventListener('canplay', function() {
         console.log('Audio can start playing');
-    });
-    
-    audio.addEventListener('canplay', function() {
         if (audio.paused) {
             playPauseBtn.innerHTML = '<i class="fas fa-play"></i>';
         }
         playPauseBtn.disabled = false;
     });
+    
+    // Force load the audio
+    audio.load();
 }
 
 // Initialize podcast player for desktop only
