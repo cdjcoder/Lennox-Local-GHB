@@ -7209,9 +7209,8 @@ footer::after {
         position: relative !important;
     }
     
-    /* Ensure Step 2 Complete Application buttons are fully clickable on mobile */
-    #complete-application-btn,
-    #complete-application-btn-es {
+    /* Ensure Step 2 Complete Application button is fully clickable on mobile */
+    #complete-application-btn {
         cursor: pointer !important;
         pointer-events: auto !important;
         touch-action: manipulation !important; /* Optimize for touch */
@@ -7224,11 +7223,15 @@ footer::after {
     }
     
     /* Ensure enabled state is fully clickable */
-    #complete-application-btn:not([disabled]),
-    #complete-application-btn-es:not([disabled]) {
+    #complete-application-btn:not([disabled]) {
         cursor: pointer !important;
         pointer-events: auto !important;
         opacity: 1 !important;
+    }
+    
+    /* Ensure text spans inside button don't interfere with clicks */
+    #complete-application-btn span {
+        pointer-events: none !important;
     }
     
     /* Ensure wrapper doesn't interfere */

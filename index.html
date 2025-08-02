@@ -5998,8 +5998,8 @@ Es comprobado, asequible, exclusivo, y diseñado para máxima exposición. Asegu
                                 cursor: not-allowed;
                             "></div>
                             
-                            <!-- English button -->
-                            <button id="complete-application-btn" class="en" onclick="showCustomSuccessPage()" disabled style="
+                            <!-- Single Universal Button -->
+                            <button id="complete-application-btn" onclick="showCustomSuccessPage()" disabled style="
                                 display: inline-block;
                                 padding: 15px 35px;
                                 background: #ccc;
@@ -6016,28 +6016,8 @@ Es comprobado, asequible, exclusivo, y diseñado para máxima exposición. Asegu
                                 pointer-events: none;
                             ">
                                 <i class="fas fa-lock" style="margin-right: 8px;"></i>
-                                Complete Application (Locked)
-                            </button>
-                            
-                            <!-- Spanish button -->
-                            <button id="complete-application-btn-es" class="es" onclick="showCustomSuccessPage()" disabled style="
-                                display: none;
-                                padding: 15px 35px;
-                                background: #ccc;
-                                color: #888;
-                                font-size: 16px;
-                                font-weight: 600;
-                                text-decoration: none;
-                                border-radius: 8px;
-                                border: none;
-                                box-shadow: none;
-                                transition: all 0.3s ease;
-                                cursor: not-allowed;
-                                opacity: 0.6;
-                                pointer-events: none;
-                            ">
-                                <i class="fas fa-lock" style="margin-right: 8px;"></i>
-                                Completar Solicitud (Bloqueado)
+                                <span class="en">Complete Application (Locked)</span>
+                                <span class="es" style="display: none;">Completar Solicitud (Bloqueado)</span>
                             </button>
                         </div>
                     </div>
@@ -6217,43 +6197,23 @@ Es comprobado, asequible, exclusivo, y diseñado para máxima exposición. Asegu
                     completeBtn.style.boxShadow = '0 4px 12px rgba(0,0,0,0.15)';
                     completeBtn.style.pointerEvents = 'auto';
                     
-                    // Update button text based on language
+                    // Update button text content based on language
                     const isSpanish = document.body.classList.contains('spanish');
                     if (isSpanish) {
-                        document.getElementById('complete-application-btn').style.display = 'none';
-                        document.getElementById('complete-application-btn-es').style.display = 'inline-block';
-                        document.getElementById('complete-application-btn-es').disabled = false;
-                        document.getElementById('complete-application-btn-es').style.background = 'linear-gradient(45deg, #d4af37, #f5d76e)';
-                        document.getElementById('complete-application-btn-es').style.color = 'white';
-                        document.getElementById('complete-application-btn-es').style.cursor = 'pointer';
-                        document.getElementById('complete-application-btn-es').style.opacity = '1';
-                        document.getElementById('complete-application-btn-es').style.boxShadow = '0 4px 12px rgba(0,0,0,0.15)';
-                        document.getElementById('complete-application-btn-es').style.pointerEvents = 'auto';
-                        document.getElementById('complete-application-btn-es').innerHTML = '<i class="fas fa-check-circle" style="margin-right: 8px;"></i>Completar Solicitud';
-                        
-                        // Add hover effects for Spanish button
-                        const completeBtn_es = document.getElementById('complete-application-btn-es');
-                        completeBtn_es.onmouseover = function() {
-                            this.style.transform = 'translateY(-2px)';
-                            this.style.boxShadow = '0 6px 20px rgba(212, 175, 55, 0.4)';
-                        };
-                        completeBtn_es.onmouseout = function() {
-                            this.style.transform = 'translateY(0)';
-                            this.style.boxShadow = '0 4px 12px rgba(0,0,0,0.15)';
-                        };
+                        completeBtn.innerHTML = '<i class="fas fa-check-circle" style="margin-right: 8px;"></i><span class="en" style="display: none;">Complete Application</span><span class="es">Completar Solicitud</span>';
                     } else {
-                        completeBtn.innerHTML = '<i class="fas fa-check-circle" style="margin-right: 8px;"></i>Complete Application';
-                        
-                        // Add hover effects for English button
-                        completeBtn.onmouseover = function() {
-                            this.style.transform = 'translateY(-2px)';
-                            this.style.boxShadow = '0 6px 20px rgba(212, 175, 55, 0.4)';
-                        };
-                        completeBtn.onmouseout = function() {
-                            this.style.transform = 'translateY(0)';
-                            this.style.boxShadow = '0 4px 12px rgba(0,0,0,0.15)';
-                        };
+                        completeBtn.innerHTML = '<i class="fas fa-check-circle" style="margin-right: 8px;"></i><span class="en">Complete Application</span><span class="es" style="display: none;">Completar Solicitud</span>';
                     }
+                    
+                    // Add hover effects for the single button
+                    completeBtn.onmouseover = function() {
+                        this.style.transform = 'translateY(-2px)';
+                        this.style.boxShadow = '0 6px 20px rgba(212, 175, 55, 0.4)';
+                    };
+                    completeBtn.onmouseout = function() {
+                        this.style.transform = 'translateY(0)';
+                        this.style.boxShadow = '0 4px 12px rgba(0,0,0,0.15)';
+                    };
                     
                     console.log('Complete Application button enabled');
                 }
