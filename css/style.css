@@ -7786,6 +7786,18 @@ footer::after {
         border-radius: 8px !important;
         font-weight: 600 !important;
         box-shadow: 0 3px 8px rgba(231, 76, 60, 0.3) !important;
+        cursor: pointer !important; /* Ensure clickable cursor */
+        pointer-events: auto !important; /* Ensure button is clickable */
+        text-decoration: none !important; /* Remove underline */
+        transition: all 0.3s ease !important; /* Smooth hover transition */
+    }
+    
+    /* Hover effect for the red button */
+    .pricing-card:first-child .pricing-action .btn:hover,
+    .pricing-card:first-child .pricing-action a.btn:hover {
+        background: linear-gradient(135deg, #c0392b 0%, #a93226 100%) !important; /* Darker red on hover */
+        transform: translateY(-2px) !important;
+        box-shadow: 0 5px 12px rgba(231, 76, 60, 0.4) !important;
     }
     
     /* FORCE gold background on the text div specifically */
@@ -7809,6 +7821,15 @@ footer::after {
         color: #ffffff !important; /* White text */
         text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5) !important; /* Strong shadow */
         font-weight: 600 !important; /* Bold text */
+        pointer-events: none !important; /* Let clicks pass through to parent button */
+    }
+    
+    /* Ensure button text inside red button is clickable */
+    .pricing-card:first-child .pricing-action .btn span,
+    .pricing-card:first-child .pricing-action a.btn span {
+        pointer-events: none !important; /* Let clicks pass through to parent button */
+        color: #ffffff !important; /* White text on red button */
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5) !important;
     }
     
     /* Hide the original text in the $485 pricing card since we're creating a separate element */
