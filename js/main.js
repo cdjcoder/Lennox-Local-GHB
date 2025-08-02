@@ -2274,9 +2274,10 @@ document.addEventListener('DOMContentLoaded', function() {
     // Initialize Fourth Parallax Controller
     const parallaxController4 = new ParallaxController4();
     
-// Podcast Player Functions - Desktop Only
+// Podcast Player Functions - Desktop Only with Language Support
 function initializePodcastPlayer() {
-    const audio = document.getElementById('podcast-audio');
+    const audioEn = document.getElementById('podcast-audio-en');
+    const audioEs = document.getElementById('podcast-audio-es');
     const playPauseBtn = document.getElementById('play-pause-btn');
     const progressBar = document.querySelector('.progress-bar');
     const progressFill = document.querySelector('.progress-fill');
@@ -2285,17 +2286,34 @@ function initializePodcastPlayer() {
     const volumeSlider = document.getElementById('volume-slider');
     const podcastSection = document.querySelector('.podcast-section');
     
-    if (!audio || !playPauseBtn) {
+    if (!audioEn || !audioEs || !playPauseBtn) {
         console.error('Podcast audio elements not found');
         return;
     }
     
-    console.log('Initializing podcast player...');
-    console.log('Audio element:', audio);
-    console.log('Audio source:', audio.src || audio.currentSrc);
+    // Function to get the current active audio based on language
+    function getCurrentAudio() {
+        const isSpanish = document.body.classList.contains('spanish');
+        return isSpanish ? audioEs : audioEn;
+    }
     
-    // Set initial volume
-    audio.volume = 0.5;
+    // Function to pause the inactive audio
+    function pauseInactiveAudio() {
+        const isSpanish = document.body.classList.contains('spanish');
+        const inactiveAudio = isSpanish ? audioEn : audioEs;
+        if (!inactiveAudio.paused) {
+            inactiveAudio.pause();
+            inactiveAudio.currentTime = 0;
+        }
+    }
+    
+    console.log('Initializing podcast player...');
+    console.log('English Audio element:', audioEn);
+    console.log('Spanish Audio element:', audioEs);
+    
+    // Set initial volume for both audio elements
+    audioEn.volume = 0.5;
+    audioEs.volume = 0.5;
     
     // Format time helper function
     function formatTime(seconds) {
@@ -2304,17 +2322,31 @@ function initializePodcastPlayer() {
         return `${minutes}:${remainingSeconds.toString().padStart(2, '0')}`;
     }
     
-    // Update duration when metadata loads
-    audio.addEventListener('loadedmetadata', function() {
-        if (durationSpan) {
+    // Update duration when metadata loads for both audio elements
+    function updateDuration(audio) {
+        if (durationSpan && audio === getCurrentAudio()) {
             durationSpan.textContent = formatTime(audio.duration);
         }
+    }
+    
+    audioEn.addEventListener('loadedmetadata', function() {
+        updateDuration(audioEn);
     });
     
-    // Play/Pause functionality with sparkle explosion
+    audioEs.addEventListener('loadedmetadata', function() {
+        updateDuration(audioEs);
+    });
+    
+    // Play/Pause functionality with sparkle explosion and language support
     playPauseBtn.addEventListener('click', function() {
+        const audio = getCurrentAudio();
+        
         if (audio.paused) {
             console.log('Attempting to play audio...');
+            console.log('Current language audio:', audio.id);
+            
+            // Pause the inactive audio first
+            pauseInactiveAudio();
             
             // Create sparkle explosion when play button is first clicked
             createSparkleExplosion(playPauseBtn);
@@ -2348,93 +2380,126 @@ function initializePodcastPlayer() {
         }
     });
     
-    // Update play button and add playing class
-    audio.addEventListener('play', function() {
-        playPauseBtn.innerHTML = '<i class="fas fa-pause"></i>';
-        playPauseBtn.classList.add('playing');
-        if (podcastSection) {
-            podcastSection.classList.add('playing');
-        }
-        
-        // Pause background music when podcast starts playing
-        const backgroundMusic = document.getElementById('background-music');
-        if (backgroundMusic && !backgroundMusic.paused) {
-            backgroundMusic.pause();
-            console.log('Background music paused - podcast is now playing');
-            
-            // Store that we paused the background music
-            audio.backgroundMusicWasPaused = true;
-        }
-    });
-    
-    audio.addEventListener('pause', function() {
-        playPauseBtn.innerHTML = '<i class="fas fa-play"></i>';
-        playPauseBtn.classList.remove('playing');
-        if (podcastSection) {
-            podcastSection.classList.remove('playing');
-        }
-        
-        // Optionally resume background music when podcast is paused
-        const backgroundMusic = document.getElementById('background-music');
-        if (backgroundMusic && audio.backgroundMusicWasPaused) {
-            // Small delay to avoid audio conflicts
-            setTimeout(() => {
-                const playPromise = backgroundMusic.play();
-                if (playPromise !== undefined) {
-                    playPromise.then(() => {
-                        console.log('Background music resumed after podcast pause');
-                        audio.backgroundMusicWasPaused = false;
-                    }).catch(error => {
-                        console.log('Could not resume background music:', error);
-                    });
+    // Function to add event listeners to both audio elements
+    function addAudioEventListeners(audio) {
+        // Update play button and add playing class
+        audio.addEventListener('play', function() {
+            // Only update UI if this is the current active audio
+            if (audio === getCurrentAudio()) {
+                playPauseBtn.innerHTML = '<i class="fas fa-pause"></i>';
+                playPauseBtn.classList.add('playing');
+                if (podcastSection) {
+                    podcastSection.classList.add('playing');
                 }
-            }, 500);
-        }
-    });
-    
-    audio.addEventListener('ended', function() {
-        playPauseBtn.innerHTML = '<i class="fas fa-play"></i>';
-        playPauseBtn.classList.remove('playing');
-        if (podcastSection) {
-            podcastSection.classList.remove('playing');
-        }
-        if (progressFill) {
-            progressFill.style.width = '0%';
-        }
-        if (currentTimeSpan) {
-            currentTimeSpan.textContent = '0:00';
-        }
-        
-        // Resume background music when podcast ends
-        const backgroundMusic = document.getElementById('background-music');
-        if (backgroundMusic && audio.backgroundMusicWasPaused) {
-            // Small delay to avoid audio conflicts
-            setTimeout(() => {
-                const playPromise = backgroundMusic.play();
-                if (playPromise !== undefined) {
-                    playPromise.then(() => {
-                        console.log('Background music resumed after podcast ended');
-                        audio.backgroundMusicWasPaused = false;
-                    }).catch(error => {
-                        console.log('Could not resume background music:', error);
-                    });
+                
+                // Pause background music when podcast starts playing
+                const backgroundMusic = document.getElementById('background-music');
+                if (backgroundMusic && !backgroundMusic.paused) {
+                    backgroundMusic.pause();
+                    console.log('Background music paused - podcast is now playing');
+                    
+                    // Store that we paused the background music on both audio elements
+                    audioEn.backgroundMusicWasPaused = true;
+                    audioEs.backgroundMusicWasPaused = true;
                 }
-            }, 500);
-        }
-    });
+            }
+        });
     
-    // Update progress bar and time
-    audio.addEventListener('timeupdate', function() {
+        audio.addEventListener('pause', function() {
+            // Only update UI if this is the current active audio
+            if (audio === getCurrentAudio()) {
+                playPauseBtn.innerHTML = '<i class="fas fa-play"></i>';
+                playPauseBtn.classList.remove('playing');
+                if (podcastSection) {
+                    podcastSection.classList.remove('playing');
+                }
+                
+                // Optionally resume background music when podcast is paused
+                const backgroundMusic = document.getElementById('background-music');
+                if (backgroundMusic && (audioEn.backgroundMusicWasPaused || audioEs.backgroundMusicWasPaused)) {
+                    // Small delay to avoid audio conflicts
+                    setTimeout(() => {
+                        const playPromise = backgroundMusic.play();
+                        if (playPromise !== undefined) {
+                            playPromise.then(() => {
+                                console.log('Background music resumed after podcast pause');
+                                audioEn.backgroundMusicWasPaused = false;
+                                audioEs.backgroundMusicWasPaused = false;
+                            }).catch(error => {
+                                console.log('Could not resume background music:', error);
+                            });
+                        }
+                    }, 500);
+                }
+            }
+        });
+    
+        audio.addEventListener('ended', function() {
+            // Only update UI if this is the current active audio
+            if (audio === getCurrentAudio()) {
+                playPauseBtn.innerHTML = '<i class="fas fa-play"></i>';
+                playPauseBtn.classList.remove('playing');
+                if (podcastSection) {
+                    podcastSection.classList.remove('playing');
+                }
+                if (progressFill) {
+                    progressFill.style.width = '0%';
+                }
+                if (currentTimeSpan) {
+                    currentTimeSpan.textContent = '0:00';
+                }
+                
+                // Resume background music when podcast ends
+                const backgroundMusic = document.getElementById('background-music');
+                if (backgroundMusic && (audioEn.backgroundMusicWasPaused || audioEs.backgroundMusicWasPaused)) {
+                    // Small delay to avoid audio conflicts
+                    setTimeout(() => {
+                        const playPromise = backgroundMusic.play();
+                        if (playPromise !== undefined) {
+                            playPromise.then(() => {
+                                console.log('Background music resumed after podcast ended');
+                                audioEn.backgroundMusicWasPaused = false;
+                                audioEs.backgroundMusicWasPaused = false;
+                            }).catch(error => {
+                                console.log('Could not resume background music:', error);
+                            });
+                        }
+                    }, 500);
+                }
+            }
+        });
+    }
+    
+    // Add event listeners to both audio elements
+    addAudioEventListeners(audioEn);
+    addAudioEventListeners(audioEs);
+    
+    // Update progress bar and time - for current active audio only
+    function updateProgress() {
+        const audio = getCurrentAudio();
         if (audio.duration && progressFill && currentTimeSpan) {
             const progress = (audio.currentTime / audio.duration) * 100;
             progressFill.style.width = progress + '%';
             currentTimeSpan.textContent = formatTime(audio.currentTime);
+        }
+    }
+    
+    audioEn.addEventListener('timeupdate', function() {
+        if (audioEn === getCurrentAudio()) {
+            updateProgress();
+        }
+    });
+    
+    audioEs.addEventListener('timeupdate', function() {
+        if (audioEs === getCurrentAudio()) {
+            updateProgress();
         }
     });
     
     // Click on progress bar to seek
     if (progressBar) {
         progressBar.addEventListener('click', function(e) {
+            const audio = getCurrentAudio();
             if (audio.duration) {
                 const rect = progressBar.getBoundingClientRect();
                 const clickX = e.clientX - rect.left;
@@ -2445,17 +2510,19 @@ function initializePodcastPlayer() {
         });
     }
     
-    // Volume control
+    // Volume control - affects both audio elements
     if (volumeSlider) {
         volumeSlider.addEventListener('input', function() {
-            audio.volume = this.value / 100;
+            const volume = this.value / 100;
+            audioEn.volume = volume;
+            audioEs.volume = volume;
             
             // Update volume icon based on level
             const volumeIcon = document.querySelector('.volume-control i');
             if (volumeIcon) {
-                if (audio.volume === 0) {
+                if (volume === 0) {
                     volumeIcon.className = 'fas fa-volume-mute';
-                } else if (audio.volume < 0.5) {
+                } else if (volume < 0.5) {
                     volumeIcon.className = 'fas fa-volume-down';
                 } else {
                     volumeIcon.className = 'fas fa-volume-up';
@@ -2535,56 +2602,76 @@ function initializePodcastPlayer() {
         });
     }
     
-    // Error handling
-    audio.addEventListener('error', function(e) {
-        console.error('Audio error:', e);
-        console.error('Audio error details:', {
-            error: audio.error,
-            networkState: audio.networkState,
-            readyState: audio.readyState,
-            currentSrc: audio.currentSrc
-        });
-        playPauseBtn.innerHTML = '<i class="fas fa-exclamation-triangle"></i>';
-        playPauseBtn.disabled = true;
-        
-        // Resume background music if podcast fails to load
-        const backgroundMusic = document.getElementById('background-music');
-        if (backgroundMusic && audio.backgroundMusicWasPaused) {
-            setTimeout(() => {
-                const playPromise = backgroundMusic.play();
-                if (playPromise !== undefined) {
-                    playPromise.then(() => {
-                        console.log('Background music resumed after podcast error');
-                        audio.backgroundMusicWasPaused = false;
-                    }).catch(error => {
-                        console.log('Could not resume background music after error:', error);
-                    });
+    // Error handling for both audio elements
+    function addErrorHandling(audio) {
+        audio.addEventListener('error', function(e) {
+            console.error('Audio error:', e);
+            console.error('Audio error details:', {
+                error: audio.error,
+                networkState: audio.networkState,
+                readyState: audio.readyState,
+                currentSrc: audio.currentSrc
+            });
+            
+            // Only show error if this is the current active audio
+            if (audio === getCurrentAudio()) {
+                playPauseBtn.innerHTML = '<i class="fas fa-exclamation-triangle"></i>';
+                playPauseBtn.disabled = true;
+                
+                // Resume background music if podcast fails to load
+                const backgroundMusic = document.getElementById('background-music');
+                if (backgroundMusic && (audioEn.backgroundMusicWasPaused || audioEs.backgroundMusicWasPaused)) {
+                    setTimeout(() => {
+                        const playPromise = backgroundMusic.play();
+                        if (playPromise !== undefined) {
+                            playPromise.then(() => {
+                                console.log('Background music resumed after podcast error');
+                                audioEn.backgroundMusicWasPaused = false;
+                                audioEs.backgroundMusicWasPaused = false;
+                            }).catch(error => {
+                                console.log('Could not resume background music after error:', error);
+                            });
+                        }
+                    }, 500);
                 }
-            }, 500);
-        }
-    });
+            }
+        });
+    }
     
-    // Loading state and debugging
-    audio.addEventListener('loadstart', function() {
-        console.log('Audio load started');
-        playPauseBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
-        playPauseBtn.disabled = true;
-    });
+    addErrorHandling(audioEn);
+    addErrorHandling(audioEs);
     
-    audio.addEventListener('loadeddata', function() {
-        console.log('Audio data loaded');
-    });
+    // Loading state and debugging for both audio elements
+    function addLoadingHandlers(audio) {
+        audio.addEventListener('loadstart', function() {
+            console.log('Audio load started:', audio.id);
+            if (audio === getCurrentAudio()) {
+                playPauseBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
+                playPauseBtn.disabled = true;
+            }
+        });
+        
+        audio.addEventListener('loadeddata', function() {
+            console.log('Audio data loaded:', audio.id);
+        });
+        
+        audio.addEventListener('canplay', function() {
+            console.log('Audio can start playing:', audio.id);
+            if (audio === getCurrentAudio()) {
+                if (audio.paused) {
+                    playPauseBtn.innerHTML = '<i class="fas fa-play"></i>';
+                }
+                playPauseBtn.disabled = false;
+            }
+        });
+    }
     
-    audio.addEventListener('canplay', function() {
-        console.log('Audio can start playing');
-        if (audio.paused) {
-            playPauseBtn.innerHTML = '<i class="fas fa-play"></i>';
-        }
-        playPauseBtn.disabled = false;
-    });
+    addLoadingHandlers(audioEn);
+    addLoadingHandlers(audioEs);
     
-    // Force load the audio
-    audio.load();
+    // Force load both audio files
+    audioEn.load();
+    audioEs.load();
     
     // Stardust Trail Function
     function createStardust(x, y) {
@@ -2711,27 +2798,37 @@ function initializePodcastPlayer() {
 
 // Global function to pause podcast and resume background music
 window.pausePodcastAndResumeBackgroundMusic = function() {
-    const podcastAudio = document.getElementById('podcast-audio');
+    const podcastAudioEn = document.getElementById('podcast-audio-en');
+    const podcastAudioEs = document.getElementById('podcast-audio-es');
     const backgroundMusic = document.getElementById('background-music');
     
-    if (podcastAudio && !podcastAudio.paused) {
-        podcastAudio.pause();
-        console.log('Podcast paused by global function');
-        
-        // Resume background music
-        if (backgroundMusic && podcastAudio.backgroundMusicWasPaused) {
-            setTimeout(() => {
-                const playPromise = backgroundMusic.play();
-                if (playPromise !== undefined) {
-                    playPromise.then(() => {
-                        console.log('Background music resumed by global function');
-                        podcastAudio.backgroundMusicWasPaused = false;
-                    }).catch(error => {
-                        console.log('Could not resume background music via global function:', error);
-                    });
-                }
-            }, 300);
-        }
+    // Pause both audio elements
+    let audioPaused = false;
+    if (podcastAudioEn && !podcastAudioEn.paused) {
+        podcastAudioEn.pause();
+        audioPaused = true;
+        console.log('English podcast paused by global function');
+    }
+    if (podcastAudioEs && !podcastAudioEs.paused) {
+        podcastAudioEs.pause();
+        audioPaused = true;
+        console.log('Spanish podcast paused by global function');
+    }
+    
+    // Resume background music if any podcast was paused
+    if (audioPaused && backgroundMusic && (podcastAudioEn?.backgroundMusicWasPaused || podcastAudioEs?.backgroundMusicWasPaused)) {
+        setTimeout(() => {
+            const playPromise = backgroundMusic.play();
+            if (playPromise !== undefined) {
+                playPromise.then(() => {
+                    console.log('Background music resumed by global function');
+                    if (podcastAudioEn) podcastAudioEn.backgroundMusicWasPaused = false;
+                    if (podcastAudioEs) podcastAudioEs.backgroundMusicWasPaused = false;
+                }).catch(error => {
+                    console.log('Could not resume background music via global function:', error);
+                });
+            }
+        }, 300);
     }
 };
 
