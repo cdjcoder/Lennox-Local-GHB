@@ -2416,7 +2416,7 @@ function initializePodcastPlayer() {
         });
     }
     
-    // Enhanced 3D tilt effect on mouse move
+    // Enhanced 3D tilt effect and rainbow iridescent edge shift on mouse move
     const podcastCard = document.querySelector('.podcast-card');
     const cardContainer = document.querySelector('.podcast-card-container');
     
@@ -2433,21 +2433,52 @@ function initializePodcastPlayer() {
                 const rotateX = (y - centerY) / 15;
                 const rotateY = (centerX - x) / 15;
                 
+                // Calculate mouse position as percentage
+                const mouseXPercent = (x / rect.width) * 100;
+                const mouseYPercent = (y / rect.height) * 100;
+                
                 // Apply enhanced tilt during interaction
                 podcastCard.style.transform = `
-                    perspective(1000px) 
+                    perspective(1500px) 
                     rotateX(${rotateX}deg) 
                     rotateY(${rotateY}deg) 
-                    scale(1.02)
+                    scale(1.03)
+                    translateZ(20px)
                 `;
                 podcastCard.style.transition = 'transform 0.1s ease';
+                
+                // Dynamically shift rainbow iridescent edges based on mouse position
+                const cardBefore = podcastCard.querySelector('::before');
+                if (cardBefore) {
+                    cardBefore.style.backgroundPosition = `${mouseXPercent}% ${mouseYPercent}%, ${100 - mouseXPercent}% ${100 - mouseYPercent}%`;
+                }
+                
+                // Create dynamic CSS for pseudo-element
+                const dynamicStyle = document.getElementById('dynamic-podcast-style') || document.createElement('style');
+                dynamicStyle.id = 'dynamic-podcast-style';
+                dynamicStyle.textContent = `
+                    .podcast-card::before {
+                        background-position: ${mouseXPercent}% ${mouseYPercent}%, ${100 - mouseXPercent}% ${100 - mouseYPercent}% !important;
+                        transform: rotate(${(mouseXPercent - 50) * 0.5}deg) scale(${1 + (mouseYPercent - 50) * 0.002}) !important;
+                        opacity: ${0.8 + (mouseYPercent / 100) * 0.2} !important;
+                    }
+                `;
+                if (!document.getElementById('dynamic-podcast-style')) {
+                    document.head.appendChild(dynamicStyle);
+                }
             }
         });
         
         cardContainer.addEventListener('mouseleave', function() {
             // Reset to default animation
             podcastCard.style.transform = '';
-            podcastCard.style.transition = 'all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
+            podcastCard.style.transition = 'all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
+            
+            // Remove dynamic styling
+            const dynamicStyle = document.getElementById('dynamic-podcast-style');
+            if (dynamicStyle) {
+                dynamicStyle.remove();
+            }
         });
     }
     
