@@ -8023,7 +8023,7 @@ footer::after {
     @keyframes bounce { to { transform: translateY(0); } }
 }
 
-/* Podcast Section - Desktop Only with 3D Effects and Ocean Wave Animation */
+/* Podcast Section - Desktop Only with Performance Optimizations */
 @media (min-width: 768px) {
     .podcast-section {
         display: block !important;
@@ -8037,7 +8037,22 @@ footer::after {
             #64b5f6 100%);
         overflow: hidden;
         min-height: 100vh;
-        animation: oceanBackgroundFlow 20s ease-in-out infinite;
+        animation: oceanBackgroundFlow 30s ease-in-out infinite;
+        /* Performance optimizations */
+        contain: layout style paint;
+        will-change: auto;
+    }
+    
+    /* Reduce animations when not in viewport or when user prefers reduced motion */
+    @media (prefers-reduced-motion: reduce) {
+        .podcast-section,
+        .podcast-section *,
+        .podcast-section *::before,
+        .podcast-section *::after {
+            animation-duration: 0.01ms !important;
+            animation-iteration-count: 1 !important;
+            transition-duration: 0.01ms !important;
+        }
     }
     
     @keyframes oceanBackgroundFlow {
@@ -8151,43 +8166,29 @@ footer::after {
         transform: translateZ(-50px);
     }
     
-    /* Aurora Borealis Effect with Flowing Colored Lights */
+    /* Simplified Aurora Effect - Performance Optimized */
     .podcast-section::before {
         content: '';
         position: absolute;
-        top: -20%;
-        left: -20%;
-        width: 140%;
-        height: 140%;
+        top: -10%;
+        left: -10%;
+        width: 120%;
+        height: 120%;
         background: 
-            /* Aurora flowing lights */
+            /* Simplified aurora with single gradient */
             linear-gradient(120deg, 
                 transparent 0%, 
-                rgba(0, 255, 128, 0.4) 15%, 
-                rgba(0, 255, 255, 0.6) 25%, 
-                rgba(128, 0, 255, 0.5) 35%, 
-                rgba(255, 0, 128, 0.4) 45%, 
-                transparent 55%),
-            linear-gradient(60deg, 
-                transparent 0%, 
-                rgba(255, 128, 0, 0.3) 20%, 
-                rgba(255, 255, 0, 0.5) 30%, 
-                rgba(0, 255, 200, 0.4) 40%, 
-                rgba(200, 0, 255, 0.3) 50%, 
-                transparent 60%),
-            linear-gradient(90deg, 
-                transparent 0%, 
-                rgba(255, 0, 255, 0.2) 25%, 
-                rgba(0, 128, 255, 0.4) 35%, 
-                rgba(128, 255, 0, 0.3) 45%, 
-                rgba(255, 128, 128, 0.2) 55%, 
-                transparent 65%);
-        background-size: 200% 100%, 150% 100%, 180% 100%;
-        animation: auroraFlow 20s ease-in-out infinite;
-        z-index: 3;
+                rgba(0, 255, 255, 0.2) 25%, 
+                rgba(255, 0, 255, 0.3) 50%, 
+                rgba(0, 255, 128, 0.2) 75%, 
+                transparent 100%);
+        background-size: 300% 100%;
+        animation: optimizedAuroraFlow 30s linear infinite;
+        z-index: 1;
         transform: translateZ(0px);
         pointer-events: none;
-        opacity: 0.8;
+        opacity: 0.4;
+        contain: strict;
     }
     
     /* Lightning Bolts that Flash During Intense Audio */
@@ -8675,154 +8676,59 @@ footer::after {
             radial-gradient(circle at 25% 50%, rgba(180, 220, 255, 0.6) 1.8px, transparent 1.8px);
     }
     
-    /* 3D Holographic Floating Card with Advanced Effects */
+    /* 3D Holographic Floating Card - Performance Optimized */
     .podcast-card {
         width: 600px;
         max-width: 90vw;
         background: 
-            /* Holographic rainbow iridescent base */
+            /* Simplified gradient for better performance */
             linear-gradient(135deg, 
-                rgba(255, 0, 150, 0.1) 0%,
-                rgba(0, 204, 255, 0.1) 20%,
-                rgba(0, 255, 136, 0.1) 40%,
-                rgba(255, 238, 0, 0.1) 60%,
-                rgba(255, 94, 0, 0.1) 80%,
-                rgba(255, 0, 150, 0.1) 100%);
-        backdrop-filter: blur(25px);
+                rgba(0, 204, 255, 0.08) 0%,
+                rgba(255, 0, 150, 0.08) 100%);
+        backdrop-filter: blur(15px);
         border-radius: 25px;
         padding: 40px;
         transform-style: preserve-3d;
-        transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
         box-shadow: 
-            /* Floating shadow that moves independently */
-            0 50px 120px rgba(0, 255, 255, 0.4),
-            0 20px 60px rgba(255, 0, 255, 0.3),
-            0 10px 30px rgba(0, 255, 0, 0.2),
-            0 0 0 2px rgba(255, 255, 255, 0.3),
-            inset 0 2px 0 rgba(255, 255, 255, 0.4),
-            /* Levitation glow */
-            0 0 100px rgba(0, 255, 255, 0.3),
-            0 0 200px rgba(255, 0, 255, 0.2);
+            /* Reduced shadow complexity */
+            0 30px 60px rgba(0, 255, 255, 0.2),
+            0 0 0 1px rgba(255, 255, 255, 0.2),
+            inset 0 1px 0 rgba(255, 255, 255, 0.3);
         position: relative;
         overflow: visible;
-        animation: advancedHolographicFloat 8s ease-in-out infinite;
-        border: 2px solid transparent;
-        background-clip: padding-box;
-        /* Enable GPU acceleration for smooth 3D transforms */
-        will-change: transform, box-shadow;
+        animation: optimizedHolographicFloat 12s ease-in-out infinite;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        /* Optimized GPU acceleration */
+        will-change: transform;
+        contain: layout style paint;
     }
     
-    /* Rainbow Iridescent Edges that Shift with Mouse Movement */
+    /* Simplified Iridescent Edges - Performance Optimized */
     .podcast-card::before {
         content: '';
         position: absolute;
-        top: -6px;
-        left: -6px;
-        right: -6px;
-        bottom: -6px;
+        top: -3px;
+        left: -3px;
+        right: -3px;
+        bottom: -3px;
         background: 
-            /* Complex rainbow iridescent pattern */
-            conic-gradient(from 0deg at 50% 50%, 
-                #ff0080 0deg,
-                #ff8000 45deg,
-                #ffff00 90deg,
-                #80ff00 135deg,
-                #00ff80 180deg,
-                #0080ff 225deg,
-                #8000ff 270deg,
-                #ff0080 315deg,
-                #ff0080 360deg),
+            /* Simplified gradient for better performance */
             linear-gradient(45deg, 
-                rgba(255, 0, 128, 0.8) 0%, 
-                rgba(0, 255, 255, 0.8) 25%, 
-                rgba(255, 255, 0, 0.8) 50%, 
-                rgba(255, 0, 255, 0.8) 75%, 
-                rgba(0, 255, 128, 0.8) 100%);
-        background-size: 200% 200%, 400% 400%;
-        border-radius: 31px;
-        z-index: -2;
-        animation: rainbowIridescentShift 4s ease-in-out infinite;
-        filter: blur(2px);
-        opacity: 0.9;
-        transition: all 0.3s ease;
+                rgba(0, 255, 255, 0.4) 0%, 
+                rgba(255, 0, 255, 0.4) 50%, 
+                rgba(0, 255, 255, 0.4) 100%);
+        background-size: 200% 200%;
+        border-radius: 28px;
+        z-index: -1;
+        animation: simplifiedIridescentShift 8s ease-in-out infinite;
+        filter: blur(1px);
+        opacity: 0.6;
+        transition: opacity 0.3s ease;
+        contain: strict;
     }
     
-    /* Advanced Holographic Floating Animation with Independent Shadow Movement */
-    @keyframes advancedHolographicFloat {
-        0%, 100% { 
-            transform: perspective(1500px) rotateX(3deg) rotateY(0deg) translateY(0px) translateZ(30px);
-            box-shadow: 
-                /* Independent floating shadow */
-                0 60px 140px rgba(0, 255, 255, 0.4),
-                20px 40px 80px rgba(255, 0, 255, 0.3),
-                -15px 25px 50px rgba(0, 255, 0, 0.2),
-                0 0 0 2px rgba(255, 255, 255, 0.3),
-                inset 0 2px 0 rgba(255, 255, 255, 0.4),
-                /* Levitation glow */
-                0 0 120px rgba(0, 255, 255, 0.3),
-                0 0 240px rgba(255, 0, 255, 0.2);
-        }
-        25% { 
-            transform: perspective(1500px) rotateX(2deg) rotateY(4deg) translateY(-20px) translateZ(50px);
-            box-shadow: 
-                /* Shadow moves independently creating levitation illusion */
-                -30px 80px 160px rgba(0, 255, 255, 0.5),
-                10px 60px 100px rgba(255, 0, 255, 0.4),
-                -25px 35px 70px rgba(0, 255, 0, 0.3),
-                0 0 0 3px rgba(255, 255, 255, 0.4),
-                inset 0 3px 0 rgba(255, 255, 255, 0.5),
-                0 0 150px rgba(0, 255, 255, 0.4),
-                0 0 280px rgba(255, 0, 255, 0.3);
-        }
-        50% { 
-            transform: perspective(1500px) rotateX(-2deg) rotateY(0deg) translateY(-30px) translateZ(60px);
-            box-shadow: 
-                /* Maximum levitation effect */
-                0 100px 200px rgba(0, 255, 255, 0.6),
-                -40px 70px 120px rgba(255, 0, 255, 0.5),
-                30px 45px 90px rgba(0, 255, 0, 0.4),
-                0 0 0 4px rgba(255, 255, 255, 0.5),
-                inset 0 4px 0 rgba(255, 255, 255, 0.6),
-                0 0 180px rgba(0, 255, 255, 0.5),
-                0 0 320px rgba(255, 0, 255, 0.4);
-        }
-        75% { 
-            transform: perspective(1500px) rotateX(2deg) rotateY(-4deg) translateY(-20px) translateZ(50px);
-            box-shadow: 
-                /* Shadow continues independent movement */
-                30px 80px 160px rgba(0, 255, 255, 0.5),
-                -10px 60px 100px rgba(255, 0, 255, 0.4),
-                25px 35px 70px rgba(0, 255, 0, 0.3),
-                0 0 0 3px rgba(255, 255, 255, 0.4),
-                inset 0 3px 0 rgba(255, 255, 255, 0.5),
-                0 0 150px rgba(0, 255, 255, 0.4),
-                0 0 280px rgba(255, 0, 255, 0.3);
-        }
-    }
-    
-    /* Rainbow Iridescent Shift Animation */
-    @keyframes rainbowIridescentShift {
-        0%, 100% {
-            background-position: 0% 50%, 0% 50%;
-            transform: rotate(0deg);
-            opacity: 0.8;
-        }
-        25% {
-            background-position: 100% 50%, 25% 75%;
-            transform: rotate(90deg);
-            opacity: 1;
-        }
-        50% {
-            background-position: 50% 100%, 50% 100%;
-            transform: rotate(180deg);
-            opacity: 0.9;
-        }
-        75% {
-            background-position: 0% 0%, 75% 25%;
-            transform: rotate(270deg);
-            opacity: 1;
-        }
-    }
+
     
     /* Hologram border animation */
     @keyframes hologramBorder {
@@ -9023,28 +8929,25 @@ footer::after {
         z-index: 10;
     }
     
-    /* Glowing Orbs that Float and Merge Around Card Perimeter */
+    /* Simplified Glowing Orbs - Performance Optimized */
     .podcast-card-container::after {
         content: '';
         position: absolute;
-        top: -50px;
-        left: -50px;
-        right: -50px;
-        bottom: -50px;
+        top: -30px;
+        left: -30px;
+        right: -30px;
+        bottom: -30px;
         background-image: 
-            /* Multiple glowing orbs */
-            radial-gradient(circle at 10% 20%, rgba(0, 255, 255, 0.8) 3px, rgba(0, 255, 255, 0.4) 6px, transparent 8px),
-            radial-gradient(circle at 90% 30%, rgba(255, 0, 255, 0.7) 4px, rgba(255, 0, 255, 0.3) 7px, transparent 9px),
-            radial-gradient(circle at 20% 80%, rgba(0, 255, 128, 0.6) 2px, rgba(0, 255, 128, 0.3) 5px, transparent 7px),
-            radial-gradient(circle at 80% 70%, rgba(255, 215, 0, 0.8) 3px, rgba(255, 215, 0, 0.4) 6px, transparent 8px),
-            radial-gradient(circle at 50% 10%, rgba(128, 0, 255, 0.7) 2.5px, rgba(128, 0, 255, 0.3) 5px, transparent 7px),
-            radial-gradient(circle at 15% 50%, rgba(255, 128, 0, 0.6) 3.5px, rgba(255, 128, 0, 0.3) 6px, transparent 8px),
-            radial-gradient(circle at 85% 90%, rgba(0, 255, 200, 0.8) 2px, rgba(0, 255, 200, 0.4) 4px, transparent 6px),
-            radial-gradient(circle at 60% 85%, rgba(255, 50, 150, 0.7) 4px, rgba(255, 50, 150, 0.3) 7px, transparent 9px);
-        animation: floatingGlowingOrbs 12s ease-in-out infinite;
+            /* Reduced to 4 orbs for better performance */
+            radial-gradient(circle at 15% 25%, rgba(0, 255, 255, 0.5) 2px, transparent 4px),
+            radial-gradient(circle at 85% 25%, rgba(255, 0, 255, 0.5) 2px, transparent 4px),
+            radial-gradient(circle at 15% 75%, rgba(255, 215, 0, 0.5) 2px, transparent 4px),
+            radial-gradient(circle at 85% 75%, rgba(0, 255, 128, 0.5) 2px, transparent 4px);
+        animation: optimizedFloatingOrbs 16s ease-in-out infinite;
         z-index: 1;
         pointer-events: none;
-        border-radius: 50px;
+        border-radius: 40px;
+        contain: strict;
     }
     
     /* Constellation Pattern with Connecting Light Lines - Background Only */
@@ -9522,35 +9425,15 @@ footer::after {
     100% { transform: translateX(-60%) translateY(-10%) translateZ(0px); }
 }
 
-/* Floating Glowing Orbs Animation */
-@keyframes floatingGlowingOrbs {
+/* Optimized Floating Orbs Animation */
+@keyframes optimizedFloatingOrbs {
     0%, 100% {
-        background-position: 
-            10% 20%, 90% 30%, 20% 80%, 80% 70%, 
-            50% 10%, 15% 50%, 85% 90%, 60% 85%;
         transform: scale(1) rotate(0deg);
-        opacity: 0.8;
-    }
-    25% {
-        background-position: 
-            15% 25%, 85% 35%, 25% 75%, 75% 65%, 
-            55% 15%, 20% 55%, 80% 85%, 65% 80%;
-        transform: scale(1.1) rotate(90deg);
-        opacity: 1;
+        opacity: 0.5;
     }
     50% {
-        background-position: 
-            20% 30%, 80% 40%, 30% 70%, 70% 60%, 
-            60% 20%, 25% 60%, 75% 80%, 70% 75%;
-        transform: scale(1.2) rotate(180deg);
-        opacity: 0.9;
-    }
-    75% {
-        background-position: 
-            25% 35%, 75% 45%, 35% 65%, 65% 55%, 
-            65% 25%, 30% 65%, 70% 75%, 75% 70%;
-        transform: scale(1.05) rotate(270deg);
-        opacity: 1;
+        transform: scale(1.1) rotate(180deg);
+        opacity: 0.8;
     }
 }
 
@@ -9578,27 +9461,41 @@ footer::after {
     }
 }
 
-/* Aurora Borealis Flow Animation */
-@keyframes auroraFlow {
-    0%, 100% {
-        background-position: 0% 0%, 0% 0%, 0% 0%;
-        opacity: 0.8;
-        filter: hue-rotate(0deg);
-    }
-    25% {
-        background-position: 25% 25%, 50% 50%, 75% 75%;
-        opacity: 1;
-        filter: hue-rotate(90deg);
+/* Optimized Aurora Flow Animation */
+@keyframes optimizedAuroraFlow {
+    0% {
+        background-position: 0% 0%;
+        opacity: 0.3;
     }
     50% {
-        background-position: 50% 50%, 100% 100%, 150% 150%;
-        opacity: 0.9;
-        filter: hue-rotate(180deg);
+        background-position: 100% 0%;
+        opacity: 0.5;
     }
-    75% {
-        background-position: 75% 75%, 150% 150%, 225% 225%;
-        opacity: 1;
-        filter: hue-rotate(270deg);
+    100% {
+        background-position: 200% 0%;
+        opacity: 0.3;
+    }
+}
+
+/* Optimized Holographic Float Animation */
+@keyframes optimizedHolographicFloat {
+    0%, 100% { 
+        transform: perspective(1000px) rotateY(0deg) translateY(0px);
+    }
+    50% { 
+        transform: perspective(1000px) rotateY(2deg) translateY(-10px);
+    }
+}
+
+/* Simplified Iridescent Shift Animation */
+@keyframes simplifiedIridescentShift {
+    0%, 100% {
+        background-position: 0% 50%;
+        opacity: 0.5;
+    }
+    50% {
+        background-position: 100% 50%;
+        opacity: 0.7;
     }
 }
 

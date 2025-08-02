@@ -2441,8 +2441,10 @@ function initializePodcastPlayer() {
                 const mouseXPercent = (x / rect.width) * 100;
                 const mouseYPercent = (y / rect.height) * 100;
                 
-                // Create stardust trail that follows mouse cursor
-                createStardust(e.clientX, e.clientY);
+                // Create stardust trail that follows mouse cursor (throttled for performance)
+                if (Math.random() < 0.3) { // Only create stardust 30% of the time
+                    createStardust(e.clientX, e.clientY);
+                }
                 
                 // Apply enhanced tilt during interaction
                 podcastCard.style.transform = `
@@ -2562,8 +2564,8 @@ function initializePodcastPlayer() {
         const centerX = rect.left + rect.width / 2;
         const centerY = rect.top + rect.height / 2;
         
-        // Create multiple sparkle particles
-        for (let i = 0; i < 20; i++) {
+        // Create multiple sparkle particles (reduced for performance)
+        for (let i = 0; i < 12; i++) {
             const sparkle = document.createElement('div');
             sparkle.className = 'sparkle-particle';
             
