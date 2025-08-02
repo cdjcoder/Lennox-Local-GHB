@@ -7209,6 +7209,41 @@ footer::after {
         position: relative !important;
     }
     
+    /* Ensure Step 2 Complete Application buttons are fully clickable on mobile */
+    #complete-application-btn,
+    #complete-application-btn-es {
+        cursor: pointer !important;
+        pointer-events: auto !important;
+        touch-action: manipulation !important; /* Optimize for touch */
+        -webkit-tap-highlight-color: rgba(0,0,0,0.1) !important; /* Touch feedback */
+        min-height: 48px !important; /* Minimum touch target size */
+        min-width: 48px !important; /* Minimum touch target size */
+        display: inline-block !important;
+        position: relative !important;
+        z-index: 1000 !important; /* Ensure it's above other elements */
+    }
+    
+    /* Ensure enabled state is fully clickable */
+    #complete-application-btn:not([disabled]),
+    #complete-application-btn-es:not([disabled]) {
+        cursor: pointer !important;
+        pointer-events: auto !important;
+        opacity: 1 !important;
+    }
+    
+    /* Ensure wrapper doesn't interfere */
+    #complete-application-wrapper {
+        position: relative !important;
+        display: inline-block !important;
+        z-index: 999 !important;
+    }
+    
+    /* Ensure blocker is properly hidden when button is enabled */
+    #complete-application-blocker[style*="display: none"] {
+        display: none !important;
+        pointer-events: none !important;
+    }
+    
     /* Adjust close button positioning */
     .jotform-close-btn {
         position: absolute !important;
