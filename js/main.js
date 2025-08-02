@@ -2355,6 +2355,16 @@ function initializePodcastPlayer() {
         if (podcastSection) {
             podcastSection.classList.add('playing');
         }
+        
+        // Pause background music when podcast starts playing
+        const backgroundMusic = document.getElementById('background-music');
+        if (backgroundMusic && !backgroundMusic.paused) {
+            backgroundMusic.pause();
+            console.log('Background music paused - podcast is now playing');
+            
+            // Store that we paused the background music
+            audio.backgroundMusicWasPaused = true;
+        }
     });
     
     audio.addEventListener('pause', function() {
@@ -2362,6 +2372,23 @@ function initializePodcastPlayer() {
         playPauseBtn.classList.remove('playing');
         if (podcastSection) {
             podcastSection.classList.remove('playing');
+        }
+        
+        // Optionally resume background music when podcast is paused
+        const backgroundMusic = document.getElementById('background-music');
+        if (backgroundMusic && audio.backgroundMusicWasPaused) {
+            // Small delay to avoid audio conflicts
+            setTimeout(() => {
+                const playPromise = backgroundMusic.play();
+                if (playPromise !== undefined) {
+                    playPromise.then(() => {
+                        console.log('Background music resumed after podcast pause');
+                        audio.backgroundMusicWasPaused = false;
+                    }).catch(error => {
+                        console.log('Could not resume background music:', error);
+                    });
+                }
+            }, 500);
         }
     });
     
@@ -2376,6 +2403,23 @@ function initializePodcastPlayer() {
         }
         if (currentTimeSpan) {
             currentTimeSpan.textContent = '0:00';
+        }
+        
+        // Resume background music when podcast ends
+        const backgroundMusic = document.getElementById('background-music');
+        if (backgroundMusic && audio.backgroundMusicWasPaused) {
+            // Small delay to avoid audio conflicts
+            setTimeout(() => {
+                const playPromise = backgroundMusic.play();
+                if (playPromise !== undefined) {
+                    playPromise.then(() => {
+                        console.log('Background music resumed after podcast ended');
+                        audio.backgroundMusicWasPaused = false;
+                    }).catch(error => {
+                        console.log('Could not resume background music:', error);
+                    });
+                }
+            }, 500);
         }
     });
     
@@ -2502,6 +2546,22 @@ function initializePodcastPlayer() {
         });
         playPauseBtn.innerHTML = '<i class="fas fa-exclamation-triangle"></i>';
         playPauseBtn.disabled = true;
+        
+        // Resume background music if podcast fails to load
+        const backgroundMusic = document.getElementById('background-music');
+        if (backgroundMusic && audio.backgroundMusicWasPaused) {
+            setTimeout(() => {
+                const playPromise = backgroundMusic.play();
+                if (playPromise !== undefined) {
+                    playPromise.then(() => {
+                        console.log('Background music resumed after podcast error');
+                        audio.backgroundMusicWasPaused = false;
+                    }).catch(error => {
+                        console.log('Could not resume background music after error:', error);
+                    });
+                }
+            }, 500);
+        }
     });
     
     // Loading state and debugging
@@ -2648,6 +2708,32 @@ function initializePodcastPlayer() {
     `;
     document.head.appendChild(particleStyles);
 }
+
+// Global function to pause podcast and resume background music
+window.pausePodcastAndResumeBackgroundMusic = function() {
+    const podcastAudio = document.getElementById('podcast-audio');
+    const backgroundMusic = document.getElementById('background-music');
+    
+    if (podcastAudio && !podcastAudio.paused) {
+        podcastAudio.pause();
+        console.log('Podcast paused by global function');
+        
+        // Resume background music
+        if (backgroundMusic && podcastAudio.backgroundMusicWasPaused) {
+            setTimeout(() => {
+                const playPromise = backgroundMusic.play();
+                if (playPromise !== undefined) {
+                    playPromise.then(() => {
+                        console.log('Background music resumed by global function');
+                        podcastAudio.backgroundMusicWasPaused = false;
+                    }).catch(error => {
+                        console.log('Could not resume background music via global function:', error);
+                    });
+                }
+            }, 300);
+        }
+    }
+};
 
 // Initialize podcast player for desktop only
 document.addEventListener('DOMContentLoaded', function() {
