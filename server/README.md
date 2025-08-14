@@ -1,6 +1,6 @@
-# Gigante Print Media - Email Sending Backend
+# Lennox Local Ads Flyer - Email Sending Backend
 
-This is a simple Node.js/Express backend to handle email form submissions for the Gigante Print Media website.
+This is a simple Node.js/Express backend to handle email form submissions for the Lennox Local Ads Flyer website.
 
 ## Setup Instructions
 

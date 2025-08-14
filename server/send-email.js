@@ -43,7 +43,7 @@ app.post('/api/send-email', async (req, res) => {
     const mailOptions = {
       from: process.env.EMAIL_USER,
       to: 'lennoxlocaladsflyer@gmail.com',
-      subject: 'New Spot Reservation from Gigante Print Media Website',
+      subject: 'New Spot Reservation from Lennox Local Ads Flyer Website',
       html: `
         <h2>New Reservation Request</h2>
         <p><strong>Name:</strong> ${firstName} ${lastName}</p>
@@ -64,7 +64,7 @@ app.post('/api/send-email', async (req, res) => {
     const confirmationMail = {
       from: process.env.EMAIL_USER,
       to: email,
-      subject: 'Your Gigante Print Media Spot Reservation',
+      subject: 'Your Lennox Local Ads Flyer Spot Reservation',
       html: `
         <h2>Thank you for your reservation, ${firstName}!</h2>
         <p>We've received your request to secure a spot in our upcoming direct mail campaign.</p>
@@ -79,7 +79,7 @@ app.post('/api/send-email', async (req, res) => {
         <p>If you have any questions, please contact us at:</p>
         <p>Phone: (562) 282-9498</p>
         <p>Email: lennoxlocaladsflyer@gmail.com</p>
-        <p>Thank you for choosing Gigante Print Media!</p>
+        <p>Thank you for choosing Lennox Local Ads Flyer!</p>
       `
     };
     

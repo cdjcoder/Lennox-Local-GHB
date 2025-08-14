@@ -50,7 +50,7 @@ if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
 $to = 'lennoxlocaladsflyer@gmail.com';
 
 // Email to site owner
-$subject = 'New Spot Reservation from Gigante Print Media Website';
+$subject = 'New Spot Reservation from Lennox Local Ads Flyer Website';
 
 // Set up HTML email with styling
 $ownerMessage = "
@@ -95,7 +95,7 @@ $headers .= "Reply-To: $email" . "\r\n";
 $ownerMailSent = mail($to, $subject, $ownerMessage, $headers);
 
 // Send confirmation email to customer
-$customerSubject = 'Your Gigante Print Media Spot Reservation';
+$customerSubject = 'Your Lennox Local Ads Flyer Spot Reservation';
 $customerMessage = "
 <html>
 <head>
@@ -130,7 +130,7 @@ $customerMessage = "
             <p>If you have any questions, please contact us at:</p>
             <p>Phone: (562) 282-9498</p>
             <p>Email: lennoxlocaladsflyer@gmail.com</p>
-            <p>Thank you for choosing Gigante Print Media!</p>
+            <p>Thank you for choosing Lennox Local Ads Flyer!</p>
         </div>
     </div>
 </body>

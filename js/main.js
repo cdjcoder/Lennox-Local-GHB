@@ -1,4 +1,4 @@
-// Gigante Print Media - Enhanced JavaScript
+// Lennox Local Ads Flyer - Enhanced JavaScript
 
 // Loading Screen Control
 window.addEventListener('load', function() {

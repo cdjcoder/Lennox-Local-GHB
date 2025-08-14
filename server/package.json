@@ -1,7 +1,7 @@
 {
   "name": "gigante-print-media-server",
   "version": "1.0.0",
-  "description": "Email sending backend for Gigante Print Media website",
+  "description": "Email sending backend for Lennox Local Ads Flyer website",
   "main": "send-email.js",
   "scripts": {
     "start": "node send-email.js",

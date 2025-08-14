@@ -6,15 +6,15 @@ document.addEventListener('DOMContentLoaded', function() {
     // Translations object
     const translations = {
         en: {
-            title: 'Lennox Local Ads Support',
-            welcome: 'Welcome to Lennox Local Ads! How can we help you today?',
+            title: 'Lennox Local Ads Flyer Support',
+            welcome: 'Welcome to Lennox Local Ads Flyer! How can we help you today?',
             quickReplies: {
                 pricing: 'Pricing Information',
                 areas: 'Mailing Areas', 
                 howItWorks: 'How It Works',
                 schedule: 'Schedule a Call'
             },
-            greeting: 'Hello! I\'m your Lennox Local Ads assistant. How can I help you today?',
+            greeting: 'Hello! I\'m your Lennox Local Ads Flyer assistant. How can I help you today?',
             placeholder: 'Type your message...',
             responses: {
                 pricing: 'Our postcard advertising starts at just $299 for a local campaign reaching 10,000+ households. Premium spots with exclusivity are available at $499. Would you like more details on our pricing?',
@@ -26,15 +26,15 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         },
         es: {
-            title: 'Soporte de Lennox Local Ads',
-            welcome: '¡Bienvenido a Lennox Local Ads! ¿Cómo podemos ayudarte hoy?',
+            title: 'Soporte de Lennox Local Ads Flyer',
+            welcome: '¡Bienvenido a Lennox Local Ads Flyer! ¿Cómo podemos ayudarte hoy?',
             quickReplies: {
                 pricing: 'Información de Precios',
                 areas: 'Áreas de Envío',
                 howItWorks: 'Cómo Funciona',
                 schedule: 'Programar una Llamada'
             },
-            greeting: '¡Hola! Soy tu asistente de Lennox Local Ads. ¿Cómo puedo ayudarte hoy?',
+            greeting: '¡Hola! Soy tu asistente de Lennox Local Ads Flyer. ¿Cómo puedo ayudarte hoy?',
             placeholder: 'Escribe tu mensaje...',
             responses: {
                 pricing: 'Nuestra publicidad en tarjetas postales comienza en solo $299 para una campaña local que llega a más de 10,000 hogares. Los espacios premium con exclusividad están disponibles por $499. ¿Te gustaría más detalles sobre nuestros precios?',
