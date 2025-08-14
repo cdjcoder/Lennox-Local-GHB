@@ -876,8 +876,9 @@ header.scrolled {
   font-weight: 800;
   color: var(--gigante-yellow);
   text-decoration: none;
-  display: flex;
+  display: inline-flex;
   align-items: center;
+  gap: 10px;
   transition: color 0.3s;
   z-index: 20;
   padding: 5px 10px;
@@ -895,10 +896,10 @@ header.scrolled .logo {
 .brand-logo {
   height: 40px;
   width: 40px;
-  margin-right: 12px;
   border-radius: 10px;
   box-shadow: 0 6px 16px rgba(0,0,0,0.15);
   transition: transform 0.3s ease, filter 0.3s ease;
+  flex: 0 0 40px;
 }
 
 .logo:hover .brand-logo {
@@ -908,11 +909,13 @@ header.scrolled .logo {
 
 .brand-name {
   display: inline-flex;
-  align-items: baseline;
+  align-items: center;
   gap: 8px;
   font-weight: 800;
   font-size: 1.3rem;
-  letter-spacing: 0.2px;
+  letter-spacing: 0.25px;
+  line-height: 1;
+  white-space: nowrap;
 }
 
 .brand-name .primary {
@@ -922,6 +925,9 @@ header.scrolled .logo {
 .brand-name .accent {
   color: #4FC3F7;
 }
+
+/* Slight optical balance for descender alignment */
+.logo .brand-name { margin-top: 1px; }
 
 .footer-logo {
   display: flex;
