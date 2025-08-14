@@ -9,7 +9,7 @@ window.addEventListener('load', function() {
             setTimeout(() => {
                 loaderWrapper.style.display = 'none';
             }, 500);
-        }, 3500); // Show loader for 3.5 seconds after page loads
+        }, 2600); // Show loader for 2.6 seconds after page loads
     }
 });
 
@@ -1077,7 +1077,7 @@ document.addEventListener('DOMContentLoaded', function() {
             fadeElements.forEach(el => {
                 el.style.opacity = 1;
             });
-        }, 1500);
+        }, 2600);
     }
     
     // Header scroll effect
