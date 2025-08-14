@@ -140,7 +140,7 @@ $customerMessage = "
 // Customer email headers (send from the site owner to the customer)
 $customerHeaders = "MIME-Version: 1.0" . "\r\n";
 $customerHeaders .= "Content-type:text/html;charset=UTF-8" . "\r\n";
-$customerHeaders .= "From: Lennox Local ads <lennoxlocaladsflyer@gmail.com>" . "\r\n";
+$customerHeaders .= "From: Lennox Local Ads Flyer <lennoxlocaladsflyer@gmail.com>" . "\r\n";
 $customerHeaders .= "Reply-To: lennoxlocaladsflyer@gmail.com" . "\r\n";
 
 // Send email to customer
