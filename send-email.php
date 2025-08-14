@@ -47,7 +47,7 @@ if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
 }
 
 // Recipient email (site owner)
-$to = 'LennoxLocalAds@gmail.com';
+$to = 'lennoxlocaladsflyer@gmail.com';
 
 // Email to site owner
 $subject = 'New Spot Reservation from Gigante Print Media Website';
@@ -129,7 +129,7 @@ $customerMessage = "
         <div class='footer'>
             <p>If you have any questions, please contact us at:</p>
             <p>Phone: (562) 282-9498</p>
-            <p>Email: LennoxLocalAds@gmail.com</p>
+            <p>Email: lennoxlocaladsflyer@gmail.com</p>
             <p>Thank you for choosing Gigante Print Media!</p>
         </div>
     </div>
@@ -140,8 +140,8 @@ $customerMessage = "
 // Customer email headers (send from the site owner to the customer)
 $customerHeaders = "MIME-Version: 1.0" . "\r\n";
 $customerHeaders .= "Content-type:text/html;charset=UTF-8" . "\r\n";
-$customerHeaders .= "From: Lennox Local ads <LennoxLocalAds@gmail.com>" . "\r\n";
-$customerHeaders .= "Reply-To: LennoxLocalAds@gmail.com" . "\r\n";
+$customerHeaders .= "From: Lennox Local ads <lennoxlocaladsflyer@gmail.com>" . "\r\n";
+$customerHeaders .= "Reply-To: lennoxlocaladsflyer@gmail.com" . "\r\n";
 
 // Send email to customer
 $customerMailSent = mail($email, $customerSubject, $customerMessage, $customerHeaders);

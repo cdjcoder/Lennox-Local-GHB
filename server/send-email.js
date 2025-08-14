@@ -42,7 +42,7 @@ app.post('/api/send-email', async (req, res) => {
     // Email to site owner
     const mailOptions = {
       from: process.env.EMAIL_USER,
-      to: 'LennoxLocalAds@gmail.com',
+      to: 'lennoxlocaladsflyer@gmail.com',
       subject: 'New Spot Reservation from Gigante Print Media Website',
       html: `
         <h2>New Reservation Request</h2>
@@ -78,7 +78,7 @@ app.post('/api/send-email', async (req, res) => {
         <hr>
         <p>If you have any questions, please contact us at:</p>
         <p>Phone: (562) 282-9498</p>
-        <p>Email: LennoxLocalAds@gmail.com</p>
+        <p>Email: lennoxlocaladsflyer@gmail.com</p>
         <p>Thank you for choosing Gigante Print Media!</p>
       `
     };
