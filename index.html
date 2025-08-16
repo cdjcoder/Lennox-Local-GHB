@@ -7047,6 +7047,22 @@ Es comprobado, asequible, exclusivo, y diseñado para máxima exposición. Asegu
             }
         });
 
+        // Ensure global access for inline handlers and attach desktop-only click handler
+        window.openImageModal = openImageModal;
+        window.closeImageModal = closeImageModal;
+        document.addEventListener('DOMContentLoaded', function() {
+            const profile = document.getElementById('profilePic');
+            if (profile) {
+                profile.addEventListener('click', function(ev) {
+                    if (window.innerWidth >= 992) {
+                        ev.preventDefault();
+                        ev.stopPropagation();
+                        openImageModal();
+                    }
+                });
+            }
+        });
+
         // FAQ Show More functionality
         document.addEventListener('DOMContentLoaded', function() {
             const showMoreBtn = document.getElementById('show-more-faq');
