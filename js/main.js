@@ -583,16 +583,18 @@ document.addEventListener('DOMContentLoaded', function() {
     const profilePic = document.getElementById('profilePic');
     if (profilePic) {
         profilePic.addEventListener('click', function(e) {
+            // Desktop-only behavior
+            if (window.innerWidth < 992) { return; }
+            
+            // Stop propagation so other click handlers don’t fire
             e.preventDefault();
+            e.stopPropagation();
             
-            // Create star burst effect
-            createStarBurst(e, 'large');
-            
-            // Open image modal after a brief delay to show the effect
-            setTimeout(() => {
+            // Open image modal immediately for responsiveness
+            if (typeof openImageModal === 'function') {
                 openImageModal();
-            }, 800); // Shorter delay since this is just opening a modal, not a form
-        });
+            }
+        }, true);
     }
     
     // Function to create star burst effect
