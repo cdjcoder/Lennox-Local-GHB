@@ -7061,7 +7061,7 @@ Es comprobado, asequible, exclusivo, y diseñado para máxima exposición. Asegu
                     if (window.innerWidth >= 992) {
                         ev.preventDefault();
                         ev.stopPropagation();
-                        openImageModal();
+                        setTimeout(openImageModal, 0);
                     }
                 });
             }
