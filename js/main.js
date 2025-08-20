@@ -6,9 +6,11 @@ window.addEventListener('load', function() {
     if (loaderWrapper) {
         setTimeout(() => {
             loaderWrapper.style.opacity = '0';
+            loaderWrapper.style.transform = 'scale(0.98)';
             setTimeout(() => {
                 loaderWrapper.style.display = 'none';
-            }, 500);
+                document.body.classList.add('page-loaded');
+            }, 300); // Faster fade-out transition (optimized)
         }, 1200); // Show loader for 1.2 seconds after page loads (optimized)
     }
 });
