@@ -8413,7 +8413,7 @@ footer::after {
         opacity: 0.8;
     }
     
-    /* Sparkling Gold Wave Bars - Thicker and Taller for Maximum Visual Impact */
+    /* Sparkling Gold Wave Bars - Static when not playing */
     .wave-bar {
         width: 12px;
         height: 20px;
@@ -8424,15 +8424,17 @@ footer::after {
             #ffef94 75%,
             #fffacd 100%);
         border-radius: 6px;
-        animation: oceanWave 2s ease-in-out infinite;
+        /* NO animation by default - only animate when playing */
         box-shadow: 
-            0 0 20px rgba(255, 215, 0, 0.8),
-            0 0 40px rgba(218, 165, 32, 0.6),
-            0 0 60px rgba(255, 215, 0, 0.4),
-            inset 0 2px 0 rgba(255, 255, 255, 0.6),
-            inset 0 -1px 0 rgba(184, 134, 11, 0.8);
-        border: 2px solid rgba(255, 215, 0, 0.7);
+            0 0 10px rgba(255, 215, 0, 0.4),
+            0 0 20px rgba(218, 165, 32, 0.3),
+            0 0 30px rgba(255, 215, 0, 0.2),
+            inset 0 2px 0 rgba(255, 255, 255, 0.3),
+            inset 0 -1px 0 rgba(184, 134, 11, 0.5);
+        border: 2px solid rgba(255, 215, 0, 0.4);
         position: relative;
+        opacity: 0.5;
+        transition: all 0.3s ease;
     }
     
     /* Sparkling effect on wave bars */
@@ -8462,8 +8464,10 @@ footer::after {
         }
     }
     
+    /* Wave bars ONLY animate when podcast is playing */
     .podcast-section.playing .wave-bar {
-        animation-duration: 0.8s;
+        animation: oceanWave 0.8s ease-in-out infinite; /* Animation ONLY when playing */
+        opacity: 1;
         box-shadow: 
             0 0 30px rgba(255, 215, 0, 1),
             0 0 60px rgba(218, 165, 32, 0.8),
