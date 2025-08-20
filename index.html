@@ -7317,6 +7317,135 @@ Es comprobado, asequible, exclusivo, y diseñado para máxima exposición. Asegu
             
         })();
     </script>
+    
+    <!-- Spanish URL Routing System -->
+    <script>
+        // Spanish URL Language Detection and Routing
+        (function() {
+            console.log('🌐 Initializing Spanish URL routing...');
+            
+            // Detect language from URL
+            function detectLanguageFromURL() {
+                const urlParams = new URLSearchParams(window.location.search);
+                const langParam = urlParams.get('lang');
+                
+                if (langParam === 'es' || langParam === 'spanish') {
+                    console.log('🇪🇸 Spanish detected from URL parameter');
+                    return 'spanish';
+                }
+                return 'english';
+            }
+            
+            // Update URL when language changes
+            function updateURLForLanguage(language) {
+                const url = new URL(window.location);
+                
+                if (language === 'spanish') {
+                    url.searchParams.set('lang', 'es');
+                    console.log('🔗 Setting Spanish URL:', url.toString());
+                } else {
+                    url.searchParams.delete('lang');
+                    console.log('🔗 Setting English URL:', url.toString());
+                }
+                
+                // Update browser URL without page reload
+                window.history.replaceState({}, '', url);
+            }
+            
+            // Initialize Spanish mode from URL
+            function initializeSpanishFromURL() {
+                const detectedLanguage = detectLanguageFromURL();
+                
+                if (detectedLanguage === 'spanish') {
+                    console.log('🇪🇸 Activating Spanish mode from URL...');
+                    
+                    // Add spanish class to trigger existing language system
+                    document.body.classList.add('spanish');
+                    
+                    // Hide all English content
+                    document.querySelectorAll('.en').forEach(el => {
+                        el.style.display = 'none';
+                    });
+                    
+                    // Show all Spanish content with proper display types
+                    document.querySelectorAll('.es').forEach(el => {
+                        if (el.id === 'footer-spot-btn-es') {
+                            el.style.display = 'inline-flex';
+                        } else if (el.id === 'reserve-spot-btn-es') {
+                            el.style.display = 'inline-block';
+                        } else if (el.classList.contains('industry-item')) {
+                            el.style.display = 'inline-flex';
+                        } else {
+                            el.style.display = 'block';
+                        }
+                    });
+                    
+                    // Update language toggle buttons to show "English"
+                    document.querySelectorAll('.language-toggle span, .mobile-language-toggle span').forEach(el => {
+                        el.textContent = 'English';
+                    });
+                    
+                    console.log('✅ Spanish mode activated successfully');
+                }
+            }
+            
+            // Monitor language toggle clicks to update URL
+            function monitorLanguageToggles() {
+                const toggles = document.querySelectorAll('.language-toggle, .mobile-language-toggle');
+                
+                toggles.forEach(toggle => {
+                    toggle.addEventListener('click', function() {
+                        console.log('🔄 Language toggle clicked');
+                        
+                        // Wait for the toggle to complete, then update URL
+                        setTimeout(() => {
+                            if (document.body.classList.contains('spanish')) {
+                                updateURLForLanguage('spanish');
+                                console.log('🇪🇸 Switched to Spanish - URL updated');
+                            } else {
+                                updateURLForLanguage('english');
+                                console.log('🇺🇸 Switched to English - URL updated');
+                            }
+                        }, 100);
+                    });
+                });
+            }
+            
+            // Initialize everything
+            function initializeSpanishRouting() {
+                initializeSpanishFromURL();
+                monitorLanguageToggles();
+                
+                // Make sharing functions available globally
+                window.generateSpanishURL = function() {
+                    const url = new URL(window.location.origin + window.location.pathname);
+                    url.searchParams.set('lang', 'es');
+                    return url.toString();
+                };
+                
+                window.getCurrentLanguageURL = function() {
+                    const url = new URL(window.location);
+                    if (document.body.classList.contains('spanish')) {
+                        url.searchParams.set('lang', 'es');
+                    } else {
+                        url.searchParams.delete('lang');
+                    }
+                    return url.toString();
+                };
+                
+                console.log('🎯 Spanish URL routing ready!');
+                console.log('📋 Current Spanish URL:', window.generateSpanishURL());
+            }
+            
+            // Initialize when DOM is ready
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', initializeSpanishRouting);
+            } else {
+                initializeSpanishRouting();
+            }
+            
+        })();
+    </script>
 
     <!-- Image Modal -->
     <div id="imageModal" style="display: none; position: fixed; z-index: 50000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.8); backdrop-filter: blur(5px); padding: 20px; box-sizing: border-box;" onclick="closeImageModal()">
