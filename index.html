@@ -6211,12 +6211,10 @@ Es comprobado, asequible, exclusivo, y diseñado para máxima exposición. Asegu
                 const button = document.getElementById(buttonId);
                 if (button) {
                     button.addEventListener('click', function(e) {
-                        // Prevent conflict with profile image modal - improved detection
+                        // Allow profile image clicks to work - only prevent conflicts with other elements
                         if (e.target) {
-                            // Check if click is on profile image or its container
-                            if (e.target.id === 'profilePic' || 
-                                e.target.closest('#profilePic') ||
-                                e.target.classList.contains('sunburst-container') ||
+                            // Only block clicks on sunburst container, NOT the profile image itself
+                            if (e.target.classList.contains('sunburst-container') ||
                                 e.target.closest('.sunburst-container')) {
                                 e.stopPropagation();
                                 return false;
