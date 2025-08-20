@@ -7030,6 +7030,176 @@ Es comprobado, asequible, exclusivo, y diseñado para máxima exposición. Asegu
 
     <!-- Modern AI Assistant Chatbot -->
     <script src='https://cdn.jotfor.ms/agent/embedjs/0198c25abf7d79ceb9bf075c38a5cc10afc1/embed.js'></script>
+    
+    <!-- AI Chatbot Music Integration -->
+    <script>
+        // AI Chatbot Background Music Integration
+        (function() {
+            let aiChatMusicWasPaused = false;
+            let speechSynthesisActive = false;
+            
+            // Function to pause background music for AI chat
+            function pauseBackgroundMusicForAI() {
+                const backgroundMusic = document.getElementById('background-music');
+                if (backgroundMusic && !backgroundMusic.paused) {
+                    backgroundMusic.pause();
+                    aiChatMusicWasPaused = true;
+                    console.log('Background music paused - AI chatbot is speaking');
+                }
+            }
+            
+            // Function to resume background music after AI chat
+            function resumeBackgroundMusicForAI() {
+                const backgroundMusic = document.getElementById('background-music');
+                if (backgroundMusic && aiChatMusicWasPaused) {
+                    setTimeout(() => {
+                        const playPromise = backgroundMusic.play();
+                        if (playPromise !== undefined) {
+                            playPromise.then(() => {
+                                console.log('Background music resumed - AI chatbot finished speaking');
+                                aiChatMusicWasPaused = false;
+                            }).catch(error => {
+                                console.log('Could not resume background music after AI chat:', error);
+                            });
+                        }
+                    }, 500);
+                }
+            }
+            
+            // Monitor Speech Synthesis API (used by many AI chatbots for voice)
+            function monitorSpeechSynthesis() {
+                if ('speechSynthesis' in window) {
+                    // Override speechSynthesis.speak to detect AI speech
+                    const originalSpeak = speechSynthesis.speak;
+                    speechSynthesis.speak = function(utterance) {
+                        console.log('AI speech detected - pausing background music');
+                        pauseBackgroundMusicForAI();
+                        speechSynthesisActive = true;
+                        
+                        // Listen for speech end events
+                        utterance.onend = function(event) {
+                            console.log('AI speech ended - resuming background music');
+                            speechSynthesisActive = false;
+                            resumeBackgroundMusicForAI();
+                        };
+                        
+                        utterance.onerror = function(event) {
+                            console.log('AI speech error - resuming background music');
+                            speechSynthesisActive = false;
+                            resumeBackgroundMusicForAI();
+                        };
+                        
+                        // Call original speak function
+                        return originalSpeak.call(this, utterance);
+                    };
+                }
+            }
+            
+            // Monitor Web Audio API (alternative method)
+            function monitorWebAudio() {
+                if ('AudioContext' in window || 'webkitAudioContext' in window) {
+                    const AudioContext = window.AudioContext || window.webkitAudioContext;
+                    const originalCreateMediaElementSource = AudioContext.prototype.createMediaElementSource;
+                    
+                    AudioContext.prototype.createMediaElementSource = function(mediaElement) {
+                        // Check if this might be AI chatbot audio
+                        if (mediaElement && mediaElement.src && 
+                            (mediaElement.src.includes('jotfor') || 
+                             mediaElement.src.includes('ai') || 
+                             mediaElement.className?.includes('ai') ||
+                             mediaElement.id?.includes('ai'))) {
+                            
+                            console.log('AI audio element detected');
+                            
+                            mediaElement.addEventListener('play', function() {
+                                console.log('AI audio started - pausing background music');
+                                pauseBackgroundMusicForAI();
+                            });
+                            
+                            mediaElement.addEventListener('pause', function() {
+                                console.log('AI audio paused - resuming background music');
+                                resumeBackgroundMusicForAI();
+                            });
+                            
+                            mediaElement.addEventListener('ended', function() {
+                                console.log('AI audio ended - resuming background music');
+                                resumeBackgroundMusicForAI();
+                            });
+                        }
+                        
+                        return originalCreateMediaElementSource.call(this, mediaElement);
+                    };
+                }
+            }
+            
+            // Monitor for dynamically created audio elements
+            function monitorDynamicAudio() {
+                const observer = new MutationObserver(function(mutations) {
+                    mutations.forEach(function(mutation) {
+                        mutation.addedNodes.forEach(function(node) {
+                            if (node.nodeType === Node.ELEMENT_NODE) {
+                                // Check for audio elements
+                                const audioElements = node.tagName === 'AUDIO' ? [node] : node.querySelectorAll ? node.querySelectorAll('audio') : [];
+                                
+                                audioElements.forEach(function(audio) {
+                                    // Check if this might be AI chatbot audio
+                                    if (audio.src && (
+                                        audio.src.includes('jotfor') || 
+                                        audio.src.includes('ai') ||
+                                        audio.className?.includes('ai') ||
+                                        audio.id?.includes('ai')
+                                    )) {
+                                        console.log('Dynamic AI audio element detected');
+                                        
+                                        audio.addEventListener('play', function() {
+                                            console.log('Dynamic AI audio started - pausing background music');
+                                            pauseBackgroundMusicForAI();
+                                        });
+                                        
+                                        audio.addEventListener('pause', function() {
+                                            console.log('Dynamic AI audio paused - resuming background music');
+                                            resumeBackgroundMusicForAI();
+                                        });
+                                        
+                                        audio.addEventListener('ended', function() {
+                                            console.log('Dynamic AI audio ended - resuming background music');
+                                            resumeBackgroundMusicForAI();
+                                        });
+                                    }
+                                });
+                            }
+                        });
+                    });
+                });
+                
+                observer.observe(document.body, {
+                    childList: true,
+                    subtree: true
+                });
+            }
+            
+            // Initialize monitoring when DOM is ready
+            document.addEventListener('DOMContentLoaded', function() {
+                console.log('Initializing AI chatbot music integration...');
+                monitorSpeechSynthesis();
+                monitorWebAudio();
+                monitorDynamicAudio();
+            });
+            
+            // Also initialize immediately if DOM is already ready
+            if (document.readyState !== 'loading') {
+                console.log('DOM already ready - initializing AI chatbot music integration...');
+                monitorSpeechSynthesis();
+                monitorWebAudio();
+                monitorDynamicAudio();
+            }
+            
+            // Global function to manually pause/resume for AI chat (can be called externally)
+            window.pauseBackgroundMusicForAI = pauseBackgroundMusicForAI;
+            window.resumeBackgroundMusicForAI = resumeBackgroundMusicForAI;
+            
+        })();
+    </script>
 
     <!-- Image Modal -->
     <div id="imageModal" style="display: none; position: fixed; z-index: 50000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.8); backdrop-filter: blur(5px); padding: 20px; box-sizing: border-box;" onclick="closeImageModal()">
