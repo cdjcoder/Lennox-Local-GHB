@@ -1199,10 +1199,46 @@ document.addEventListener('DOMContentLoaded', function() {
     const englishContent = document.querySelectorAll('.en');
     const spanishContent = document.querySelectorAll('.es');
     
+    // URL-based language detection and routing
+    function detectLanguageFromURL() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const langParam = urlParams.get('lang');
+        const pathLang = window.location.pathname.includes('/es/') || window.location.pathname.includes('/spanish/');
+        
+        if (langParam === 'es' || langParam === 'spanish' || pathLang) {
+            console.log('Spanish language detected from URL');
+            return 'spanish';
+        }
+        return 'english';
+    }
+    
+    // Update URL when language changes
+    function updateURLForLanguage(language) {
+        const url = new URL(window.location);
+        
+        if (language === 'spanish') {
+            url.searchParams.set('lang', 'es');
+        } else {
+            url.searchParams.delete('lang');
+        }
+        
+        // Update URL without page reload
+        window.history.replaceState({}, '', url);
+        console.log('URL updated for language:', language);
+    }
+    
+    // Generate shareable Spanish URL
+    function generateSpanishURL() {
+        const url = new URL(window.location.origin + window.location.pathname);
+        url.searchParams.set('lang', 'es');
+        return url.toString();
+    }
+    
     function toggleLanguage() {
         document.body.classList.toggle('spanish');
         
         if (document.body.classList.contains('spanish')) {
+            updateURLForLanguage('spanish');
             englishContent.forEach(el => el.style.display = 'none');
             spanishContent.forEach(el => {
                 if (el.id === 'footer-spot-btn-es') {
@@ -1245,6 +1281,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 setTimeout(() => typeWriter('typewriter-es', 'Su Anuncio en 10,000 Hogares Locales', 80), 300);
             }
         } else {
+            updateURLForLanguage('english');
             englishContent.forEach(el => {
                 if (el.id === 'footer-spot-btn') {
                     el.style.display = 'inline-flex';
