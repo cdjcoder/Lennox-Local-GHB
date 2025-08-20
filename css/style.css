@@ -8450,7 +8450,7 @@ footer::after {
             rgba(255, 255, 255, 0.4) 50%,
             transparent 100%);
         border-radius: 3px;
-        animation: sparkle 3s ease-in-out infinite;
+        /* NO sparkle animation by default - only when playing */
     }
     
     @keyframes sparkle {
@@ -8487,7 +8487,7 @@ footer::after {
     }
     
     .podcast-section.playing .wave-bar::before {
-        animation-duration: 1.5s;
+        animation: sparkle 1.5s ease-in-out infinite; /* Sparkle ONLY when playing */
         background: linear-gradient(to bottom,
             rgba(255, 255, 255, 1) 0%,
             rgba(255, 255, 255, 0.8) 30%,
