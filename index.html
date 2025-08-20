@@ -7031,12 +7031,13 @@ Es comprobado, asequible, exclusivo, y diseñado para máxima exposición. Asegu
     <!-- Modern AI Assistant Chatbot -->
     <script src='https://cdn.jotfor.ms/agent/embedjs/0198c25abf7d79ceb9bf075c38a5cc10afc1/embed.js'></script>
     
-    <!-- AI Chatbot Music Integration -->
+    <!-- AI Chatbot Music Integration - Enhanced Detection -->
     <script>
-        // AI Chatbot Background Music Integration
+        // Enhanced AI Chatbot Background Music Integration
         (function() {
             let aiChatMusicWasPaused = false;
             let speechSynthesisActive = false;
+            let voiceDetectionInterval = null;
             
             // Function to pause background music for AI chat
             function pauseBackgroundMusicForAI() {
@@ -7044,7 +7045,7 @@ Es comprobado, asequible, exclusivo, y diseñado para máxima exposición. Asegu
                 if (backgroundMusic && !backgroundMusic.paused) {
                     backgroundMusic.pause();
                     aiChatMusicWasPaused = true;
-                    console.log('Background music paused - AI chatbot is speaking');
+                    console.log('🔇 Background music paused - AI chatbot is speaking');
                 }
             }
             
@@ -7056,115 +7057,207 @@ Es comprobado, asequible, exclusivo, y diseñado para máxima exposición. Asegu
                         const playPromise = backgroundMusic.play();
                         if (playPromise !== undefined) {
                             playPromise.then(() => {
-                                console.log('Background music resumed - AI chatbot finished speaking');
+                                console.log('🎵 Background music resumed - AI chatbot finished speaking');
                                 aiChatMusicWasPaused = false;
                             }).catch(error => {
                                 console.log('Could not resume background music after AI chat:', error);
                             });
                         }
-                    }, 500);
+                    }, 1000);
                 }
             }
             
-            // Monitor Speech Synthesis API (used by many AI chatbots for voice)
+            // Enhanced Speech Synthesis monitoring
             function monitorSpeechSynthesis() {
                 if ('speechSynthesis' in window) {
-                    // Override speechSynthesis.speak to detect AI speech
+                    // Monitor speechSynthesis speaking state
+                    function checkSpeechState() {
+                        if (speechSynthesis.speaking && !speechSynthesisActive) {
+                            console.log('🎤 Speech synthesis detected - pausing music');
+                            speechSynthesisActive = true;
+                            pauseBackgroundMusicForAI();
+                        } else if (!speechSynthesis.speaking && speechSynthesisActive) {
+                            console.log('🔇 Speech synthesis stopped - resuming music');
+                            speechSynthesisActive = false;
+                            resumeBackgroundMusicForAI();
+                        }
+                    }
+                    
+                    // Check speech state every 500ms
+                    voiceDetectionInterval = setInterval(checkSpeechState, 500);
+                    
+                    // Also override the speak method
                     const originalSpeak = speechSynthesis.speak;
                     speechSynthesis.speak = function(utterance) {
-                        console.log('AI speech detected - pausing background music');
+                        console.log('🗣️ speechSynthesis.speak() called - pausing music');
                         pauseBackgroundMusicForAI();
                         speechSynthesisActive = true;
                         
-                        // Listen for speech end events
-                        utterance.onend = function(event) {
-                            console.log('AI speech ended - resuming background music');
+                        // Enhanced event listeners
+                        utterance.onstart = function() {
+                            console.log('🎤 Speech started');
+                            pauseBackgroundMusicForAI();
+                        };
+                        
+                        utterance.onend = function() {
+                            console.log('🔇 Speech ended');
                             speechSynthesisActive = false;
                             resumeBackgroundMusicForAI();
                         };
                         
-                        utterance.onerror = function(event) {
-                            console.log('AI speech error - resuming background music');
+                        utterance.onerror = function() {
+                            console.log('❌ Speech error');
                             speechSynthesisActive = false;
                             resumeBackgroundMusicForAI();
                         };
                         
-                        // Call original speak function
                         return originalSpeak.call(this, utterance);
                     };
                 }
             }
             
-            // Monitor Web Audio API (alternative method)
-            function monitorWebAudio() {
-                if ('AudioContext' in window || 'webkitAudioContext' in window) {
-                    const AudioContext = window.AudioContext || window.webkitAudioContext;
-                    const originalCreateMediaElementSource = AudioContext.prototype.createMediaElementSource;
-                    
-                    AudioContext.prototype.createMediaElementSource = function(mediaElement) {
-                        // Check if this might be AI chatbot audio
-                        if (mediaElement && mediaElement.src && 
-                            (mediaElement.src.includes('jotfor') || 
-                             mediaElement.src.includes('ai') || 
-                             mediaElement.className?.includes('ai') ||
-                             mediaElement.id?.includes('ai'))) {
+            // Monitor all audio elements more aggressively
+            function monitorAllAudio() {
+                // Check all existing audio elements
+                function checkAllAudioElements() {
+                    const allAudio = document.querySelectorAll('audio');
+                    allAudio.forEach(function(audio) {
+                        if (audio.id !== 'background-music' && 
+                            audio.id !== 'podcast-audio-en' && 
+                            audio.id !== 'podcast-audio-es') {
                             
-                            console.log('AI audio element detected');
-                            
-                            mediaElement.addEventListener('play', function() {
-                                console.log('AI audio started - pausing background music');
-                                pauseBackgroundMusicForAI();
-                            });
-                            
-                            mediaElement.addEventListener('pause', function() {
-                                console.log('AI audio paused - resuming background music');
-                                resumeBackgroundMusicForAI();
-                            });
-                            
-                            mediaElement.addEventListener('ended', function() {
-                                console.log('AI audio ended - resuming background music');
-                                resumeBackgroundMusicForAI();
-                            });
+                            // This might be AI chatbot audio
+                            if (!audio.hasAIListener) {
+                                console.log('🎧 Found potential AI audio element:', audio);
+                                
+                                audio.addEventListener('play', function() {
+                                    console.log('🎤 AI audio playing - pausing background music');
+                                    pauseBackgroundMusicForAI();
+                                });
+                                
+                                audio.addEventListener('pause', function() {
+                                    console.log('⏸️ AI audio paused - resuming background music');
+                                    resumeBackgroundMusicForAI();
+                                });
+                                
+                                audio.addEventListener('ended', function() {
+                                    console.log('🔚 AI audio ended - resuming background music');
+                                    resumeBackgroundMusicForAI();
+                                });
+                                
+                                audio.hasAIListener = true;
+                            }
                         }
-                        
-                        return originalCreateMediaElementSource.call(this, mediaElement);
-                    };
+                    });
                 }
+                
+                // Check immediately and then periodically
+                checkAllAudioElements();
+                setInterval(checkAllAudioElements, 2000);
             }
             
-            // Monitor for dynamically created audio elements
-            function monitorDynamicAudio() {
+            // Monitor iframe content (JotForm AI might be in iframe)
+            function monitorIframes() {
+                function checkIframes() {
+                    const iframes = document.querySelectorAll('iframe');
+                    iframes.forEach(function(iframe) {
+                        try {
+                            if (iframe.src && iframe.src.includes('jotfor')) {
+                                console.log('🖼️ JotForm iframe detected');
+                                
+                                iframe.addEventListener('load', function() {
+                                    try {
+                                        const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
+                                        const iframeAudio = iframeDoc.querySelectorAll('audio');
+                                        
+                                        iframeAudio.forEach(function(audio) {
+                                            console.log('🎧 Audio in JotForm iframe detected');
+                                            
+                                            audio.addEventListener('play', function() {
+                                                console.log('🎤 JotForm iframe audio playing - pausing background music');
+                                                pauseBackgroundMusicForAI();
+                                            });
+                                            
+                                            audio.addEventListener('pause', function() {
+                                                console.log('⏸️ JotForm iframe audio paused - resuming background music');
+                                                resumeBackgroundMusicForAI();
+                                            });
+                                            
+                                            audio.addEventListener('ended', function() {
+                                                console.log('🔚 JotForm iframe audio ended - resuming background music');
+                                                resumeBackgroundMusicForAI();
+                                            });
+                                        });
+                                    } catch (e) {
+                                        console.log('Cannot access iframe content (cross-origin)');
+                                    }
+                                });
+                            }
+                        } catch (e) {
+                            console.log('Error monitoring iframe:', e);
+                        }
+                    });
+                }
+                
+                checkIframes();
+                setInterval(checkIframes, 3000);
+            }
+            
+            // Enhanced mutation observer for any new elements
+            function monitorDynamicElements() {
                 const observer = new MutationObserver(function(mutations) {
                     mutations.forEach(function(mutation) {
                         mutation.addedNodes.forEach(function(node) {
                             if (node.nodeType === Node.ELEMENT_NODE) {
-                                // Check for audio elements
-                                const audioElements = node.tagName === 'AUDIO' ? [node] : node.querySelectorAll ? node.querySelectorAll('audio') : [];
+                                // Check for any new audio elements
+                                const audioElements = [];
+                                if (node.tagName === 'AUDIO') {
+                                    audioElements.push(node);
+                                }
+                                if (node.querySelectorAll) {
+                                    audioElements.push(...node.querySelectorAll('audio'));
+                                }
                                 
                                 audioElements.forEach(function(audio) {
-                                    // Check if this might be AI chatbot audio
-                                    if (audio.src && (
-                                        audio.src.includes('jotfor') || 
-                                        audio.src.includes('ai') ||
-                                        audio.className?.includes('ai') ||
-                                        audio.id?.includes('ai')
-                                    )) {
-                                        console.log('Dynamic AI audio element detected');
+                                    if (audio.id !== 'background-music' && 
+                                        audio.id !== 'podcast-audio-en' && 
+                                        audio.id !== 'podcast-audio-es' &&
+                                        !audio.hasAIListener) {
+                                        
+                                        console.log('🎧 New audio element detected:', audio);
                                         
                                         audio.addEventListener('play', function() {
-                                            console.log('Dynamic AI audio started - pausing background music');
+                                            console.log('🎤 New audio playing - pausing background music');
                                             pauseBackgroundMusicForAI();
                                         });
                                         
                                         audio.addEventListener('pause', function() {
-                                            console.log('Dynamic AI audio paused - resuming background music');
+                                            console.log('⏸️ New audio paused - resuming background music');
                                             resumeBackgroundMusicForAI();
                                         });
                                         
                                         audio.addEventListener('ended', function() {
-                                            console.log('Dynamic AI audio ended - resuming background music');
+                                            console.log('🔚 New audio ended - resuming background music');
                                             resumeBackgroundMusicForAI();
                                         });
+                                        
+                                        audio.hasAIListener = true;
+                                    }
+                                });
+                                
+                                // Check for iframes
+                                const iframes = [];
+                                if (node.tagName === 'IFRAME') {
+                                    iframes.push(node);
+                                }
+                                if (node.querySelectorAll) {
+                                    iframes.push(...node.querySelectorAll('iframe'));
+                                }
+                                
+                                iframes.forEach(function(iframe) {
+                                    if (iframe.src && iframe.src.includes('jotfor')) {
+                                        console.log('🖼️ New JotForm iframe detected');
+                                        // Monitor this iframe for audio
                                     }
                                 });
                             }
@@ -7174,27 +7267,51 @@ Es comprobado, asequible, exclusivo, y diseñado para máxima exposición. Asegu
                 
                 observer.observe(document.body, {
                     childList: true,
-                    subtree: true
+                    subtree: true,
+                    attributes: true,
+                    attributeFilter: ['src']
                 });
             }
             
-            // Initialize monitoring when DOM is ready
-            document.addEventListener('DOMContentLoaded', function() {
-                console.log('Initializing AI chatbot music integration...');
+            // Monitor window focus/blur (AI might speak when window gains focus)
+            function monitorWindowEvents() {
+                let wasPlayingBeforeBlur = false;
+                
+                window.addEventListener('focus', function() {
+                    console.log('🎯 Window focused - checking for AI activity');
+                    // Small delay to check if AI starts speaking
+                    setTimeout(() => {
+                        if (speechSynthesis.speaking) {
+                            console.log('🎤 AI speaking on window focus - pausing music');
+                            pauseBackgroundMusicForAI();
+                        }
+                    }, 500);
+                });
+            }
+            
+            // Initialize all monitoring methods
+            function initializeAIVoiceDetection() {
+                console.log('🚀 Initializing enhanced AI voice detection...');
                 monitorSpeechSynthesis();
-                monitorWebAudio();
-                monitorDynamicAudio();
-            });
+                monitorAllAudio();
+                monitorIframes();
+                monitorDynamicElements();
+                monitorWindowEvents();
+                
+                // Also add a fallback manual trigger
+                console.log('💡 You can manually trigger music pause with: pauseBackgroundMusicForAI()');
+                console.log('💡 You can manually resume music with: resumeBackgroundMusicForAI()');
+            }
+            
+            // Initialize when DOM is ready
+            document.addEventListener('DOMContentLoaded', initializeAIVoiceDetection);
             
             // Also initialize immediately if DOM is already ready
             if (document.readyState !== 'loading') {
-                console.log('DOM already ready - initializing AI chatbot music integration...');
-                monitorSpeechSynthesis();
-                monitorWebAudio();
-                monitorDynamicAudio();
+                initializeAIVoiceDetection();
             }
             
-            // Global function to manually pause/resume for AI chat (can be called externally)
+            // Global functions for manual control
             window.pauseBackgroundMusicForAI = pauseBackgroundMusicForAI;
             window.resumeBackgroundMusicForAI = resumeBackgroundMusicForAI;
             
