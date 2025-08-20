@@ -581,23 +581,8 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     */
 
-    // Add star burst effect to profile picture click
-    const profilePic = document.getElementById('profilePic');
-    if (profilePic) {
-        profilePic.addEventListener('click', function(e) {
-            // Desktop-only behavior
-            if (window.innerWidth < 992) { return; }
-            
-            // Stop propagation so other click handlers don’t fire
-            e.preventDefault();
-            e.stopPropagation();
-            
-            // Open image modal immediately for responsiveness
-            if (typeof openImageModal === 'function') {
-                openImageModal();
-            }
-        }, true);
-    }
+    // Profile picture click handler - removed to prevent conflicts
+    // Image modal functionality is now handled in index.html
     
     // Function to create star burst effect
     function createStarBurst(e, size = 'small') {
