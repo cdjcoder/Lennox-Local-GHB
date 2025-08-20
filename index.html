@@ -5082,7 +5082,7 @@ Es comprobado, asequible, exclusivo, y diseñado para máxima exposición. Asegu
                             </div>
                             
                             <!-- Profile Image -->
-                            <img src="o1qra3ktu2.jpg" alt="Profile Picture" id="profilePic" style="width: 120px; height: 120px; border-radius: 50%; object-fit: cover; object-position: center 25%; box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3), 0 0 0 4px white, 0 0 0 6px #d4af37; cursor: pointer; transition: all 0.3s ease; position: relative; z-index: 10;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+                            <img src="o1qra3ktu2.jpg" alt="Profile Picture" id="profilePic" style="width: 120px; height: 120px; border-radius: 50%; object-fit: cover; object-position: center 25%; box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3), 0 0 0 4px white, 0 0 0 6px #d4af37; cursor: pointer; transition: all 0.3s ease; position: relative; z-index: 10;" onclick="handleImageClick(event)" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
                         </div>
                         
                         <!-- Sunburst Styles -->
@@ -7079,6 +7079,28 @@ Es comprobado, asequible, exclusivo, y diseñado para máxima exposición. Asegu
     </div>
 
     <script>
+        // Simple, direct click handler for the profile image
+        function handleImageClick(event) {
+            console.log('Direct image click handler called!');
+            event.preventDefault();
+            event.stopPropagation();
+            
+            // Add immediate visual feedback
+            const img = event.target;
+            img.style.transform = 'scale(0.95)';
+            setTimeout(() => {
+                img.style.transform = 'scale(1.05)';
+                setTimeout(() => {
+                    img.style.transform = 'scale(1)';
+                }, 100);
+            }, 100);
+            
+            // Open modal after visual feedback
+            setTimeout(() => {
+                openImageModal();
+            }, 200);
+        }
+        
         function openImageModal() {
             console.log('openImageModal function called'); // Debug log
             
@@ -7158,48 +7180,7 @@ Es comprobado, asequible, exclusivo, y diseñado para máxima exposición. Asegu
         // Ensure global access for inline handlers and attach desktop-only click handler
         window.openImageModal = openImageModal;
         window.closeImageModal = closeImageModal;
-        document.addEventListener('DOMContentLoaded', function() {
-            const profile = document.getElementById('profilePic');
-            if (profile) {
-                profile.addEventListener('click', function(ev) {
-                    console.log('Profile image clicked!'); // Debug log
-                    
-                    // Ensure this is specifically clicking the image, not a button
-                    if (ev.target.tagName === 'A' || ev.target.closest('a') || 
-                        ev.target.classList.contains('btn') || ev.target.closest('.btn')) {
-                        console.log('Click blocked - button detected');
-                        return; // Let button handle its own click
-                    }
-                    
-                    // Close any open JotForm modal first
-                    const jotFormModal = document.querySelector('.jotform-modal');
-                    if (jotFormModal) {
-                        jotFormModal.remove();
-                    }
-                    
-                    // Add visual feedback before opening modal
-                    profile.style.transform = 'scale(0.95)';
-                    profile.style.transition = 'transform 0.1s ease';
-                    
-                    setTimeout(() => {
-                        profile.style.transform = 'scale(1.05)';
-                        setTimeout(() => {
-                            profile.style.transform = 'scale(1)';
-                        }, 100);
-                    }, 100);
-                    
-                    // Enable on all devices (removed desktop-only restriction)
-                    ev.preventDefault();
-                    ev.stopPropagation();
-                    
-                    // Open modal with slight delay for visual effect
-                    setTimeout(() => {
-                        console.log('Opening image modal...');
-                        openImageModal();
-                    }, 200);
-                });
-            }
-        });
+        // Removed complex event handler - using direct onclick instead
 
         // FAQ Show More functionality
         document.addEventListener('DOMContentLoaded', function() {
