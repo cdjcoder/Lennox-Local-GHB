@@ -1245,16 +1245,43 @@ header.scrolled .language-toggle span {
   color: #5f6368;
 }
 
+.latest-updates .updates-body {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.latest-updates .updates-card.is-expanded .updates-body {
+  display: block;
+  -webkit-line-clamp: unset;
+}
+
 .latest-updates .updates-read-more {
   color: #d4af37;
   font-weight: 600;
   display: inline-flex;
   align-items: center;
   gap: 6px;
+  background: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
 }
 
 .latest-updates .updates-read-more i {
   font-size: 0.8rem;
+  transition: transform 0.2s ease;
+}
+
+.latest-updates .updates-read-more:focus-visible {
+  outline: 2px solid rgba(212, 175, 55, 0.5);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+.latest-updates .updates-card.is-expanded .updates-read-more i {
+  transform: rotate(180deg);
 }
 
 /* Button Styles */

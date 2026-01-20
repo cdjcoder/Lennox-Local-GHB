@@ -205,6 +205,28 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
+    // Latest updates "Read More" toggle
+    const updatesCards = document.querySelectorAll('.updates-card');
+    updatesCards.forEach(card => {
+        const toggles = card.querySelectorAll('.updates-read-more');
+        if (!toggles.length) {
+            return;
+        }
+
+        toggles.forEach(toggle => {
+            toggle.addEventListener('click', () => {
+                const isExpanded = card.classList.toggle('is-expanded');
+                toggles.forEach(button => {
+                    button.setAttribute('aria-expanded', isExpanded.toString());
+                    const label = button.querySelector('.updates-read-more-label');
+                    if (label) {
+                        label.textContent = isExpanded ? button.dataset.less : button.dataset.more;
+                    }
+                });
+            });
+        });
+    });
+
     // Mouse Cursor Effect
     const cursorGlow = document.getElementById('cursorGlow');
     const cursorTrail = document.getElementById('cursorTrail');
