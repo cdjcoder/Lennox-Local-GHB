@@ -1276,9 +1276,9 @@ document.addEventListener('DOMContentLoaded', function() {
             
             // Handle typewriter text based on animation state
             if (animationComplete) {
-                setTimeout(() => displayStaticColoredText('typewriter-es', 'Su Anuncio en 10,000 Hogares Locales'), 300);
+                setTimeout(() => displayStaticColoredText('typewriter-es', 'Su Anuncio en 3,000 a 10,000 hogares locales'), 300);
             } else {
-                setTimeout(() => typeWriter('typewriter-es', 'Su Anuncio en 10,000 Hogares Locales', 80), 300);
+                setTimeout(() => typeWriter('typewriter-es', 'Su Anuncio en 3,000 a 10,000 hogares locales', 80), 300);
             }
         } else {
             updateURLForLanguage('english');
@@ -1669,13 +1669,13 @@ document.addEventListener('DOMContentLoaded', function() {
         if (animationComplete) {
             // Skip animation and show final static text immediately
             displayStaticColoredText(currentLang === 'es' ? 'typewriter-es' : 'typewriter-en', 
-                                    currentLang === 'es' ? 'Su Anuncio en 10,000 Hogares Locales' : 'Your Ad in 10,000 Local Homes');
+                                    currentLang === 'es' ? 'Su Anuncio en 3,000 a 10,000 hogares locales' : 'Your Ad in 3,000 to 10,000 local homes');
         } else {
             // Run the animation
             if (currentLang === 'es') {
-                typeWriter('typewriter-es', 'Su Anuncio en 10,000 Hogares Locales', 80);
+                typeWriter('typewriter-es', 'Su Anuncio en 3,000 a 10,000 hogares locales', 80);
             } else {
-                typeWriter('typewriter-en', 'Your Ad in 10,000 Local Homes', 80);
+                typeWriter('typewriter-en', 'Your Ad in 3,000 to 10,000 local homes', 80);
             }
         }
     }
@@ -1718,9 +1718,9 @@ document.addEventListener('DOMContentLoaded', function() {
             
             // Restart the animation based on current language
             if (currentLang === 'es') {
-                typeWriter('typewriter-es', 'Su Anuncio en 10,000 Hogares Locales', 80);
+                typeWriter('typewriter-es', 'Su Anuncio en 3,000 a 10,000 hogares locales', 80);
             } else {
-                typeWriter('typewriter-en', 'Your Ad in 10,000 Local Homes', 80);
+                typeWriter('typewriter-en', 'Your Ad in 3,000 to 10,000 local homes', 80);
             }
         });
     }
