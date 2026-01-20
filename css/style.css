@@ -3380,6 +3380,10 @@ header.scrolled .language-toggle span {
   margin-bottom: 30px;
 }
 
+.urgency-content .deadline-block + .deadline-block {
+  margin-top: 40px;
+}
+
 .countdown {
   display: flex;
   justify-content: center;
