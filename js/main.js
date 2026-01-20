@@ -1,19 +1,41 @@
 // Lennox Local Ads Flyer - Enhanced JavaScript
 
-// Loading Screen Control
-window.addEventListener('load', function() {
+// Loading Screen Control (max 1.7s)
+(() => {
     const loaderWrapper = document.querySelector('.loader-wrapper');
-    if (loaderWrapper) {
+    if (!loaderWrapper) return;
+
+    const maxDisplayMs = 1700;
+    const fadeOutMs = 250;
+    let isHidden = false;
+
+    const hideLoader = () => {
+        if (isHidden) return;
+        isHidden = true;
+        loaderWrapper.style.opacity = '0';
+        loaderWrapper.style.transform = 'scale(0.98)';
         setTimeout(() => {
-            loaderWrapper.style.opacity = '0';
-            loaderWrapper.style.transform = 'scale(0.98)';
-            setTimeout(() => {
-                loaderWrapper.style.display = 'none';
-                document.body.classList.add('page-loaded');
-            }, 300); // Faster fade-out transition (optimized)
-        }, 1200); // Show loader for 1.2 seconds after page loads (optimized)
-    }
-});
+            loaderWrapper.style.display = 'none';
+            document.body.classList.add('page-loaded');
+        }, fadeOutMs);
+    };
+
+    const maxTimer = setTimeout(hideLoader, maxDisplayMs);
+
+    document.addEventListener('DOMContentLoaded', () => {
+        setTimeout(() => {
+            clearTimeout(maxTimer);
+            hideLoader();
+        }, 300);
+    });
+
+    window.addEventListener('load', () => {
+        setTimeout(() => {
+            clearTimeout(maxTimer);
+            hideLoader();
+        }, 200);
+    });
+})();
 
 // Smooth scroll function
 function smoothScrollTo(targetId) {
