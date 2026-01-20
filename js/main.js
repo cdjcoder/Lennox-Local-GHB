@@ -1324,39 +1324,42 @@ document.addEventListener('DOMContentLoaded', function() {
         spanishContent.forEach(el => el.style.display = 'none');
     }
     
-    // Countdown Timer
-    const countdown = document.querySelector('.countdown');
-    if (countdown) {
-        // Set the deadline date for September 1st, 2025 (Fall 2025 campaign)
-        const deadline = new Date();
-        deadline.setMonth(8); // September is month 8 (0-indexed)
-        deadline.setDate(1); // 1st of September
-        deadline.setFullYear(2025);
-        
+    // Countdown Timers
+    const countdowns = document.querySelectorAll('.countdown[data-deadline]');
+    if (countdowns.length) {
         function updateCountdown() {
             const now = new Date();
-            const diff = deadline - now;
             
-            if (diff <= 0) {
-                // Countdown is over
-                document.getElementById('days').textContent = '0';
-                document.getElementById('hours').textContent = '0';
-                document.getElementById('minutes').textContent = '0';
-                return;
-            }
-            
-            // Calculate days, hours, minutes
-            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-            
-            // Display the calculated values
-            document.getElementById('days').textContent = days;
-            document.getElementById('hours').textContent = hours < 10 ? '0' + hours : hours;
-            document.getElementById('minutes').textContent = minutes < 10 ? '0' + minutes : minutes;
+            countdowns.forEach(countdown => {
+                const deadlineValue = countdown.dataset.deadline;
+                if (!deadlineValue) {
+                    return;
+                }
+                
+                const deadline = new Date(deadlineValue);
+                if (Number.isNaN(deadline.getTime())) {
+                    return;
+                }
+                
+                const diff = Math.max(0, deadline - now);
+                const daysElement = countdown.querySelector('[data-unit="days"]');
+                const hoursElement = countdown.querySelector('[data-unit="hours"]');
+                const minutesElement = countdown.querySelector('[data-unit="minutes"]');
+                
+                if (!daysElement || !hoursElement || !minutesElement) {
+                    return;
+                }
+                
+                const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                
+                daysElement.textContent = days;
+                hoursElement.textContent = hours < 10 ? '0' + hours : hours;
+                minutesElement.textContent = minutes < 10 ? '0' + minutes : minutes;
+            });
         }
         
-        // Update the countdown every minute
         updateCountdown();
         setInterval(updateCountdown, 60000);
     }
