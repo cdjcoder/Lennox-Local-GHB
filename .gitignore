@@ -1,0 +1,50 @@
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# Node modules
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Editor directories and files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Operating System Files
+Thumbs.db
+Desktop.ini
+
+# Build outputs
+dist/
+build/
+*.min.js
+*.min.css
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+*.bak
+*.cache
+
+# Log files
+*.log
+logs/
+
+# Test coverage
+coverage/
+.nyc_output/
+
+# PHP
+vendor/
+composer.lock
+
+# Backup files
+*.backup

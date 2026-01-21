@@ -1,0 +1,249 @@
+# Contributing to Lennox Local Ads Flyer
+
+Thank you for your interest in contributing to this project! This guide will help you understand how to add files and make changes to the repository.
+
+## How to Add Files to the Repository
+
+### Prerequisites
+
+1. **Git Installed**: Make sure you have Git installed on your computer
+   ```bash
+   git --version
+   ```
+
+2. **GitHub Account**: You need a GitHub account and access to this repository
+
+3. **Clone the Repository**: If you haven't already, clone the repository to your local machine
+   ```bash
+   git clone https://github.com/cdjcoder/Lennox-Local-GHB.git
+   cd Lennox-Local-GHB
+   ```
+
+### Step-by-Step Guide to Adding Files
+
+#### 1. Create a New Branch
+
+Always create a new branch for your changes:
+
+```bash
+git checkout -b your-branch-name
+```
+
+For example:
+```bash
+git checkout -b add-new-postcard-image
+```
+
+#### 2. Add Your Files
+
+You can add files in several ways:
+
+**Option A: Add specific files**
+```bash
+# Add a single file
+git add filename.png
+
+# Add multiple specific files
+git add file1.png file2.html file3.css
+```
+
+**Option B: Add all files in a directory**
+```bash
+# Add all files in the images directory
+git add images/
+
+# Add all files in the css directory
+git add css/
+```
+
+**Option C: Add all changed files**
+```bash
+# Add all new, modified, and deleted files
+git add .
+
+# Or use:
+git add -A
+```
+
+#### 3. Check What Will Be Committed
+
+Before committing, verify what files are staged:
+
+```bash
+# See what files are staged for commit
+git status
+
+# See the actual changes in staged files
+git diff --staged
+```
+
+#### 4. Commit Your Changes
+
+Commit your changes with a descriptive message:
+
+```bash
+git commit -m "Add new postcard design for summer campaign"
+```
+
+**Good commit message examples:**
+- `Add hero image for homepage`
+- `Update pricing section with new rates`
+- `Fix broken link in contact form`
+- `Add Spanish translation for FAQ section`
+
+#### 5. Push Your Changes to GitHub
+
+```bash
+git push origin your-branch-name
+```
+
+For example:
+```bash
+git push origin add-new-postcard-image
+```
+
+#### 6. Create a Pull Request
+
+1. Go to the repository on GitHub
+2. Click on "Pull Requests"
+3. Click "New Pull Request"
+4. Select your branch
+5. Add a title and description explaining your changes
+6. Click "Create Pull Request"
+
+### File Organization Guidelines
+
+#### Where to Place Different File Types
+
+- **HTML files**: Place in the root directory (e.g., `index.html`, `success.html`)
+- **CSS files**: Place in the `css/` directory
+- **JavaScript files**: Place in the `js/` directory
+- **Images**: Place in the `images/` directory or root (depending on usage)
+- **Media files (audio/video)**: Place in the root directory or a dedicated `media/` folder
+- **Server files**: Place in the `server/` directory
+- **Documentation**: Place in the root directory (e.g., `README.md`, `CONTRIBUTING.md`)
+
+#### Naming Conventions
+
+- **Images**: Use descriptive names or hash-based names (e.g., `logo.png`, `c8j30gm2y3.png`)
+- **HTML files**: Use lowercase with hyphens (e.g., `success-form.html`)
+- **CSS files**: Use lowercase with hyphens (e.g., `styles.css`)
+- **JavaScript files**: Use lowercase with hyphens or camelCase (e.g., `script.js`, `main.js`)
+
+### Common Scenarios
+
+#### Adding a New Image
+
+```bash
+# 1. Copy your image to the appropriate directory
+cp ~/Downloads/new-postcard.png images/
+
+# 2. Add the file to git
+git add images/new-postcard.png
+
+# 3. Commit and push
+git commit -m "Add new postcard image for fall campaign"
+git push origin your-branch-name
+```
+
+#### Adding Multiple Files at Once
+
+```bash
+# 1. Copy all your files to the repository
+cp ~/Downloads/*.png images/
+
+# 2. Check what was added
+git status
+
+# 3. Add all new files
+git add images/
+
+# 4. Commit and push
+git commit -m "Add multiple postcard designs"
+git push origin your-branch-name
+```
+
+#### Updating an Existing File
+
+```bash
+# 1. Make your changes to the file
+# 2. Check the changes
+git diff filename
+
+# 3. Add the modified file
+git add filename
+
+# 4. Commit and push
+git commit -m "Update pricing information in index.html"
+git push origin your-branch-name
+```
+
+### Best Practices
+
+1. **Make small, focused commits**: Each commit should represent one logical change
+2. **Write clear commit messages**: Explain what changed and why
+3. **Test your changes**: Make sure the website still works before committing
+4. **Don't commit sensitive data**: Never commit passwords, API keys, or `.env` files
+5. **Use .gitignore**: Add files you don't want to commit to `.gitignore`
+6. **Keep files organized**: Follow the project structure and naming conventions
+7. **Optimize images**: Compress images before adding them to reduce repository size
+
+### Files to Never Commit
+
+- `.env` files with credentials
+- `node_modules/` directories
+- Build artifacts (minified files generated by build tools)
+- Operating system files (`.DS_Store`, `Thumbs.db`)
+- Editor configuration files (unless shared team preferences)
+- Large binary files that aren't necessary
+- Temporary files
+
+### Getting Help
+
+If you run into issues:
+
+1. **Check Git status**: `git status` shows what's happening
+2. **Check Git log**: `git log --oneline` shows recent commits
+3. **Undo changes**: 
+   - Unstage files: `git restore --staged filename`
+   - Discard changes: `git restore filename`
+4. **Ask for help**: Create an issue on GitHub explaining your problem
+
+### Useful Git Commands
+
+```bash
+# See current branch and status
+git status
+
+# List all branches
+git branch
+
+# Switch to a different branch
+git checkout branch-name
+
+# Pull latest changes from GitHub
+git pull origin main
+
+# See commit history
+git log --oneline
+
+# See what changed in a file
+git diff filename
+
+# Undo last commit (keep changes)
+git reset --soft HEAD~1
+
+# Discard all local changes (careful!)
+git restore .
+```
+
+## Questions?
+
+If you have questions about contributing or adding files to the repository, please:
+
+1. Check this guide first
+2. Review existing pull requests for examples
+3. Create an issue on GitHub
+4. Contact the repository maintainers
+
+Thank you for contributing to Lennox Local Ads Flyer!
