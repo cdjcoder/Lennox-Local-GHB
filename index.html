@@ -1028,6 +1028,32 @@
         .bounce-hover:hover .bounce-animation {
             animation-duration: 2s;
         }
+        
+        /* Responsive postcard grid */
+        .postcard-images {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto 40px auto;
+            padding: 0 20px;
+            justify-items: center;
+        }
+        
+        .postcard-images img {
+            width: 100%;
+            max-width: 550px;
+            height: auto;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+        
+        @media (max-width: 768px) {
+            .postcard-images {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -3211,10 +3237,11 @@ Es comprobado, asequible, exclusivo, y diseñado para máxima exposición. Asegu
                 <h3 class="text-center en" style="margin-bottom: 30px; color: #FF0000;">Our Postcards</h3>
                 <h3 class="text-center es" style="display: none; margin-bottom: 30px; color: #FF0000;">Nuestras Postales</h3>
                 
-                <div class="postcard-images" style="text-align: center; margin-bottom: 40px;">
-                    <img src="eub2staqge.png" alt="Lennox Local Summer 2025 Campaign" class="neon-glow-image" style="width: 100%; max-width: 500px; height: auto; margin-bottom: 30px; display: inline-block;">
-                    
-                    <img src="ywaayafkyy.png" alt="Support Local Businesses Campaign" class="neon-glow-image" style="width: 100%; max-width: 500px; height: auto; display: inline-block;">
+                <div class="postcard-images">
+                    <img src="eub2staqge.png" alt="Lennox Local Summer 2025 Campaign" class="neon-glow-image">
+                    <img src="ywaayafkyy.png" alt="Support Local Businesses Campaign" class="neon-glow-image">
+                    <img src="lennox-local-new-postcard.png" alt="Lennox Local Starter Postcard" class="neon-glow-image">
+                    <img src="lennox-local-new-postcard.png" alt="Lennox Local Starter Postcard" class="neon-glow-image">
                 </div>
                 
                 <div class="drop-dates" style="background-color: #FFF9C4; border-radius: 15px; padding: 30px; box-shadow: 0 8px 30px rgba(0,0,0,0.12); margin-bottom: 40px;">
