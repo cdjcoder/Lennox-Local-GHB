@@ -10280,10 +10280,10 @@ footer::after {
 .pricing.pricing-redesign .starter-image-grid {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 18px;
-    width: min(100%, 760px);
+    gap: 40px;
+    width: min(100%, 820px);
     align-items: center;
-    justify-items: center;
+    justify-items: stretch;
 }
 
 .pricing.pricing-redesign .starter-image {
