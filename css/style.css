@@ -10270,7 +10270,7 @@ footer::after {
 }
 
 .pricing.pricing-redesign .starter-image-frame {
-    padding: 16px;
+    padding: 8px;
     border-radius: 20px;
     border: 2px solid rgba(212, 175, 55, 0.7);
     background: rgba(14, 40, 92, 0.8);
@@ -10280,8 +10280,8 @@ footer::after {
 .pricing.pricing-redesign .starter-image-grid {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 24px;
-    width: min(100%, 640px);
+    gap: 18px;
+    width: min(100%, 760px);
     align-items: center;
     justify-items: center;
 }
@@ -10299,8 +10299,8 @@ footer::after {
     max-width: 100%;
     border: 2px solid rgba(212, 175, 55, 0.7);
     background: #0f2a55;
-    padding: 8px;
-    border-radius: 12px;
+    padding: 6px;
+    border-radius: 10px;
     box-shadow: 0 12px 26px rgba(0, 0, 0, 0.25);
 }
 
@@ -10761,7 +10761,7 @@ footer::after {
 
     .pricing.pricing-redesign .starter-image-grid {
         grid-template-columns: 1fr;
-        width: min(100%, 460px);
+        width: min(100%, 520px);
     }
 
     .pricing.pricing-redesign .starter-details {
