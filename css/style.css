@@ -10277,12 +10277,26 @@ footer::after {
     box-shadow: 0 15px 30px rgba(0, 0, 0, 0.25);
 }
 
+.pricing.pricing-redesign .starter-image-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+    width: min(100%, 520px);
+    align-items: center;
+    justify-items: center;
+}
+
 .pricing.pricing-redesign .starter-image {
     display: block;
     width: 380px;
     max-width: 100%;
     height: auto;
     border-radius: 14px;
+}
+
+.pricing.pricing-redesign .starter-image-grid .starter-image {
+    width: 100%;
+    max-width: 100%;
 }
 
 .pricing.pricing-redesign .starter-details {
@@ -10738,6 +10752,11 @@ footer::after {
     .pricing.pricing-redesign .starter-card {
         flex-direction: column;
         text-align: center;
+    }
+
+    .pricing.pricing-redesign .starter-image-grid {
+        grid-template-columns: 1fr;
+        width: min(100%, 380px);
     }
 
     .pricing.pricing-redesign .starter-details {
