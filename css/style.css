@@ -10270,7 +10270,7 @@ footer::after {
 }
 
 .pricing.pricing-redesign .starter-image-frame {
-    --starter-image-gap: 28px;
+    --starter-image-gap: 36px;
     padding: var(--starter-image-gap);
     border-radius: 20px;
     border: 2px solid rgba(212, 175, 55, 0.7);
@@ -10282,7 +10282,7 @@ footer::after {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: var(--starter-image-gap);
-    width: min(100%, 860px);
+    width: min(100%, 900px);
     align-items: center;
     justify-items: stretch;
 }
@@ -10761,7 +10761,7 @@ footer::after {
     }
 
     .pricing.pricing-redesign .starter-image-frame {
-        --starter-image-gap: 20px;
+        --starter-image-gap: 22px;
     }
 
     .pricing.pricing-redesign .starter-image-grid {
