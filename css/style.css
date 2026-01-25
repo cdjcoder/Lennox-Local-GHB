@@ -2964,26 +2964,6 @@ header.scrolled .language-toggle span {
   filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.5));
 }
 
-.map-title::before {
-  content: '📅';
-  position: absolute;
-  top: -10px;
-  left: -15px;
-  font-size: 2rem;
-  z-index: 1;
-  background: linear-gradient(135deg, #ff6b6b, #ee5a24);
-  border-radius: 50%;
-  width: 60px;
-  height: 60px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 
-    0 10px 25px rgba(255, 107, 107, 0.4),
-    0 0 0 4px rgba(255, 255, 255, 0.8);
-  animation: pulse 2s infinite;
-}
-
 .map-title::after {
   content: '';
   position: absolute;
