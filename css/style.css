@@ -10398,11 +10398,26 @@ footer::after {
     box-shadow: 0 15px 30px rgba(0, 0, 0, 0.25);
 }
 
+.pricing.pricing-redesign .flagship-image-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+    align-items: center;
+}
+
 .pricing.pricing-redesign .flagship-image {
     width: 100%;
     height: auto;
     display: block;
     border-radius: 14px;
+}
+
+.pricing.pricing-redesign .flagship-image-grid .flagship-image {
+    border-radius: 12px;
+    border: 2px solid rgba(95, 208, 255, 0.55);
+    background: #0f2a55;
+    padding: 6px;
+    box-shadow: 0 12px 26px rgba(0, 0, 0, 0.25);
 }
 
 .pricing.pricing-redesign .flagship-cta {
@@ -10756,6 +10771,10 @@ footer::after {
     .pricing.pricing-redesign .flagship-card {
         grid-template-columns: 1fr;
         text-align: center;
+    }
+
+    .pricing.pricing-redesign .flagship-image-grid {
+        grid-template-columns: 1fr;
     }
 }
 
