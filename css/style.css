@@ -10267,6 +10267,45 @@ footer::after {
     justify-items: stretch;
 }
 
+.pricing.pricing-redesign .starter-flip-card {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 5 / 3;
+    perspective: 1200px;
+    cursor: pointer;
+}
+
+.pricing.pricing-redesign .starter-flip-card:focus-visible {
+    outline: 3px solid rgba(212, 175, 55, 0.85);
+    outline-offset: 6px;
+}
+
+.pricing.pricing-redesign .starter-flip-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transition: transform 0.7s ease;
+}
+
+.pricing.pricing-redesign .starter-flip-card:hover .starter-flip-inner,
+.pricing.pricing-redesign .starter-flip-card:focus-within .starter-flip-inner {
+    transform: rotateY(180deg);
+}
+
+.pricing.pricing-redesign .starter-flip-face {
+    position: absolute;
+    inset: 0;
+    backface-visibility: hidden;
+    border-radius: 10px;
+    display: flex;
+    align-items: stretch;
+}
+
+.pricing.pricing-redesign .starter-flip-back {
+    transform: rotateY(180deg);
+}
+
 .pricing.pricing-redesign .starter-image {
     display: block;
     width: 380px;
@@ -10283,6 +10322,13 @@ footer::after {
     padding: 6px;
     border-radius: 10px;
     box-shadow: 0 12px 26px rgba(0, 0, 0, 0.25);
+}
+
+.pricing.pricing-redesign .starter-flip-face .starter-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    box-sizing: border-box;
 }
 
 .pricing.pricing-redesign .starter-details {
