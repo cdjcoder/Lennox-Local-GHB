@@ -10256,6 +10256,8 @@ footer::after {
     border: 2px solid rgba(212, 175, 55, 0.7);
     background: rgba(14, 40, 92, 0.8);
     box-shadow: 0 15px 30px rgba(0, 0, 0, 0.25);
+    flex: 1 1 0;
+    min-width: 320px;
 }
 
 .pricing.pricing-redesign .starter-image-grid {
@@ -10265,6 +10267,46 @@ footer::after {
     width: min(100%, 900px);
     align-items: center;
     justify-items: stretch;
+}
+
+.pricing.pricing-redesign .starter-flip-card {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 12 / 6.5;
+    min-height: 200px;
+    perspective: 1200px;
+    cursor: pointer;
+}
+
+.pricing.pricing-redesign .starter-flip-card:focus-visible {
+    outline: 3px solid rgba(212, 175, 55, 0.85);
+    outline-offset: 6px;
+}
+
+.pricing.pricing-redesign .starter-flip-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transition: transform 0.7s ease;
+}
+
+.pricing.pricing-redesign .starter-flip-card:hover .starter-flip-inner,
+.pricing.pricing-redesign .starter-flip-card:focus-within .starter-flip-inner {
+    transform: rotateY(180deg);
+}
+
+.pricing.pricing-redesign .starter-flip-face {
+    position: absolute;
+    inset: 0;
+    backface-visibility: hidden;
+    border-radius: 10px;
+    display: flex;
+    align-items: stretch;
+}
+
+.pricing.pricing-redesign .starter-flip-back {
+    transform: rotateY(180deg);
 }
 
 .pricing.pricing-redesign .starter-image {
@@ -10285,9 +10327,17 @@ footer::after {
     box-shadow: 0 12px 26px rgba(0, 0, 0, 0.25);
 }
 
+.pricing.pricing-redesign .starter-flip-face .starter-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    box-sizing: border-box;
+}
+
 .pricing.pricing-redesign .starter-details {
     color: #ffffff;
     text-align: left;
+    flex: 1 1 0;
 }
 
 .pricing.pricing-redesign .starter-badge {
@@ -10803,6 +10853,8 @@ footer::after {
 
     .pricing.pricing-redesign .starter-image-frame {
         --starter-image-gap: 22px;
+        min-width: 0;
+        width: 100%;
     }
 
     .pricing.pricing-redesign .starter-image-grid {
