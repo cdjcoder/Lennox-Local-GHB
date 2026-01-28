@@ -1137,15 +1137,15 @@ header.scrolled .language-toggle span {
   inset: -25%;
   background:
     radial-gradient(circle at 50% 0%,
-      rgba(255, 220, 140, 0.35) 0%,
-      rgba(255, 220, 140, 0.18) 25%,
-      rgba(255, 220, 140, 0.00) 60%),
+      rgba(255, 220, 140, 0.5) 0%,
+      rgba(255, 220, 140, 0.28) 28%,
+      rgba(255, 220, 140, 0.00) 65%),
     radial-gradient(circle at 20% 10%,
-      rgba(255, 170, 90, 0.22) 0%,
+      rgba(255, 170, 90, 0.32) 0%,
       rgba(255, 170, 90, 0.00) 55%);
-  filter: blur(42px);
+  filter: blur(36px);
   transform: translateZ(0);
-  opacity: 0.95;
+  opacity: 1;
 }
 
 .hero-sunlight::after {
@@ -1156,28 +1156,31 @@ header.scrolled .language-toggle span {
   background: conic-gradient(
     from 180deg at 50% 10%,
     rgba(255, 235, 175, 0.00) 0deg,
-    rgba(255, 235, 175, 0.14) 18deg,
+    rgba(255, 235, 175, 0.18) 18deg,
     rgba(255, 235, 175, 0.00) 38deg,
-    rgba(255, 235, 175, 0.10) 62deg,
+    rgba(255, 235, 175, 0.14) 62deg,
     rgba(255, 235, 175, 0.00) 82deg,
-    rgba(255, 235, 175, 0.12) 110deg,
+    rgba(255, 235, 175, 0.16) 110deg,
     rgba(255, 235, 175, 0.00) 140deg,
-    rgba(255, 235, 175, 0.10) 170deg,
+    rgba(255, 235, 175, 0.14) 170deg,
     rgba(255, 235, 175, 0.00) 360deg
   );
   -webkit-mask-image: radial-gradient(circle at 50% 10%, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0) 60%);
   mask-image: radial-gradient(circle at 50% 10%, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0) 60%);
-  opacity: 0.6;
+  opacity: 0.7;
   mix-blend-mode: screen;
-  filter: blur(0.6px);
+  filter: blur(0.8px);
   transform-origin: 50% 10%;
   animation: sunRaysSpin 24s linear infinite;
 }
 
-.hero .container,
-.hero .phone-contact-float {
+.hero .container {
   position: relative;
   z-index: 3;
+}
+
+.hero .phone-contact-float {
+  z-index: 999;
 }
 
 @media (prefers-reduced-motion: reduce) {
