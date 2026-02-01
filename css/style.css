@@ -11067,23 +11067,18 @@ footer::after {
 .partner-ads-card::before {
     content: '';
     position: absolute;
-    inset: -3px;
-    border-radius: 22px;
-    padding: 2px;
-    background: conic-gradient(
-        from 0deg,
-        rgba(37, 99, 235, 0),
-        rgba(37, 99, 235, 0.9),
-        rgba(245, 158, 11, 0.9),
-        rgba(236, 72, 153, 0.85),
-        rgba(34, 197, 94, 0.85),
-        rgba(37, 99, 235, 0)
-    );
+    inset: 0;
+    border-radius: inherit;
+    padding: 6px;
+    background:
+        radial-gradient(circle, rgba(255, 216, 120, 0.95) 0 38%, rgba(255, 216, 120, 0.35) 45%, rgba(255, 216, 120, 0) 58%) 0 0/30px 30px,
+        radial-gradient(circle, rgba(255, 255, 255, 0.85) 0 20%, rgba(255, 255, 255, 0) 42%) 0 0/30px 30px;
     -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
     -webkit-mask-composite: xor;
     mask-composite: exclude;
-    opacity: 0.9;
-    animation: partnerBorderSpin 5s linear infinite;
+    opacity: 0.95;
+    filter: drop-shadow(0 0 8px rgba(255, 193, 7, 0.65)) drop-shadow(0 0 16px rgba(255, 140, 0, 0.55));
+    animation: partnerBulbChase 2.8s linear infinite;
     pointer-events: none;
     z-index: 0;
 }
@@ -11146,12 +11141,12 @@ footer::after {
     }
 }
 
-@keyframes partnerBorderSpin {
+@keyframes partnerBulbChase {
     0% {
-        transform: rotate(0deg);
+        background-position: 0 0, 15px 15px;
     }
     100% {
-        transform: rotate(360deg);
+        background-position: 30px 30px, 45px 45px;
     }
 }
 
@@ -11203,5 +11198,13 @@ footer::after {
 
     .partner-ads-marquee {
         overflow-x: auto;
+    }
+
+    .partner-ads,
+    .partner-ads::before,
+    .partner-ads::after,
+    .partner-ads .section-title,
+    .partner-ads-card::before {
+        animation: none;
     }
 }
