@@ -11064,6 +11064,25 @@ footer::after {
     overflow: hidden;
 }
 
+.partner-ads-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 6px;
+    background:
+        radial-gradient(circle, rgba(255, 216, 120, 0.95) 0 38%, rgba(255, 216, 120, 0.35) 45%, rgba(255, 216, 120, 0) 58%) 0 0/30px 30px,
+        radial-gradient(circle, rgba(255, 255, 255, 0.85) 0 20%, rgba(255, 255, 255, 0) 42%) 0 0/30px 30px;
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0.95;
+    filter: drop-shadow(0 0 8px rgba(255, 193, 7, 0.65)) drop-shadow(0 0 16px rgba(255, 140, 0, 0.55));
+    animation: partnerBulbChase 2.8s linear infinite;
+    pointer-events: none;
+    z-index: 0;
+}
+
 .partner-ads-card::after {
     content: '';
     position: absolute;
@@ -11071,6 +11090,24 @@ footer::after {
     background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), transparent);
     opacity: 0.7;
     pointer-events: none;
+    z-index: 1;
+}
+
+.partner-ads-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    text-decoration: none;
+    position: relative;
+    z-index: 2;
+}
+
+.partner-ads-link:focus-visible {
+    outline: 3px solid rgba(37, 99, 235, 0.7);
+    outline-offset: 4px;
+    border-radius: 14px;
 }
 
 .partner-ads-card img {
@@ -11079,6 +11116,8 @@ footer::after {
     max-width: 100%;
     object-fit: contain;
     display: block;
+    position: relative;
+    z-index: 2;
 }
 
 @keyframes partnerBackdrop {
@@ -11099,6 +11138,15 @@ footer::after {
     }
     100% {
         background-position: 200% 50%;
+    }
+}
+
+@keyframes partnerBulbChase {
+    0% {
+        background-position: 0 0, 15px 15px;
+    }
+    100% {
+        background-position: 30px 30px, 45px 45px;
     }
 }
 
@@ -11150,5 +11198,13 @@ footer::after {
 
     .partner-ads-marquee {
         overflow-x: auto;
+    }
+
+    .partner-ads,
+    .partner-ads::before,
+    .partner-ads::after,
+    .partner-ads .section-title,
+    .partner-ads-card::before {
+        animation: none;
     }
 }
