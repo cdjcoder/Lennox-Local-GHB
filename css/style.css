@@ -10918,12 +10918,49 @@ footer::after {
 
 /* Partner Ads Marquee */
 .partner-ads {
-    padding: 70px 0 60px;
-    background: #ffffff;
+    padding: 80px 0 70px;
+    background: linear-gradient(135deg, #f8fafc 0%, #ffffff 45%, #f1f5f9 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.partner-ads::before,
+.partner-ads::after {
+    content: '';
+    position: absolute;
+    width: 320px;
+    height: 320px;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.35;
+    z-index: 0;
+    animation: partnerGlow 10s ease-in-out infinite alternate;
+}
+
+.partner-ads::before {
+    top: -80px;
+    left: -60px;
+    background: rgba(25, 118, 210, 0.35);
+}
+
+.partner-ads::after {
+    bottom: -90px;
+    right: -40px;
+    background: rgba(212, 175, 55, 0.35);
 }
 
 .partner-ads-header {
     margin-bottom: 28px;
+    position: relative;
+    z-index: 1;
+}
+
+.partner-ads .section-title {
+    font-size: 2.8rem;
+    letter-spacing: 0.03em;
+    text-transform: none;
+    color: #0f172a;
+    text-shadow: 0 12px 30px rgba(15, 23, 42, 0.18);
 }
 
 .partner-ads-subtitle {
@@ -10931,47 +10968,88 @@ footer::after {
     text-align: center;
     color: #64748b;
     font-size: 1rem;
+    font-weight: 500;
 }
 
 .partner-ads-marquee {
     overflow: hidden;
-    background: #f8fafc;
+    background: linear-gradient(90deg, #ffffff 0%, #f8fafc 50%, #ffffff 100%);
     border-top: 1px solid rgba(15, 23, 42, 0.08);
     border-bottom: 1px solid rgba(15, 23, 42, 0.08);
-    padding: 22px 0;
+    padding: 26px 0;
+    position: relative;
+    z-index: 1;
+    box-shadow: inset 0 12px 24px rgba(15, 23, 42, 0.06), inset 0 -12px 24px rgba(15, 23, 42, 0.06);
+}
+
+.partner-ads-marquee::before,
+.partner-ads-marquee::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 120px;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.partner-ads-marquee::before {
+    left: 0;
+    background: linear-gradient(90deg, rgba(248, 250, 252, 0.95), rgba(248, 250, 252, 0));
+}
+
+.partner-ads-marquee::after {
+    right: 0;
+    background: linear-gradient(270deg, rgba(248, 250, 252, 0.95), rgba(248, 250, 252, 0));
 }
 
 .partner-ads-track {
     display: flex;
     align-items: center;
-    gap: 26px;
     width: max-content;
     flex-wrap: nowrap;
-    animation: partnerMarquee 30s linear infinite;
+    animation: partnerMarquee 36s linear infinite;
 }
 
 .partner-ads-group {
     display: flex;
     align-items: center;
-    gap: 26px;
+    justify-content: space-evenly;
+    gap: 0;
     flex-wrap: nowrap;
+    min-width: 100vw;
+    flex: 0 0 100vw;
+    padding: 0 6vw;
 }
 
 .partner-ads-card {
     background: #ffffff;
     border-radius: 18px;
     border: 1px solid rgba(15, 23, 42, 0.08);
-    box-shadow: 0 12px 30px rgba(15, 23, 42, 0.12);
-    padding: 12px 16px;
+    box-shadow: 0 16px 35px rgba(15, 23, 42, 0.14);
+    padding: 12px;
     display: flex;
     align-items: center;
     justify-content: center;
+    width: clamp(200px, 22vw, 260px);
+    height: 160px;
+    position: relative;
+    overflow: hidden;
+}
+
+.partner-ads-card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), transparent);
+    opacity: 0.7;
+    pointer-events: none;
 }
 
 .partner-ads-card img {
-    height: 120px;
+    height: 130px;
     width: auto;
-    max-width: 230px;
+    max-width: 100%;
     object-fit: contain;
     display: block;
 }
@@ -10985,18 +11063,35 @@ footer::after {
     }
 }
 
+@keyframes partnerGlow {
+    0% {
+        transform: translateY(0) scale(1);
+    }
+    100% {
+        transform: translateY(20px) scale(1.05);
+    }
+}
+
 @media (max-width: 768px) {
     .partner-ads {
-        padding: 50px 0;
+        padding: 55px 0;
     }
 
     .partner-ads-marquee {
-        padding: 16px 0;
+        padding: 18px 0;
+    }
+
+    .partner-ads .section-title {
+        font-size: 2.1rem;
+    }
+
+    .partner-ads-card {
+        width: clamp(170px, 45vw, 210px);
+        height: 130px;
     }
 
     .partner-ads-card img {
-        height: 90px;
-        max-width: 180px;
+        height: 100px;
     }
 }
 
