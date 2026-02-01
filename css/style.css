@@ -11158,6 +11158,34 @@ footer::after {
     --hover-shadow: 0 30px 60px rgba(34, 197, 94, 0.22);
 }
 
+.partner-ads-group .partner-ads-card:nth-child(5) {
+    --bulb-core: rgba(216, 180, 254, 0.95);
+    --bulb-glow: rgba(216, 180, 254, 0.32);
+    --bulb-accent: rgba(248, 240, 255, 0.92);
+    --bulb-shadow-1: rgba(167, 139, 250, 0.7);
+    --bulb-shadow-2: rgba(124, 58, 237, 0.6);
+    --card-rotate: 1deg;
+    --img-scale: 1.06;
+    --img-hue: 18deg;
+    --img-saturate: 1.25;
+    --sweep-highlight: rgba(216, 180, 254, 0.55);
+    --hover-shadow: 0 28px 58px rgba(124, 58, 237, 0.24);
+}
+
+.partner-ads-group .partner-ads-card:nth-child(6) {
+    --bulb-core: rgba(94, 234, 212, 0.95);
+    --bulb-glow: rgba(94, 234, 212, 0.32);
+    --bulb-accent: rgba(228, 255, 250, 0.9);
+    --bulb-shadow-1: rgba(20, 184, 166, 0.7);
+    --bulb-shadow-2: rgba(13, 148, 136, 0.6);
+    --card-rotate: -1deg;
+    --img-scale: 1.05;
+    --img-brightness: 1.1;
+    --img-contrast: 1.06;
+    --sweep-highlight: rgba(94, 234, 212, 0.55);
+    --hover-shadow: 0 28px 58px rgba(20, 184, 166, 0.24);
+}
+
 .partner-ads-card::after {
     content: '';
     position: absolute;
