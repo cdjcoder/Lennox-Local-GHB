@@ -10918,8 +10918,14 @@ footer::after {
 
 /* Partner Ads Marquee */
 .partner-ads {
-    padding: 80px 0 70px;
-    background: linear-gradient(135deg, #f8fafc 0%, #ffffff 45%, #f1f5f9 100%);
+    padding: 90px 0 80px;
+    background: 
+        radial-gradient(circle at 12% 20%, rgba(59, 130, 246, 0.25), transparent 45%),
+        radial-gradient(circle at 88% 25%, rgba(236, 72, 153, 0.18), transparent 40%),
+        radial-gradient(circle at 50% 90%, rgba(250, 204, 21, 0.18), transparent 45%),
+        linear-gradient(135deg, #f8fafc 0%, #e0f2fe 35%, #fff7ed 70%, #f8fafc 100%);
+    background-size: 200% 200%;
+    animation: partnerBackdrop 16s ease infinite;
     position: relative;
     overflow: hidden;
 }
@@ -10928,8 +10934,8 @@ footer::after {
 .partner-ads::after {
     content: '';
     position: absolute;
-    width: 320px;
-    height: 320px;
+    width: 360px;
+    height: 360px;
     border-radius: 50%;
     filter: blur(80px);
     opacity: 0.35;
@@ -10938,35 +10944,47 @@ footer::after {
 }
 
 .partner-ads::before {
-    top: -80px;
-    left: -60px;
-    background: rgba(25, 118, 210, 0.35);
+    top: -90px;
+    left: -70px;
+    background: rgba(37, 99, 235, 0.35);
 }
 
 .partner-ads::after {
-    bottom: -90px;
-    right: -40px;
-    background: rgba(212, 175, 55, 0.35);
+    bottom: -110px;
+    right: -60px;
+    background: rgba(245, 158, 11, 0.32);
 }
 
 .partner-ads-header {
-    margin-bottom: 28px;
+    margin-bottom: 34px;
     position: relative;
     z-index: 1;
 }
 
 .partner-ads .section-title {
-    font-size: 2.8rem;
+    font-size: 3.1rem;
+    font-weight: 800;
     letter-spacing: 0.03em;
     text-transform: none;
     color: #0f172a;
     text-shadow: 0 12px 30px rgba(15, 23, 42, 0.18);
 }
 
+.partner-ads-header::after {
+    content: '';
+    display: block;
+    width: 140px;
+    height: 4px;
+    margin: 18px auto 0;
+    border-radius: 999px;
+    background: linear-gradient(90deg, rgba(37, 99, 235, 0), #2563eb, #f59e0b, rgba(245, 158, 11, 0));
+    box-shadow: 0 10px 20px rgba(37, 99, 235, 0.25);
+}
+
 .partner-ads-subtitle {
     margin: 10px 0 0;
     text-align: center;
-    color: #64748b;
+    color: #475569;
     font-size: 1rem;
     font-weight: 500;
 }
@@ -11054,6 +11072,18 @@ footer::after {
     display: block;
 }
 
+@keyframes partnerBackdrop {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
 @keyframes partnerMarquee {
     0% {
         transform: translateX(0);
@@ -11074,7 +11104,7 @@ footer::after {
 
 @media (max-width: 768px) {
     .partner-ads {
-        padding: 55px 0;
+        padding: 65px 0;
     }
 
     .partner-ads-marquee {
@@ -11082,7 +11112,7 @@ footer::after {
     }
 
     .partner-ads .section-title {
-        font-size: 2.1rem;
+        font-size: 2.3rem;
     }
 
     .partner-ads-card {
