@@ -11067,6 +11067,7 @@ footer::after {
     --bulb-accent: rgba(255, 255, 255, 0.85);
     --bulb-shadow-1: rgba(255, 193, 7, 0.65);
     --bulb-shadow-2: rgba(255, 140, 0, 0.55);
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
 }
 
 .partner-ads-card::before {
@@ -11124,10 +11125,12 @@ footer::after {
     content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), transparent);
-    opacity: 0.7;
+    background: linear-gradient(120deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.08));
+    background-size: 200% 200%;
+    opacity: 0.45;
     pointer-events: none;
     z-index: 1;
+    transition: opacity 0.35s ease;
 }
 
 .partner-ads-link {
@@ -11155,6 +11158,30 @@ footer::after {
     display: block;
     position: relative;
     z-index: 2;
+    transition: transform 0.35s ease, filter 0.35s ease;
+}
+
+.partner-ads-card:hover,
+.partner-ads-card:focus-within {
+    transform: translateY(-6px) scale(1.02);
+    box-shadow: 0 26px 55px rgba(15, 23, 42, 0.18);
+}
+
+.partner-ads-card:hover::after,
+.partner-ads-card:focus-within::after {
+    opacity: 1;
+    animation: partnerCardSweep 1.6s ease-in-out infinite;
+}
+
+.partner-ads-card:hover::before,
+.partner-ads-card:focus-within::before {
+    filter: drop-shadow(0 0 10px var(--bulb-shadow-1)) drop-shadow(0 0 22px var(--bulb-shadow-2));
+}
+
+.partner-ads-card:hover img,
+.partner-ads-card:focus-within img {
+    transform: scale(1.04);
+    filter: drop-shadow(0 8px 16px rgba(15, 23, 42, 0.22));
 }
 
 @keyframes partnerBackdrop {
@@ -11184,6 +11211,15 @@ footer::after {
     }
     100% {
         background-position: 30px 30px, 45px 45px;
+    }
+}
+
+@keyframes partnerCardSweep {
+    0% {
+        background-position: 0% 50%;
+    }
+    100% {
+        background-position: 200% 50%;
     }
 }
 
@@ -11241,7 +11277,8 @@ footer::after {
     .partner-ads::before,
     .partner-ads::after,
     .partner-ads .section-title,
-    .partner-ads-card::before {
+    .partner-ads-card::before,
+    .partner-ads-card::after {
         animation: none;
     }
 }
