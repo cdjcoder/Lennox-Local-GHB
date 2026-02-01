@@ -11315,17 +11315,29 @@ footer::after {
         padding: 18px 0;
     }
 
+    .partner-ads-marquee::before,
+    .partner-ads-marquee::after {
+        width: 50px;
+    }
+
+    .partner-ads-group {
+        padding: 0 12vw;
+    }
+
     .partner-ads .section-title {
         font-size: 2.3rem;
     }
 
     .partner-ads-card {
-        width: clamp(170px, 45vw, 210px);
-        height: 130px;
+        width: clamp(200px, 75vw, 280px);
+        height: auto;
+        padding: 14px 16px;
     }
 
     .partner-ads-card img {
-        height: 100px;
+        width: 100%;
+        height: auto;
+        max-height: 160px;
     }
 }
 
