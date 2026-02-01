@@ -11064,6 +11064,30 @@ footer::after {
     overflow: hidden;
 }
 
+.partner-ads-card::before {
+    content: '';
+    position: absolute;
+    inset: -3px;
+    border-radius: 22px;
+    padding: 2px;
+    background: conic-gradient(
+        from 0deg,
+        rgba(37, 99, 235, 0),
+        rgba(37, 99, 235, 0.9),
+        rgba(245, 158, 11, 0.9),
+        rgba(236, 72, 153, 0.85),
+        rgba(34, 197, 94, 0.85),
+        rgba(37, 99, 235, 0)
+    );
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0.9;
+    animation: partnerBorderSpin 5s linear infinite;
+    pointer-events: none;
+    z-index: 0;
+}
+
 .partner-ads-card::after {
     content: '';
     position: absolute;
@@ -11071,6 +11095,24 @@ footer::after {
     background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), transparent);
     opacity: 0.7;
     pointer-events: none;
+    z-index: 1;
+}
+
+.partner-ads-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    text-decoration: none;
+    position: relative;
+    z-index: 2;
+}
+
+.partner-ads-link:focus-visible {
+    outline: 3px solid rgba(37, 99, 235, 0.7);
+    outline-offset: 4px;
+    border-radius: 14px;
 }
 
 .partner-ads-card img {
@@ -11079,6 +11121,8 @@ footer::after {
     max-width: 100%;
     object-fit: contain;
     display: block;
+    position: relative;
+    z-index: 2;
 }
 
 @keyframes partnerBackdrop {
@@ -11099,6 +11143,15 @@ footer::after {
     }
     100% {
         background-position: 200% 50%;
+    }
+}
+
+@keyframes partnerBorderSpin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
     }
 }
 
