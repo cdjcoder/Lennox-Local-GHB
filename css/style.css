@@ -11329,15 +11329,26 @@ footer::after {
     }
 
     .partner-ads-card {
-        width: clamp(260px, 90vw, 340px);
+        width: clamp(320px, 96vw, 560px);
         height: auto;
-        padding: 18px 20px;
+        padding: 22px 24px;
     }
 
     .partner-ads-card img {
         width: 100%;
         height: auto;
-        max-height: 220px;
+        max-height: 360px;
+    }
+
+    .partner-ads-card::before {
+        padding: 8px;
+        background-size: 40px 40px;
+        filter: none;
+    }
+
+    .partner-ads-card:hover::before,
+    .partner-ads-card:focus-within::before {
+        filter: none;
     }
 }
 
