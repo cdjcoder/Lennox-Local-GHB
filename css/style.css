@@ -11330,9 +11330,9 @@ footer::after {
     }
 
     .partner-ads-group {
-        padding: 0;
-        gap: 0;
-        justify-content: flex-start;
+        padding: 0 10vw;
+        gap: 24px;
+        justify-content: center;
     }
 
     .partner-ads .section-title {
@@ -11340,12 +11340,12 @@ footer::after {
     }
 
     .partner-ads-track {
-        animation: partnerMarqueeReverse 46s linear infinite;
+        animation: partnerMarqueeReverse 28s linear infinite;
     }
 
     .partner-ads-card {
-        width: 100%;
-        flex: 0 0 100%;
+        width: clamp(220px, 78vw, 320px);
+        flex: 0 0 auto;
         height: auto;
         padding: 22px 24px;
         margin: 0 auto;
