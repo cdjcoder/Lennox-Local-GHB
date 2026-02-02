@@ -11201,17 +11201,17 @@ footer::after {
 }
 
 .partner-ads-group .partner-ads-card:nth-child(8) {
-    --bulb-core: rgba(186, 230, 253, 0.95);
-    --bulb-glow: rgba(186, 230, 253, 0.32);
-    --bulb-accent: rgba(240, 249, 255, 0.92);
-    --bulb-shadow-1: rgba(56, 189, 248, 0.75);
-    --bulb-shadow-2: rgba(14, 165, 233, 0.6);
+    --bulb-core: rgba(254, 202, 202, 0.95);
+    --bulb-glow: rgba(254, 202, 202, 0.32);
+    --bulb-accent: rgba(254, 242, 242, 0.92);
+    --bulb-shadow-1: rgba(239, 68, 68, 0.8);
+    --bulb-shadow-2: rgba(220, 38, 38, 0.65);
     --card-rotate: -0.5deg;
     --img-scale: 1.06;
-    --img-saturate: 1.2;
-    --img-brightness: 1.08;
-    --sweep-highlight: rgba(186, 230, 253, 0.6);
-    --hover-shadow: 0 28px 58px rgba(56, 189, 248, 0.24);
+    --img-saturate: 1.22;
+    --img-brightness: 1.1;
+    --sweep-highlight: rgba(254, 202, 202, 0.6);
+    --hover-shadow: 0 28px 58px rgba(239, 68, 68, 0.26);
 }
 
 .partner-ads-card::after {
