@@ -11330,9 +11330,11 @@ footer::after {
     }
 
     .partner-ads-group {
-        padding: 0 10vw;
-        gap: 24px;
-        justify-content: center;
+        padding: 0 8vw;
+        gap: 28px;
+        justify-content: flex-start;
+        min-width: max-content;
+        flex: 0 0 auto;
     }
 
     .partner-ads .section-title {
@@ -11340,21 +11342,21 @@ footer::after {
     }
 
     .partner-ads-track {
-        animation: partnerMarqueeReverse 28s linear infinite;
+        animation: partnerMarqueeReverse 24s linear infinite;
     }
 
     .partner-ads-card {
-        width: clamp(220px, 78vw, 320px);
+        width: min(86vw, 360px);
         flex: 0 0 auto;
         height: auto;
         padding: 22px 24px;
-        margin: 0 auto;
+        margin: 0;
     }
 
     .partner-ads-card img {
         width: 100%;
         height: auto;
-        max-height: 70vh;
+        max-height: none;
     }
 
     .partner-ads-card::before {
