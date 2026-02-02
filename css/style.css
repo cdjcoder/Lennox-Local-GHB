@@ -11297,6 +11297,15 @@ footer::after {
     }
 }
 
+@keyframes partnerMarqueeReverse {
+    0% {
+        transform: translateX(-50%);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+
 @keyframes partnerGlow {
     0% {
         transform: translateY(0) scale(1);
@@ -11321,23 +11330,31 @@ footer::after {
     }
 
     .partner-ads-group {
-        padding: 0 12vw;
+        padding: 0;
+        gap: 0;
+        justify-content: flex-start;
     }
 
     .partner-ads .section-title {
         font-size: 2.3rem;
     }
 
+    .partner-ads-track {
+        animation: partnerMarqueeReverse 46s linear infinite;
+    }
+
     .partner-ads-card {
-        width: clamp(320px, 96vw, 560px);
+        width: 100%;
+        flex: 0 0 100%;
         height: auto;
         padding: 22px 24px;
+        margin: 0 auto;
     }
 
     .partner-ads-card img {
         width: 100%;
         height: auto;
-        max-height: 360px;
+        max-height: 70vh;
     }
 
     .partner-ads-card::before {
