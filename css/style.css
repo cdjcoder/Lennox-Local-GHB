@@ -11228,6 +11228,20 @@ footer::after {
     --hover-shadow: 0 28px 58px rgba(34, 211, 238, 0.24);
 }
 
+.partner-ads-group .partner-ads-card:nth-child(10) {
+    --bulb-core: rgba(147, 197, 253, 0.95);
+    --bulb-glow: rgba(147, 197, 253, 0.32);
+    --bulb-accent: rgba(239, 246, 255, 0.92);
+    --bulb-shadow-1: rgba(59, 130, 246, 0.75);
+    --bulb-shadow-2: rgba(37, 99, 235, 0.6);
+    --card-rotate: -0.2deg;
+    --img-scale: 1.05;
+    --img-saturate: 1.16;
+    --img-brightness: 1.07;
+    --sweep-highlight: rgba(147, 197, 253, 0.6);
+    --hover-shadow: 0 28px 58px rgba(59, 130, 246, 0.24);
+}
+
 .partner-ads-card::after {
     content: '';
     position: absolute;
