@@ -1,5 +1,13 @@
 /* Lennox Local Ads Flyer - Redesigned Modern Stylesheet */
 
+@font-face {
+  font-family: 'Lexend Deca Local';
+  src: url('../Lexend_Deca/LexendDeca-VariableFont_wght.ttf') format('truetype');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
 /* Logo Icon Animation */
 @keyframes logoIconFloat {
   0% { 
@@ -1165,6 +1173,10 @@ header.scrolled .language-toggle span {
   line-height: 1.6;
   font-weight: 500;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
+}
+
+.hero-lexend-paragraph {
+  font-family: 'Lexend Deca Local', 'Lexend Deca', 'Poppins', sans-serif;
 }
 
 .hero-images {
@@ -10579,6 +10591,7 @@ footer::after {
     padding: 6px 18px;
     border-radius: 999px;
     background: rgba(255, 255, 255, 0.25);
+    color: #22c55e;
     font-size: 0.85rem;
     font-weight: 600;
 }
